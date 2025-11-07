@@ -1,7 +1,6 @@
-from rest_framework import serializers
+from rest_framework import serrializers
 from home.models import MenuCategory
 
-# Serializer for MenuCategory model
 class MenuCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = MenuCategory
