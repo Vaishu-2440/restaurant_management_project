@@ -12,7 +12,7 @@ menu_categories = [
 ]
 
 def get_menu_categories(request):
-    serializer = MenuCategorySerializer(nenu_categories, many = True)
+    serializer = MenuCategorySerializer(menu_categories, many = True)
     return Response(serializer.data)
 
 if __name__ == "__main__":
