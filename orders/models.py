@@ -11,5 +11,5 @@ class Order(models.Model):
         null = True)
 
     def __str__(self):
-        return f"Order by {self.customer_name}, Status : {self.order_status}"
+        return f"Order by {self.customer_name}, Status : {self.status}"
 
