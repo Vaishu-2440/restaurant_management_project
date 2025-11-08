@@ -8,7 +8,8 @@ class Order(models.Model):
     status = models.ForeignKey(
         OrderStatus, 
         on_delete = models.CASCADE, 
-        null = True)
+        null = True
+    )
 
     def __str__(self):
         return f"Order by {self.customer_name}, Status : {self.status}"
