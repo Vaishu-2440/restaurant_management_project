@@ -1,4 +1,5 @@
 from django.db import models
+from orders import PENDING,PROCESSING,COMPLETED,CANCELLED
 
 class Order(models.Model) :
     name = models.CharField(max_length = 50, unique = True)
