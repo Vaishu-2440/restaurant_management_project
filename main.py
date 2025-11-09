@@ -1,6 +1,7 @@
 import os
 import django
 import json
+
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "restaurant_management_settings")
 django.setup()
 
