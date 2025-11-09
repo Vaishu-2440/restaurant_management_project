@@ -12,7 +12,7 @@ class CouponValidationView(APIView):
             return Response({"error": "Coupon code is required."}, status = status.HTTP_400_BAD_REQUEST)
         
         try:
-            coupon = Coupon.objects.get(code = code)
+            coupon = Coupon.objects.filter(code = code).first()
         except Coupon.DoesNotExist:
             return Response({"error": "Invalid coupon code."}, status = status.HTTP_400_BAD_REQUEST)
 
@@ -29,4 +29,5 @@ class CouponValidationView(APIView):
             "success" : True,
             "code" : coupon.code,
             "discount_percentage" : coupon.discount_percentage
-        }, status = status.HTTP_200_OK)
+        }, status = status.HTTP_200_OK
+        )
