@@ -6,9 +6,10 @@ from .models import Coupon
 
 class CouponValidationView(APIView):
     def post (self, request):
-        code = request.data.get("code")
+        if code :
+            code = request.data.get("code")
 
-        if code == False :
+        if  not code :
             return Response(
             {
                 "message": "Coupon code is required."
