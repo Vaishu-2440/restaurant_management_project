@@ -21,7 +21,7 @@ class CouponValidationView(APIView):
             {
                 "success" : False,
                 "message": "Invalid coupon code."
-            }, status = status.HTTP_400_BAD_REQUEST)
+            }, status = status.HTTP_400_BAD_FOUND)
 
         today = timezone.now().date()
         if not coupon.is_active :
@@ -29,7 +29,7 @@ class CouponValidationView(APIView):
             {
                 "success" : False,
                 "message" : "Coupon is not active."
-            }, status = status.HTTP_400_BAD_REQUEST)
+            }, status = status.HTTP_403_FORBIDDEN)
 
         if (today < coupon.valid_from) :
             return Response(
@@ -43,7 +43,7 @@ class CouponValidationView(APIView):
             {
                 "success" : False,
                 "message" : "Coupon is expired."
-            }, status = status.HTTP_400_BAD_REQUEST)
+            }, status = status.HTTP_410_GONE)
             
         return Response(
             {
