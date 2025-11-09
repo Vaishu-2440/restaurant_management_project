@@ -24,7 +24,7 @@ class CouponValidationView(APIView):
             }, status = status.HTTP_400_BAD_REQUEST)
 
         today = timezone.now().date()
-        if not coupon.is_active :
+        if coupon.is_active == False :
             return Response(
             {
                 "success" : False,
