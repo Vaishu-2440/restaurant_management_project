@@ -22,7 +22,7 @@ class CouponValidationView(APIView):
             {
                 "success" : False,
                 "message": "Invalid coupon code."
-            }, status = status.HTTP_400_BAD_FOUND
+            }, status = status.HTTP_400_NOT_FOUND
             )
 
         today = timezone.now().date()
