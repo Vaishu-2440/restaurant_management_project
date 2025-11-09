@@ -40,8 +40,6 @@ class CouponValidationView(APIView):
                 "message" : "Coupon is expired."
             }, status = status.HTTP_400_BAD_REQUEST)
             
-        #Valid Response
-        
         return Response({
             "success" : True,
             "code" : coupon.code,
