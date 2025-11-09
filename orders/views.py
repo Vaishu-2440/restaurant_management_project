@@ -11,6 +11,7 @@ class CouponValidationView(APIView):
         if  not code :
             return Response(
             {
+                "success" : False,
                 "message": "Coupon code is required."
             }, status = status.HTTP_400_BAD_REQUEST
             )
