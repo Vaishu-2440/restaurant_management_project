@@ -8,10 +8,9 @@ class CouponValidationView(APIView):
     def post (self, request):
         code = request.data.get("code")
 
-        if not code :
+        if code == False :
             return Response(
             {
-                "success" : False,
                 "message": "Coupon code is required."
             }, status = status.HTTP_400_BAD_REQUEST
             )
