@@ -5,7 +5,7 @@ from django.utils import timezone
 from .models import Coupon
 
 class CouponValidationView(APIView):
-    def post(self, request):
+    def post (self, request):
         code = request.data.get("code")
 
         if not code :
