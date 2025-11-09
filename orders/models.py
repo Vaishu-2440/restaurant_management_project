@@ -1,9 +1,12 @@
 from django.db import models
-from orders import PENDING,PROCESSING,COMPLETED,CANCELLED
 
-class Order(models.Model) :
-   name = models.ChaField(max_length = 50, unique = True)
+class Coupon(models.Model) :
+   code = models.CharField(max_length = 50, unique = True)
+   discount_percentage = models.DecimalField(max_digits = 5, decimal_places = 2)
+   is_actice = models.BooleanField(default = True)
+   valid_from = models.DateField()
+   valid_until = models.DateField()
 
     def __str__(self):
-         return self.name
+         return f"{self.code} ({self.discount_percentage}% off)"
 
