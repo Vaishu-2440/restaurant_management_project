@@ -6,7 +6,6 @@ from .models import Coupon
 
 class CouponValidationView(APIView):
     def post (self, request):
-        if code :
             code = request.data.get("code")
 
         if  not code :
