@@ -1,0 +1,29 @@
+from rest_framework import serializers
+from .models import Restaurant
+
+class RestaurantSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Restaurant
+        fields = '__all__'
+
+    # Validate email format and uniqueness
+    def validate_email(self, value):
+        if not value.endswith(('.com', '.in')):
+            raise serializers.ValidationError("Enter a valid email address.")
+        if Restaurant.objects.filter(email=value).exists():
+            raise serializers.ValidationError("A restaurant with this email already exists.")
+        return value
+
+    # Validate phone number (should be digits and 10 characters long)
+    def validate_phone_number(self, value):
+        if not value.isdigit():
+            raise serializers.ValidationError("Phone number must contain only digits.")
+        if len(value) != 10:
+            raise serializers.ValidationError("Phone number must be exactly 10 digits.")
+        return value
+
+    # Validate name fields are not empty
+    def validate(self, data):
+        if not data.get('name') or not data.get('owner_name'):
+            raise serializers.ValidationError("Restaurant name and owner name are required.")
+        return data
