@@ -1,0 +1,54 @@
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
+from .models import Restaurant
+from .serializers import RestaurantSerializer
+
+# POST - Register a new restaurant
+@api_view(['POST'])
+def create_restaurant(request):
+    serializer = RestaurantSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+# GET - List all restaurants
+@api_view(['GET'])
+def list_restaurants(request):
+    restaurants = Restaurant.objects.all()
+    serializer = RestaurantSerializer(restaurants, many=True)
+    return Response(serializer.data)
+
+# GET by ID - View single restaurant details
+@api_view(['GET'])
+def get_restaurant(request, pk):
+    try:
+        restaurant = Restaurant.objects.get(pk=pk)
+    except Restaurant.DoesNotExist:
+        return Response({'error': 'Restaurant not found'}, status=status.HTTP_404_NOT_FOUND)
+    serializer = RestaurantSerializer(restaurant)
+    return Response(serializer.data)
+
+# PUT - Update restaurant information
+@api_view(['PUT'])
+def update_restaurant(request, pk):
+    try:
+        restaurant = Restaurant.objects.get(pk=pk)
+    except Restaurant.DoesNotExist:
+        return Response({'error': 'Restaurant not found'}, status=status.HTTP_404_NOT_FOUND)
+    serializer = RestaurantSerializer(restaurant, data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+# DELETE - Delete a restaurant
+@api_view(['DELETE'])
+def delete_restaurant(request, pk):
+    try:
+        restaurant = Restaurant.objects.get(pk=pk)
+    except Restaurant.DoesNotExist:
+        return Response({'error': 'Restaurant not found'}, status=status.HTTP_404_NOT_FOUND)
+    restaurant.delete()
+    return Response({'message': 'Restaurant deleted successfully'}, status=status.HTTP_204_NO_CONTENT)
