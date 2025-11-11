@@ -12,7 +12,7 @@ def main():
 
     categories = MenuCategory.objects.all().values('name')
     data = list(categories)
-    print(json.dumps(data, indent = 2))
+    print (json.dumps(data, indent = 2))
 
 if __name__ == "__main__":
     main()
