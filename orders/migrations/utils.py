@@ -1,7 +1,7 @@
 from datetime import datetime
 from .models import DailyOperatingHours 
 
-def get_today_operating_hours :
+def get_today_operating_hours() :
     today = datetime.today.strftime('%A')
     try :
         hours = DailyOperatingHours.objects.get(day = today)
