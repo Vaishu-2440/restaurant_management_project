@@ -1,4 +1,5 @@
 from datetime import datetime
+from django.core.exceptions import ObjectDoesNotExist
 from .models import DailyOperatingHours 
 
 def get_today_operating_hours() :
@@ -6,5 +7,5 @@ def get_today_operating_hours() :
     try :
         hours = DailyOperatingHours.objects.get(day = today)
         return (hours.open_time, hours.close_time)
-    except DailyOperatingHours.DoesNotExist :
+    except ObjectDoesNotExist :
         return (None, None)
