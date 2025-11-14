@@ -6,4 +6,4 @@ from home.serializers import MenuCategorySerializer
 class MenuCategoryListView(generics.ListAPIView):
     """ API endpoint to list all menu categories."""
     queryset = MenuCategory.objects.all()
-    serialixer_class = MenuCategorySerializer
+    serializer_class = MenuCategorySerializer
