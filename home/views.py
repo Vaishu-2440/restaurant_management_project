@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from rest_framework import generics
-from home.models import MenuCategory
-from home.serializers import MenuCategorySerializer
+from home.models import MenuItem
+from home.serializers import MenuItemSerializer
 
-class MenuCategoryListView(generics.ListAPIView):
+class FeaturedMenuItemView(generics.ListAPIView):
     """ API endpoint to list all menu categories."""
-    queryset = MenuCategory.objects.all()
-    serializer_class = MenuCategorySerializer
+    queryset = MenuItem.objects.all()
+    serializer_class = MenuItemSerializer
