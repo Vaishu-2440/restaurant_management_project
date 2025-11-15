@@ -7,5 +7,5 @@ def get_today_operating_hours() :
     try :
         hours = DailyOperatingHours.objects.get(day = today)
         return (hours.open_time, hours.close_time)
-    except ObjectDoesNotExist :
+    except DailyOperatingHours.DoesNotExist :
         return (None, None)
