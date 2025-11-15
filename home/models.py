@@ -1,4 +1,5 @@
 from django.db import models
+from .models import MenuItem
 
 class MenuItem(models.Model):
     restaurant = models.ForeignKey(Restaurant, on_delete = models.CASCADE, related_name = 'menu_items')
