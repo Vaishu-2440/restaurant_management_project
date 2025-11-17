@@ -1,6 +1,6 @@
 from rest_framework import viewsets
 from rest_framework.response import Response
-from rest_framework.pagination import PageNumnberPagination
+from rest_framework.pagination import PageNumberPagination
 from home.models import MenuItem
 from home.serializers import MenuItemSerializer
 
@@ -14,7 +14,7 @@ class MenuItemSearchViewSet(viewsets.ViewSet) :
     
     def list(self, request) :
         query = request.GET.get('search', '')
-        items = MenuItem.objects.filter(name_icontains = query)
+        items = MenuItem.objects.filter(name__icontains = query)
         paginator = self.pagination_class()
         paginated_items = paginator.paginate_queryset(items, request)
         serializer = MenuItemSerializer(paginated_items, many = True)
