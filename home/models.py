@@ -1,5 +1,4 @@
 from django.db import models
-from .models import MenuItem
 
 class DailySpecial(models.Model):
     name = models.CharField(max_length = 255)
