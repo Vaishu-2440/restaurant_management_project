@@ -1,6 +1,6 @@
 from django.urls import path, include
-from .views import FeaturedMenuItemsView
+from .views import MenuItemSearchViewSet
 
 urlpatterns = [
-    path('featured-menu-items/', FeaturedMenuItemsView.as_view(), name = 'featured-menu-items'),
+    path('menu/search/', MenuItemSearchViewSet.as_view({'get' : 'list'}), name = 'menu - search'),
 ]
