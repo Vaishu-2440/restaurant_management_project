@@ -14,6 +14,7 @@ class MenuItemSearchViewSet(viewsets.ViewSet) :
     
     def list(self, request) :
         query = request.GET.get('search', '')
+        
         items = MenuItem.objects.filter(name__icontains = query)
         paginator = self.pagination_class()
         paginated_items = paginator.paginate_queryset(items, request)
