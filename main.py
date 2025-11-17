@@ -4,9 +4,7 @@ import json
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "restaurant_management_settings")
 django.setup()
-
 from home.models import MenuCategory
-
 def main():
     """Fetch and print all menu categories as json."""
 
