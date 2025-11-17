@@ -9,7 +9,7 @@ class NutritionalInformation(models.Model):
     )
     calories = models.IntegerField()
     protein_grams = models.DecimalField(max_digits = 5, decimal_places = 2)
-    fat_grams = models.DecimalField(max_digits = 5, deimal_places = 2)
+    fat_grams = models.DecimalField(max_digits = 5, decimal_places = 2)
     carbohydrate_grams = models.DecimalField(max_digits = 5, decimal_places = 2)
 
     def __str__(self) :
