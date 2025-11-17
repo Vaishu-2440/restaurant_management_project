@@ -1,12 +1,9 @@
-from django.db.models import Sum
-from django.core.exceptions import ObjectDoesNotExist
-from .models import Order
+from decimal import Decimal, ROUND_HALF_UP
 
-def get_daily_sales_total(date) :
-    try :
-        orders = Order.objects.filter(created_at_date = date)
-        total  = orders.aggregate(total_sum = Sum('total_price'))['total_sum']
-        return total or 0
+def calculate_tip_amount(order_total, tip_percentage) :
+    total = Decimal(order_total)
+    percentage = Decimal(tip_percentage) / Decimal(100)
 
-    except Exception as e :
-        return 0
+    tip_amount = total * percentage
+
+    return tip_amount.quantize(Decimal("0.01"), rounding = ROUNDING_HALF_UP)
