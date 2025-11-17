@@ -6,4 +6,4 @@ def calculate_tip_amount(order_total, tip_percentage) :
 
     tip_amount = total * percentage
 
-    return tip_amount.quantize(Decimal("0.01"), rounding = ROUNDING_HALF_UP)
+    return tip_amount.quantize(Decimal("0.01"), rounding = ROUND_HALF_UP)
