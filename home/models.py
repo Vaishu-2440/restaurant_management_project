@@ -1,16 +1,16 @@
 from django.db import models
+from .models import MenuItem
 
-class DailySpecial(models.Model):
-    name = models.CharField(max_length = 255)
-    description = models.TextField()
-    price = models.DecimalField(max_digits = 8, decimal_places = 2)
-    is_active = models.BooleanField(default = True)
+class NutritionalInformation(models.Model):
+    menu_item = models.ForeignKey (
+        MenuItem,
+        on_delete = models.CASCADE,
+        related_name = "nutrition"
+    )
+    calories = models.IntegerField()
+    protein_grams = models.DecimalField(max_digits = 5, decimal_places = 2)
+    fat_grams = models.DecimalField(max_digits = 5, deimal_places = 2)
+    carbohydrate_grams = models.DecimalField(max_digits = 5, decimal_places = 2)
 
-    def get_random_special():
-        qs = DailySpecial.objects.filter(is_active = True)
-        if qs.exists() :
-             return qs.order_by('?').first()
-        return None
-    
-    def __str__self() :
-        return self.name
+    def __str__(self) :
+        return f"{self.menu_item.name} - {self.calories} kcal"
