@@ -1,7 +1,7 @@
-from rest_framework import serrializers
-from .models import MenuItem
+from rest_framework import serializers
+from .models import Ingredients
 
-class MenuItemSerializer(serializers.ModelSerializer):
+class IngredientSerializer(serializers.ModelSerializer):
     class Meta:
-        model = MenuItem
-        fields = '__all__'
+        model = Ingredient
+        fields = ['id', 'name']
