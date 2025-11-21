@@ -1,24 +1,18 @@
-from rest_framework import viewsets
+from rest_framework.generics import RetrieveAPIView
 from rest_framework.response import Response
-from rest_framework.pagination import PageNumberPagination
+from rest_framework import status
 from home.models import MenuItem
-from home.serializers import MenuItemSerializer
+from home.serializers import IngredientSerializer
 
-class MenuItemPagination(PageNumberPagination):
-    page_size = 10
-    page_size_query_param = "page_size"
-    max_page_size = 50
+class MenuItemIngredientsView(RetrievAPIView) :
+    queryset = MeuItem.objects.all()
 
-class MenuItemSearchViewSet(viewsets.ViewSet) :
-    pagination_class = MenuItemPagination
-    
-    def list(self, request) :
-        query = request.GET.get('search', '')
+    def get(self, request, pk, *args, **kwargs) :
+        try :
+            menu_item = selg.get_object()
+        except MenuItem.DoesNotExist :
+            return Response({"error" : "MenuItem not found"}, status = status.HTTP_404_NOT_FOUND)
         
-        items = MenuItem.objects.filter(name__icontains = query)
-        paginator = self.pagination_class()
-        paginated_items = paginator.paginate_queryset(items, request)
-        serializer = MenuItemSerializer(paginated_items, many = True)
-        return paginator.get_paginated_response(serializer.data)
-
-    
+        ingredients = menu_item.ingredients.all()
+        serializer = IngredientSerializer(ingredients, many = True)
+        return Response(serializer.data)
