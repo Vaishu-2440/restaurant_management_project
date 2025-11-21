@@ -1,6 +1,6 @@
-from django.urls import path, include
-from .views import MenuItemSearchViewSet
+from django.urls import path
+from .views import MenuItemIngredientsView
 
 urlpatterns = [
-    path('menu/search/', MenuItemSearchViewSet.as_view({'get' : 'list'}), name = 'menu - search'),
+    path('api/menu-items/<int : pk>/ingredients', MenuItemIngredientsView.as_view(), name = 'menu - items - ingredients'),
 ]
