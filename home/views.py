@@ -5,11 +5,11 @@ from home.models import MenuItem
 from home.serializers import IngredientSerializer
 
 class MenuItemIngredientsView(RetrievAPIView) :
-    queryset = MeuItem.objects.all()
+    queryset = MenuItem.objects.all()
 
     def get(self, request, pk, *args, **kwargs) :
         try :
-            menu_item = selg.get_object()
+            menu_item = self.get_object()
         except MenuItem.DoesNotExist :
             return Response({"error" : "MenuItem not found"}, status = status.HTTP_404_NOT_FOUND)
         
