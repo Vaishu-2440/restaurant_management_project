@@ -12,4 +12,4 @@ def is_restaurant_open() :
         opening_time = time(10, 0)
         closing_time = time(23, 0)
         
-    return opeming_time  <= current_time <= closing_time
+    return opening_time  <= current_time <= closing_time
