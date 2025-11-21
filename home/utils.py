@@ -1,4 +1,5 @@
 from datetime import datetime, time
+
 def is_restaurant_open() :
     now = datetime.now()
     current_day = now.weekday()
