@@ -10,9 +10,7 @@ class MenuItemUpdateViewSet(viewsets.Viewset) :
 
     def update(self, request, pk = None) :
         menu_item = get_object_or_404(MenuItem, pk = pk)
-
         serializer = MenuItemSerializer(menu_item, data = request.data, partial = False)
-
         if serializer.is_valid() :
             serializer.save()
             return Response(
