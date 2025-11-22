@@ -1,15 +1,5 @@
-from datetime import datetime, time
+import re
 
-def is_restaurant_open() :
-    now = datetime.now()
-    current_day = now.weekday()
-    current_time = now.time()
-
-    if current_day < 5 :
-        opening_time = time(9, 0)
-        closing_time = time(22, 0)
-
-    else :
-        opening_time = time(10, 0)
-        closing_time = time(23, 0)  
-    return opening_time <= current_time <= closing_time
+def is_valid_phone_number(phone_number : str) -> bool :
+    pattern = r'^(\+\d{1,3}[- ]?)?\d{10,12}$'
+    return bool(re.match(pattern, phone_number))
