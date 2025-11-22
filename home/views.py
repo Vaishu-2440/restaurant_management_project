@@ -13,9 +13,9 @@ class MenuItemUpdateViewSet(viewsets.Viewset) :
         serializer = MenuItemSerializer(menu_item, data = request.data, partial = False)
         if serializer.is_valid() :
             serializer.save()
-            return Response(
-                {
+            return Response({
                     "message" : "MenuItem updated successfully",
                     "data" : serializer.data
                 }, status = status.HTTP_200_OK)
+                
         return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
