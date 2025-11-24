@@ -13,7 +13,7 @@ class MenuItem(models.Model) :
     category = models.ForeignKey('Category', on_delete = models.CASCADE)
     available = models.BooleanField(default = True)
 
-    objects = MenuItemManager
+    objects = MenuItemManager()
 
     def __str__(self) :
         return self.name
