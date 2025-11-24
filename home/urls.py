@@ -1,6 +1,6 @@
 from django.urls import path, include
-from .views import MenuItemIngredientsView
+from .views import MenuItemsByCategoryView
 
 urlpatterns = [
-    path('api/menu-items/<int:pk>/ingredients/', MenuItemIngredientsView.as_view(), name = 'menu-items-ingredients'),
+    path('menu/filter-by-category/', MenuItemsByCategoryView.as_view(), name = 'menu-filter-by-category'),
 ]
