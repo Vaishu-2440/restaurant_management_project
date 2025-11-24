@@ -5,6 +5,7 @@ from .serializers import TableSerializer
 class TableListAPIView(generics.ListAPIView) :
     queryset = Table.objects.all()
     serializer_class = TableSerializer
+    
 class TableDetailAPIView(generics.RetrieveAPIView) :
-    queryset = Table.obects.all()
+    queryset = Table.objects.all()
     serializer_class = TableSerializer
