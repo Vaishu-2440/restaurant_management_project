@@ -1,6 +1,6 @@
 from rest_framework import generics
 from .models import Table
-from .serializers import TableSerializer
+from .serializers import TableListAPIView, TableDetailAPIView
 
 class TableListAPIView(generics.ListAPIView) :
     queryset = Table.objects.all()
