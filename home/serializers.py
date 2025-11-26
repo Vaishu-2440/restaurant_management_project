@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from .models import Ingredients
+from .models import Table
 
-class IngredientSerializer(serializers.ModelSerializer):
+class TableSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Ingredient
-        fields = ['id', 'name']
+        model = Table
+        fields = ['table_number', 'capacity', 'is_availability']
