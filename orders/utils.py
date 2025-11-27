@@ -9,7 +9,7 @@ def send_order_confirmation_email(order_id, cutomer_email, customer_name = None,
         f"Hello {customer_name if customer_name else 'Customer'},\n\n"
         f"Thank you for ordering from our restaurant!\n"
         f"Your Order(Order ID : {order_id}) has been received and is being processed.\n"
-        f"Total Amount : {total_amount if total_amont else 'N/A'}\n\n"
+        f"Total Amount : {total_amount if total_amount else 'N/A'}\n\n"
         f"One of our team members will notify you once your order is ready.\n\n"
         f"Regards,\n"
         f"Restaurant Team"
