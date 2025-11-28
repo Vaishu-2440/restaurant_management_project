@@ -19,9 +19,6 @@ class Order(models.Model) :
 
     objects = OrderManager()
 
-    def __str__(self):
-        return f"Order #{self.id} - {self.status}"
-
 def get_unique_item_names(self) :
     item_names = set()
 
@@ -30,4 +27,11 @@ def get_unique_item_names(self) :
             item_names.add(order_item.menu_item.name)
 return list(item_names)
 
+class LoyaltyProgram(models.Model) :
+    name = models.CharField(max_length = 50, unique = True)
+    points_required = models.IntegerField(unique = True)
+    discount_percentage = models.DecimalField(max_digits = 5, decimal_places = 2)
+    description = models.TextField()
 
+    def __str__(self) :
+        return self.name
