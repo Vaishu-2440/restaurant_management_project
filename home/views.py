@@ -1,20 +1,20 @@
 from rest_framework import generics
-from .models import Table
-from .serializers import TableListAPIView, TableDetailAPIView
-from .serializers import TableSerializer
-from rest_framework.generics import ListAPIView
+from rest_framework.response import Response
+from rest_framework import status
+from .models import ContactFormSubmission
+from .serializers import ContactFormSubmissionSerializer
 
-class TableListAPIView(generics.ListAPIView) :
-    queryset = Table.objects.all()
-    serializer_class = TableSerializer
-    
-class TableDetailAPIView(generics.RetrieveAPIView) :
-    queryset = Table.objects.all()
-    serializer_class = TableSerializer
+class ContactFormSubmissionView(CreateAPIView) :
+    queryset = ContactFormSubmission.objects.all()
+    serializer_class = ContactFormSubmissionSerializer
 
-class AvailableTablesAPIView(ListAPIView) :
-    serializer_class = TableSerializer
-        
-    def get_queryset(self) :
-        return Table.objects.filter(is_available = True)
+    def create(self, request, *args, **kwargs) :
+        serializer = self.get_serializer(data = request.data)
+        if serialzier.is_valid() :
+            serialzier.save()
+            return Response(
+                {"message" : "Contact Form submitted successfully", "data" : serializer.data },
+                status = status.HTTP_201_CREATED
+            )
+        return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
 
