@@ -1,10 +1,11 @@
 from django.db import models
+frm .utils import generate_unique_order_id
 
-class LoyaltyProgram(models.Model) :
-    name = models.CharField(max_length = 50, unique = True)
-    points_required = models.IntegerField(unique = True)
-    discount_percentage = models.DecimalField(max_digits = 5, decimal_places = 2)
-    description = models.TextField()
+class Order(models.Model) :
+    order_id = models.CharField(max_length = 20, unique = True, editable = False)
 
-    def __str__(self) :
-        return self.name
+    def save(self, *args, **kwargs) :
+        if not self.order_id :
+            self.order_id = generate_unique_order_id()
+        super().save(*args, **kwargs)
+
