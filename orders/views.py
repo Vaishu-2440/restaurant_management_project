@@ -1,8 +1,7 @@
-from rest_framework.generics import RetrieveAPIView
+from .utils import generate_unique_order_id
 from .models import Order
-from .serializers import OrderSerializer
 
-class OrderDetailAPIView(RetrieveAPIView) :
-    query_set = Order.objects.all()
-    serializer_class = OrderSerializer
-    lookup_field = 'id'
+def create_order(request) :
+    unique_id = generate_unique_order_id()
+    order = Order.objects.create(order_id = unique_id, ...)
+    return Response({"order_id" : order.order_id})
