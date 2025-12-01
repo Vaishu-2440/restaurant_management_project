@@ -1,9 +1,6 @@
 from django.urls import path, include
-from .views import TableListAPIView, TableDetailAPIView
-from .views import AvailableTablesAPIView
+from .views import ContactFormSubmissionView
 
 urlpatterns = [
-    path('api/tables/', TableListAPIView.as_view(), name = 'table-list'),
-    path('api/tables/<int:pk>/', TableDetailAPIView.as_view(), name = 'table-detail'),
-    path('api/tables/available/', AvailableTablesAPIView.as_view(), name = 'available_tables_api'),
+    path('contact/submit/', ContactFormSubmissionView.as_view(), name = 'contact-form-submit'),
 ]
