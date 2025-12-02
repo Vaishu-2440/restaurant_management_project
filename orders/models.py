@@ -1,11 +1,9 @@
 from django.db import models
-frm .utils import generate_unique_order_id
 
-class Order(models.Model) :
-    order_id = models.CharField(max_length = 20, unique = True, editable = False)
+class PaymentMethod(models.Model) :
+    name = models.CharField(max_lentgh = 50, unique = True)
+    description = models.TextField(blank = True, null = True)
+    is_active = models.BooleanField(default = True)
 
-    def save(self, *args, **kwargs) :
-        if not self.order_id :
-            self.order_id = generate_unique_order_id()
-        super().save(*args, **kwargs)
-
+    def __str__(self) :
+        return self.name
