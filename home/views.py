@@ -1,20 +1,18 @@
-from rest_framework import generics
+from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
-from .models import ContactFormSubmission
-from .serializers import ContactFormSubmissionSerializer
+from .utils import send_custom_email
 
-class ContactFormSubmissionView(CreateAPIView) :
-    queryset = ContactFormSubmission.objects.all()
-    serializer_class = ContactFormSubmissionSerializer
+class FeedbackView(APIView) :
+    def post(self, request) :
+        user_email = request.data.get("email")
+        subject = "Thank you for contacting us!"
+        message = "We have received your message and we will get back to you soon."
 
-    def create(self, request, *args, **kwargs) :
-        serializer = self.get_serializer(data = request.data)
-        if serialzier.is_valid() :
-            serialzier.save()
-            return Response(
-                {"message" : "Contact Form submitted successfully", "data" : serializer.data },
-                status = status.HTTP_201_CREATED
-            )
-        return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+        result = send_custom_email(user_email, subject, message)
+
+        if result is True :
+            return Response({
+                "Message" : "Email sent successfully."})
+            return Response({"error" : "result", status = 400})
+
 
