@@ -12,6 +12,6 @@ class FeedbackView(APIView) :
 
         if result is True :
             return Response({"Message" : "Email sent successfully."})
-            return Response({"error" : "result", status = 400})
+        return Response({"error" : "result", status = 400})
 
 
