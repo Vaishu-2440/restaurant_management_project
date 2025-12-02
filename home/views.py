@@ -11,8 +11,7 @@ class FeedbackView(APIView) :
         result = send_custom_email(user_email, subject, message)
 
         if result is True :
-            return Response({
-                "Message" : "Email sent successfully."})
+            return Response({"Message" : "Email sent successfully."})
             return Response({"error" : "result", status = 400})
 
 
