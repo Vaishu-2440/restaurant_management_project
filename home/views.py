@@ -10,8 +10,8 @@ class FeedbackView(APIView) :
 
         result = send_custom_email(user_email, subject, message)
 
-        if result :
+        if result:
             return Response({"Message" : "Email sent successfully."})
-        return Response({"error" : "result"}, status = 400)
+        return Response({"error" : result}, status = 400)
 
 
