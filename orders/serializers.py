@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models importt Order
+from .models import Order
 from home.models import MenuItem
 from home.serializers import MenuItemSerializer
 
