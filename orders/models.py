@@ -1,6 +1,4 @@
 from django.db import models
-from decimal import Decimal
-from home.models import MenuItem
 
 class OrderManager(models.Model) :
     def with_status(self, status) :
