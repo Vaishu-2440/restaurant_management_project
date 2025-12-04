@@ -34,6 +34,6 @@ class OrderStatusUpdateSerializer(serialzier.ModelSerializer) :
 
 class PaymentMethodSerialzier(serialzier.ModelSerializer) :
     class Meta :
-        model = Payment
+        model = PaymentMethod
         fields = '__all__'
 
