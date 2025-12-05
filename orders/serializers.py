@@ -39,6 +39,6 @@ def calculate_total(self) -> Decimal :
             if discount_amount > line_total :
                 discount_amount = line_total
         net_line = line_total - discount_amount
-        net_line = max(met_line, Decimal('0.00'))
+        net_line = max(net_line, Decimal('0.00'))
         total += net_line
     return total.quantize(Decimal('0.01'), rounding = ROUND_HALF_UP)
