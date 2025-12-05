@@ -1,39 +1,45 @@
-from rest_framework import serializers
-from .models import Order
-from home.models import MenuItem
-from home.serializers import MenuItemSerializer
-from .models import PaymentMethod
+from decimal import Decimal, ROUND_HALF_UP
+import numbers
 
-class OrderSerializer(serializers.ModelSerializer) :
-    order_item = serializer.SerializerMethodField()
+def calculate_total(self) -> Decimal :
+    total = Decimal('0.00')
+    try :
+        from orders.utils import calculate_discount
+    except Exception :
+        calculate_discount = None
 
-    class Meta :
-        model = Order
-        fields = ['id', 'customer', 'status', 'created_at', 'total_price', 'order_items']
+    for order_item in getattr(self, "order_items", self.orderitem_set).all() :
+        price = Decimal(order_item.price or 0)
+        quantity = Decimal(order_item.quantity or 0)
+        line_total = (price * quantity)
 
-    def get_order_items(self, object) :
-        return [
-            {
-                'item' : item.menu_item.name,
-                'quantity' : item.quantity,
-                'price' : item.menu_item.price
-            }
-            for item in obj.order_items.all()
-        ]
+        discount_amount = Decimal('0.00')
 
-class OrderStatusUpdateSerializer(serialzier.ModelSerializer) :
-    class Meta :
-        model = Order
-        fields = ['status']
-
-    def validate_status(self, value) :
-        allowed_statuses = [choice[0] for choice in Order.STATUS_CHOICES] 
-        if value not in allowed_statuses :
-            raise serializers.ValidationError("Invalid status value.")
-        return value
-
-class PaymentMethodserializer(serializers.ModelSerializer) :
-    class Meta :
-        model = PaymentMethod
-        fields = '__all__'
-
+        if calculate_discount :
+            try :
+                discount = calculate_discount(order_item)
+            except TypeError :
+                try :
+                    discount = calculate_discount(order_item.menu_item, int(order_item.quantity))
+                except Exception :
+                    discount = None
+            
+            if discount is None :
+                discount_amount = Decimal('0.00')
+            else :
+                if isinstance(discount, Decimal) :
+                    disc = discount
+                elif isinstance(discount, numbers.Real) :
+                    disc = Decimal(str(discount))
+                else :
+                    if Decimal('0') < disc < Decimal('1') :
+                        disc_amount = (line_total * disc).quantize(Decimal('0.01'), rounding = ROUND_HALF_UP)
+                    else :
+                        discount_amount = disc
+            if discount_amount > line_total :
+                discount_amount = line_total
+        net_line = line_total - discount_amount
+        if net_line < Decimal('0.00') :
+            net_line < Decimal('0.00')
+        total += net_line
+    return total.quantize(Decimal('0.01'), rounding = ROUND_HALF_UP)
