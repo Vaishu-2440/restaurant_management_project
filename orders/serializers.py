@@ -32,7 +32,7 @@ class OrderStatusUpdateSerializer(serialzier.ModelSerializer) :
             raise serializers.ValidationError("Invalid status value.")
         return value
 
-class PaymentMethodSerialzier(serialzier.ModelSerializer) :
+class PaymentMethodserializer(serializers.ModelSerializer) :
     class Meta :
         model = PaymentMethod
         fields = '__all__'
