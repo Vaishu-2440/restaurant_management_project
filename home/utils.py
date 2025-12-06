@@ -1,8 +1,10 @@
-import smtp
+
+"""import smtp
 from email.mime.text import MIMEText
 from django.conf import settings
+"""
 from home.models impport MenuItem
-
+"""
 def send_custom_email(recipient_email, subject, message_body) :
     try :
         msg = MIMEText(message_body)
@@ -21,6 +23,7 @@ def send_custom_email(recipient_email, subject, message_body) :
         return "Invalid Recipient email address"
     except Exception as e :
         return f"Email sending failed : {str(e)}"
+"""
 
 def get_distinct_cuisines() :
     cuisine_names = (
