@@ -28,7 +28,7 @@ class UpdateOrderStatusView(APIView) :
             )
         try :
             order = Order.objects.get(id = order_id)
-        except Order.DoesNotExists :
+        except Order.DoesNotExist :
             return Response(
                 {"error" : "Order not found."},
                 status = status.HTTP_404_NOT_FOUND
