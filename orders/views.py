@@ -7,6 +7,41 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from .models import Order
+from rest_framework import APIView
+
+class UpdateOrderStatusView(APIView) :
+    def post(self, request, *args, **kwargs) :
+        order_id = request.data.get("order_id") 
+        new_status = request.data.get("status")
+
+        if not order_id or not new_status :
+            return Resposne(
+                {"error" : "order_id and status are required"},
+                status = status.HTTP_400_BAD_REQUEST
+            )
+
+        allowed_status = [choice[0] for choice in Order.STATUS_CHOICES]
+        if new_status not in allowed_status :
+            return Response(
+                {"error" : f"Invalid status. Allowed values : {allowed_status}"},
+                status = status.HTTP_400_BAD_REQUEST
+            )
+        try :
+            order = Order.objects.get(id = order_id)
+        except Order.DoesNotExists :
+            return Response(
+                {"error" : "Order not found."},
+                status = status.HTTP_404_NOT_FOUND
+            )
+        order.status = new_status
+        order.save()
+
+        return Response(
+            {"message" : "Order status updated successfully.",
+            "order_id" : order.id,
+            "new_status" : order.status},
+            status = status.HTTP_200_OK
+        )
 
 def create_order(request) :
     unique_id = generate_unique_order_id()
