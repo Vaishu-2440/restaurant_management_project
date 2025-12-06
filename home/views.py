@@ -1,5 +1,7 @@
 from rest_framework.generics import ListAPIView
 from .models import MenuItem
+from .modesl import MenuCategory
+from .serializers import MenuCategorySerializer
 from .serializers imprt DailySpecialSerializer
 """
 from rest_framework.views import APIView
@@ -24,5 +26,10 @@ class DailySpecialSerializer(ListAPIView) :
 
     def get_queryset(self) :
         return MenuItem.objects.filter(is_daily_special = True)
+ 
+class MenuCategoryViewSet(viewsets.ModelViewSet) :
+    queryset = MenuCategory.objects.all()
+    serializer_class = MenuCategorySerializer
+
  
 
