@@ -1,10 +1,10 @@
-from .utils import generate_unique_order_id
+"""from .utils import generate_unique_order_id
 from .models import Order
 from rest_framework.generics import ListAPIView
 from .models import PaymentMethod
 from .serializers import PaymentMethodSerializer
+from rest_framework.permissions import IsAuthenticated"""
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from .models import Order
 from rest_framework import APIView
@@ -28,6 +28,7 @@ class UpdateOrderStatusView(APIView) :
             )
         try :
             order = Order.objects.get(id = order_id)
+
         except Order.DoesNotExist :
             return Response(
                 {"error" : "Order not found."},
@@ -42,7 +43,7 @@ class UpdateOrderStatusView(APIView) :
             "new_status" : order.status},
             status = status.HTTP_200_OK
         )
-
+"""
 def create_order(request) :
     unique_id = generate_unique_order_id()
     order = Order.objects.create(order_id = unique_id, ...)
@@ -85,5 +86,5 @@ class CancelOrderView(APIView) :
             {"message" : "Order cancelled successfully."},
             status = status.HTTP_200_OK
         )
-
+"""
 
