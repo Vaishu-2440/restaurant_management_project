@@ -4,8 +4,8 @@ from email.mime.text import MIMEText
 from django.conf import settings
 """
 from home.models impport MenuItem
-"""
-def send_custom_email(recipient_email, subject, message_body) :
+
+"""def send_custom_email(recipient_email, subject, message_body) :
     try :
         msg = MIMEText(message_body)
         msg["Subject"] = subject
