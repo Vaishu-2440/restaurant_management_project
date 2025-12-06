@@ -1,5 +1,5 @@
 from django.urls import path, include
-from rest_framework.routers imprt DefaultRouter
+from rest_framework.routers import DefaultRouter
 """from .views import ContactFormSubmissionView"""
 from .views import DailySpecialAPIView
 from .views import MenuCategoryViewSet
