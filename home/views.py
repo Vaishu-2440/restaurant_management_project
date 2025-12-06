@@ -1,3 +1,7 @@
+from rest_framework.generics import ListAPIView
+from .models import MenuItem
+from .serializers imprt DailySpecialSerializer
+"""
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .utils import send_custom_email
@@ -13,5 +17,12 @@ class FeedbackView(APIView) :
         if result:
             return Response({"Message" : "Email sent successfully."})
         return Response({"error" : result}, status = 400)
+"""
 
+class DailySpecialSerializer(ListAPIView) :
+    serializer_class = DailySpecialSerializer
+
+    def get_queryset(self) :
+        return MenuItem.objects.filter(is_daily_special = True)
+ 
 
