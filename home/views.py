@@ -1,6 +1,6 @@
 from rest_framework import generics, permissions
 from home.models import UserReview
-from home.serialziers import UserReviewsSerializer
+from home.serializers import UserReviewsSerializer
 """from rest_framework.generics import ListAPIView
 from .models import MenuItem
 from .modesl import MenuCategory
