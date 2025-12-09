@@ -1,8 +1,7 @@
 from rest_framework import serializers
-from home.models import UserReview
-"""from .models import MenuItem
-from .models import MenuCategory
-
+from .odels import MenuCategory
+"""from home.models import UserReview
+from .models import MenuItem
 from .models import ContactFormSubmission
 
 class ContactFormSubmission(serializers.ModelSerializer) :
@@ -14,11 +13,11 @@ class DailySpecialSerializer(serializer.ModelSerializer) :
     class Meta :
         model = MenuItem
         fields = ['id', 'name', 'price', 'description']
-
+"""
 class MenuCategorySerializer(serializer.ModelSerializer) :
     class Meta :
         model = MenuCategory
-        fields = ['id', 'name']
+        fields = '__all__'
 """
 class UserReviewSerializer(serializers.ModelSerializer) :
     class Meta :
@@ -30,3 +29,4 @@ class UserReviewSerializer(serializers.ModelSerializer) :
         if value < 1 or value > 5 :
             raise serializers.ValidationError("Rating must be between 1 or 5")
         return value
+"""
