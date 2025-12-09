@@ -14,5 +14,5 @@ def main():
     data = list(categories)
     print (json.dumps(data, indent = 2))
 
-if __name__ = '__main__' :
+if __name__ == '__main__' :
     main()
