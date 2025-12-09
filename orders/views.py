@@ -94,7 +94,7 @@ from .models import Order
 def get_order_status(requets, order_id) :
     try :
         order = Order.objects.get(id = order_id)
-    except OrderDoesNotExist :
+    except Order.DoesNotExist :
         return Response (
             {"error" : "Order not found."},
             status = status.HTTP_404_NOT_FOUND
