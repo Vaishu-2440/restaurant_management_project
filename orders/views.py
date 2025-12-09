@@ -99,7 +99,7 @@ def get_order_status(requets, order_id) :
             {"error" : "Order not found."},
             status = status.HTTP_404_NOT_FOUND
         )
-    return Reponse (
+    return Response (
         {"order_id" : order.id, "status" : order.status},
         status = status.HTTP_200_OK
        )
