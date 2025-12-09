@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .odels import MenuCategory
+from .models import MenuCategory
 """from home.models import UserReview
 from .models import MenuItem
 from .models import ContactFormSubmission
