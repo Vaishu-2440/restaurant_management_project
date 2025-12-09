@@ -95,11 +95,11 @@ def get_order_status(requets, order_id) :
     try :
         order = Order.objects.get(id = order_id)
     except OrderDoesNotExist :
-        return Response(
+        return Response (
             {"error" : "Order not found."},
             status = status.HTTP_404_NOT_FOUND
         )
-    return Reponse(
+    return Reponse (
         {"order_id" : order.id, "status" : order.status},
         status = status.HTTP_200_OK
     )
