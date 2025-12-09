@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from .models import MenuCategory
-"""
-from home.models import UserReview
+"""from home.models import UserReview
 from .models import MenuItem
 from .models import ContactFormSubmission
 
