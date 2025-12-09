@@ -7,8 +7,8 @@ from rest_framework.permissions import IsAuthenticated"""
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Order
-from rest_framework import APIView
-
+from rest_framework.decorators import api_view
+"""
 class UpdateOrderStatusView(APIView) :
     def post(self, request, *args, **kwargs) :
         order_id = request.data.get("order_id") 
@@ -43,7 +43,6 @@ class UpdateOrderStatusView(APIView) :
             "new_status" : order.status},
             status = status.HTTP_200_OK
         )
-"""
 def create_order(request) :
     unique_id = generate_unique_order_id()
     order = Order.objects.create(order_id = unique_id, ...)
@@ -87,4 +86,15 @@ class CancelOrderView(APIView) :
             status = status.HTTP_200_OK
         )
 """
-
+def get_order_status(requets, order_id) :
+    try :
+        order = Order.objects.get(id = order_id)
+    except OrderDoesNotExist :
+        return Response(
+            {"error" : "Order not found."},
+            status = status.HTTP_404_NOT_FOUND
+        )
+    return Reponse(
+        {"order_id" : order.id, "status" : order.status},
+        status = status.HTTP_200_OK
+    )
