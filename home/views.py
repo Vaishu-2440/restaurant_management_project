@@ -1,7 +1,9 @@
-from rest_framework import generics, permissions
+from rest_framework import viewsets
 from .models import MenuCategory
 from .serializers import MenuCategorySerializer
-"""from home.models import UserReview
+"""
+from home.models import UserReview
+from rest_framework import generics, permissions
 from home.serializers import UserReviewsSerializer
 from rest_framework.generics import ListAPIView
 from .models import MenuItem
