@@ -1,5 +1,5 @@
-from django.db import models
-"""from django.contrib.auth.models import User
+"""from django.db import models
+from django.contrib.auth.models import User
 
 class ContactFormSubmission(models.Model) :
     name = models.CharField(max_length = 255)
@@ -12,7 +12,6 @@ class MenuItem(models.Model) :
     price = models.DecimalField(max_length = 8, decimal_places = 2)
     description = models.TextField(blank = True, null = True)
     is_daily_special = models.BooleanField(default = False)
-"""
 
 class MenuCategory(models.Model) :
     name = models.CharField(max_length = 100, unique = True)
@@ -20,7 +19,6 @@ class MenuCategory(models.Model) :
 
     def __str__(self) :
         return self.name
-"""
 
 class UserReview(models.Model) :
     user = models.ForeignKey(
@@ -40,3 +38,30 @@ class UserReview(models.Model) :
     def __str__(self) :
         return f"{self.user.username} - {self.menu_item.name} - {self.rating}/5"
 """
+from django.db import models
+
+class Reservation(models.Model) :
+    customer_name = models.CharField(max_length = 100)
+    start_time = models.DateTimeField()
+    end_time = models.DateTimeField()
+
+    def __str__(self) :
+        return f"{self.customer_name} ({self.start_time} -> {self.end_time})"
+
+    def get_available_slots(range_start, range_end) :
+
+        reservations = Reservation.objects.filter(
+            end_time_gt = range_start,
+            start_time_lt = range_end,
+        ).order_by('start_time')
+
+        available = []
+        current_start = range_start
+
+        for res in reservations :
+            if current_start < res.start_time :
+                available.append((current_start, res.start_time))
+            current_start = max(current_start, res.end_time)
+        if current_start < range_end :
+            available.append((current_start, range_end))
+        return available
