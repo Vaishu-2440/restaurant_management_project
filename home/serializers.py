@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import Restaurant
 
-class restaurantSerializer(serializer.ModelSerializer) :
+class RestaurantSerializer(serializer.ModelSerializer) :
     class Meta :
         model = Restaurant
         fields = "__all__"
