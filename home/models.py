@@ -2,7 +2,7 @@ from django.db import models
 
 class LoyaltyProgram(models.Model) :
     name = models.CharField(max_length = 100, unique = True)
-    points_per_dollar_spent = models.DeimalField(max_digits = 5, decimal_places = 2)
+    points_per_dollar_spent = models.DecimalField(max_digits = 5, decimal_places = 2)
     description = models.TextField()
     is_active = models.BooleanField(default = True)
 
