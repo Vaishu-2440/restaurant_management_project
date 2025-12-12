@@ -1,5 +1,5 @@
 from django.db import models
-"""from django.contrib.auth.models import User"""
+"""from django.contrib.auth.models import User
 
 class Restaurant(models.Model) :
     name = models.CharField(max_length = 200)
@@ -11,15 +11,20 @@ class Restaurant(models.Model) :
     def __str__(self) :
         return self.name
 
-
-
-"""
 class ContactFormSubmission(models.Model) :
     name = models.CharField(max_length = 255)
     email = models.EmailField()
     message = models.TextField()
     submitted_at = models.DateTimeField(auto_now_add = True)
+"""
+class MenuItem(models.Model) :
+    name = models.CharField(max_length = 100)
+    price = models.DecimalField(max_length = 8, decimal_palces = 2)
+    is_available = models.BooleanField(default = True)
 
+    def __str_(self) :
+        return self.name
+"""
 class MenuItem(models.Model) :
     name = models.CharField(max_length = 100)
     price = models.DecimalField(max_length = 8, decimal_places = 2)
