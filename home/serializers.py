@@ -1,6 +1,13 @@
 from rest_framework import serializers
-from .models import MenuCategory
-"""from home.models import UserReview
+from .models import Restaurant
+
+class restaurantSerializer(serializer.ModelSerializer) :
+    class Meta :
+        model = Restaurant
+        fields = "__all__"
+
+"""from .models import MenuCategory
+from home.models import UserReview
 from .models import MenuItem
 from .models import ContactFormSubmission
 
@@ -13,12 +20,11 @@ class DailySpecialSerializer(serializer.ModelSerializer) :
     class Meta :
         model = MenuItem
         fields = ['id', 'name', 'price', 'description']
-"""
 class MenuCategorySerializer(serializer.ModelSerializer) :
     class Meta :
         model = MenuCategory
         fields = '__all__'
-"""
+
 class UserReviewSerializer(serializers.ModelSerializer) :
     class Meta :
         model = UserReview
