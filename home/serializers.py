@@ -1,12 +1,19 @@
 from rest_framework import serializers
-from .models import Restaurant
+from .models import MenuItem
+
+class MenuItemAvailabilitySerializer(serialziers.ModelSerializer) :
+    classMeta :
+        model = MenuItem
+        fields = ['id', 'is_availabile']
+
+"""from .models import Restaurant
 
 class RestaurantSerializer(serializers.ModelSerializer) :
     class Meta :
         model = Restaurant
         fields = "__all__"
 
-"""from .models import MenuCategory
+from .models import MenuCategory
 from home.models import UserReview
 from .models import MenuItem
 from .models import ContactFormSubmission
