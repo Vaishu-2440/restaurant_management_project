@@ -62,6 +62,8 @@ class Reservation(models.Model) :
             if current_start < res.start_time :
                 available.append((current_start, res.start_time))
             current_start = max(current_start, res.end_time)
+
         if current_start < range_end :
             available.append((current_start, range_end))
+
         return available
