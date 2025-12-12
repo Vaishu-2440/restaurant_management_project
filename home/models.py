@@ -1,6 +1,19 @@
-"""from django.db import models
-from django.contrib.auth.models import User
+from django.db import models
+"""from django.contrib.auth.models import User"""
 
+class Restaurant(models.Model) :
+    name = models.CharField(max_length = 200)
+    address = models.TextField()
+    phone_number = models.CharField(max_length = 20)
+    opening_hours = models.TextField(max_length = 200)
+    description = models.TextField(blank = True, null = True)
+
+    def __str__(self) :
+        return self.name
+
+
+
+"""
 class ContactFormSubmission(models.Model) :
     name = models.CharField(max_length = 255)
     email = models.EmailField()
@@ -37,7 +50,7 @@ class UserReview(models.Model) :
 
     def __str__(self) :
         return f"{self.user.username} - {self.menu_item.name} - {self.rating}/5"
-"""
+
 from django.db import models
 
 class Reservation(models.Model) :
@@ -67,3 +80,4 @@ class Reservation(models.Model) :
             available.append((current_start, range_end))
 
         return available
+"""
