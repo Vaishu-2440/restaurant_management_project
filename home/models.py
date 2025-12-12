@@ -1,4 +1,17 @@
 from django.db import models
+
+class LoyaltyProgram(models.Model) :
+    name = models.CharField(max_length = 100, unique = True)
+    points_per_dollar_spent = models.DeimalField(max_digits = 5, decimal_places = 2)
+    description = models.TextField()
+    is_active = models.BooleanField(default = True)
+
+    created_at = models.DatetimeField(auto_now_add = True)
+    updated_at = models.DateTimeField(auto_now = True)
+
+    def __str__(self) :
+        return self.name
+        
 """from django.contrib.auth.models import User
 
 class Restaurant(models.Model) :
@@ -16,7 +29,7 @@ class ContactFormSubmission(models.Model) :
     email = models.EmailField()
     message = models.TextField()
     submitted_at = models.DateTimeField(auto_now_add = True)
-"""
+
 class MenuItem(models.Model) :
     name = models.CharField(max_length = 100)
     price = models.DecimalField(max_length = 8, decimal_palces = 2)
@@ -24,7 +37,7 @@ class MenuItem(models.Model) :
 
     def __str_(self) :
         return self.name
-"""
+
 class MenuItem(models.Model) :
     name = models.CharField(max_length = 100)
     price = models.DecimalField(max_length = 8, decimal_places = 2)
