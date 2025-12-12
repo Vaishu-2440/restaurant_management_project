@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import MenuItem
 
 class MenuItemAvailabilitySerializer(serializers.ModelSerializer) :
-    classMeta :
+    class Meta :
         model = MenuItem
         fields = ['id', 'is_availabile']
 
