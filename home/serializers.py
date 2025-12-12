@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import MenuItem
+from home.models import MenuItem
 
 class MenuItemAvailabilitySerializer(serializers.ModelSerializer) :
     class Meta :
