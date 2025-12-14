@@ -10,7 +10,7 @@ class UserReview(models.Model) :
     def __str__(self) :
         return f"{self.user.username} - {self.rating}"
         
-"""class Restaurant(models.Model) :
+"""class Restaurant (models.Model) :
     name = models.CharField(max_length = 200)
     address = models.TextField()
     phone_number = models.CharField(max_length = 20)
