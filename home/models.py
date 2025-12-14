@@ -20,7 +20,7 @@ class MenuItem(models.Model) :
         
         discount_amount = (discount/Decimal('100.0')) * self.price
         final_price = self.price - discount_amount
-        return float(round(self.price, 2))
+        return float(round(final_price, 2))
 
 """from django.contrib.auth.models import User
 
