@@ -1,5 +1,27 @@
 from django.db import models
-from django.contrib.auth.models import User
+
+class MenuItem(models.Model) :
+    name = models.CharField(max_length = 100)
+    price = models.DecimalField(max_digits = 8, decimal_places = 2)
+    discount_percentage = models.DecimalField(
+        max_digits = 5,
+        decimal_places = 2,
+        default = 0.0,
+        help_text = "Discount percentage (0-100)"
+    )
+    is_available = models.BooleanField(DEFAULT = True)
+
+    def get_final_price(self) :
+        if self.discount_percentage < 0 self.discount_percentage > 100 :
+            return float(self.price)
+        discount_amount = (self.discount_percentage/100) * self.price
+        final_price = self.price - discount_amount
+        return float(round(final_price, 2))
+    def __str__(self) :
+        return self.name
+
+
+"""from django.contrib.auth.models import User
 
 class UserReview(models.Model) :
     user = models.Foreignkey(User, on_delete = models.CASCADE)
@@ -10,7 +32,7 @@ class UserReview(models.Model) :
     def __str__(self) :
         return f"{self.user.username} - {self.rating}"
         
-"""class Restaurant (models.Model) :
+class Restaurant (models.Model) :
     name = models.CharField(max_length = 200)
     address = models.TextField()
     phone_number = models.CharField(max_length = 20)
