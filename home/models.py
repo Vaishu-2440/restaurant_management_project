@@ -17,6 +17,7 @@ class MenuItem(models.Model) :
         discount_amount = (self.discount_percentage/100) * self.price
         final_price = self.price - discount_amount
         return float(round(final_price, 2))
+        
     def __str__(self) :
         return self.name
 
