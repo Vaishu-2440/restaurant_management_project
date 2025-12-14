@@ -1,12 +1,38 @@
 from rest_framework import serializers
-from home.models import MenuItem
+from .models import Restaurant, DailyOperatingHoursSerializer
+
+class DailyOperatingHoursSerializer(serializers.ModelSerializer) :
+    class Meta :
+        model = DailyOperatingHours
+        fields = [
+            "day",
+            "open_time",
+            "close_time",
+            "is_closed"
+        ]
+
+class RestaurantDetailSerializer(serializers.ModelSerializer) :
+    Operating_hours = DailyOperatingHoursSerializer(many = True, read_only = True)
+
+    class Meta :
+        model = Restaurant
+        fields = [
+            "id",
+            "name",
+            "address",
+            "phone_number",
+            "email",
+            "is_active",
+            "operating_hours"
+        ]
+"""from home.models import MenuItem
 
 class MenuItemAvailabilitySerializer(serializers.ModelSerializer) :
     class Meta :
         model = MenuItem
         fields = ['id', 'is_availabile']
 
-"""from .models import Restaurant
+from .models import Restaurant
 
 class RestaurantSerializer(serializers.ModelSerializer) :
     class Meta :
