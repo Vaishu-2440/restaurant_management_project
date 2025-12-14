@@ -12,17 +12,18 @@ class MenuItem(models.Model) :
     is_available = models.BooleanField(DEFAULT = True)
 
     def get_final_price(self) :
+        discount = self.discount_percentage
 
-        if self.discount_percentage < 0  or self.discount_percentage > 100 :
-            
-            return float(self.price)
+        if discount < 0 :
+            discount = Decimal('0.0')
 
-        discount_amount = (self.discount_percentage/100) * self.price
-
-        final_price = self.price - discount_amount
-
-        return float(round(final_price, 2))
+        elif discount > 100 :
+            discount = Decimal('100.0')
         
+        discount_amount = (discount/Decimal('100.0')) * self.price
+        final_price = self.price - discount_amount
+        return float(round(self.price, 2))
+
     def __str__(self) :
         return self.name
 
