@@ -1,10 +1,10 @@
 """import smtp
 from email.mime.text import MIMEText
 from django.conf import settings
-"""
+
 from home.models import MenuItem
 
-"""def send_custom_email(recipient_email, subject, message_body) :
+def send_custom_email(recipient_email, subject, message_body) :
     try :
         msg = MIMEText(message_body)
         msg["Subject"] = subject
@@ -38,6 +38,7 @@ def calculate_discount(original_price, discount_percentage) :
 
         if original_price < 0 :
             return {"error" : "Original price cannot be negative."}
+
         if discount_percentage < 0 or discount_percentage > 100 :
             return {"error" : "Discount percentage must be between 0 and 100."}
 
@@ -45,5 +46,6 @@ def calculate_discount(original_price, discount_percentage) :
         discount_price = original_price - discount_amount
 
         return round(discount_price, 2)
+
     except (ValueError, TypeError) :
         return {"error" : "Invalid input. Please provide numeric value."}
