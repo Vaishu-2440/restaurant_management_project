@@ -13,7 +13,7 @@ class MenuItem(models.Model) :
 
     def get_final_price(self) :
 
-        if self.discount_percentage < 0 self.discount_percentage > 100 :
+        if self.discount_percentage < 0  or self.discount_percentage > 100 :
             
             return float(self.price)
 
