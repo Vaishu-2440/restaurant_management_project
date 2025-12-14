@@ -1,6 +1,6 @@
 from django.db import models
 
-class MenuItem(models.Model) :
+"""class MenuItem(models.Model) :
     name = models.CharField(max_length = 100)
     price = models.DecimalField(max_digits = 8, decimal_places = 2)
     discount_percentage = models.DecimalField(
@@ -22,7 +22,7 @@ class MenuItem(models.Model) :
         final_price = self.price - discount_amount
         return float(round(final_price, 2))
 
-"""from django.contrib.auth.models import User
+from django.contrib.auth.models import User
 
 class UserReview(models.Model) :
     user = models.Foreignkey(User, on_delete = models.CASCADE)
@@ -100,15 +100,14 @@ class MenuItem(models.Model) :
     price = models.DecimalField(max_length = 8, decimal_places = 2)
     description = models.TextField(blank = True, null = True)
     is_daily_special = models.BooleanField(default = False)
-
+"""
 class MenuCategory(models.Model) :
     name = models.CharField(max_length = 100, unique = True)
-    description = models.TextField(blank = True, null = True)
 
     def __str__(self) :
         return self.name
 
-class UserReview(models.Model) :
+"""class UserReview(models.Model) :
     user = models.ForeignKey(
         User,
         on_delete = models.CASCADE,
