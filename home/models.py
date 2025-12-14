@@ -6,10 +6,8 @@ class MenuItem(models.Model) :
     discount_percentage = models.DecimalField(
         max_digits = 5,
         decimal_places = 2,
-        default = 0.0,
-        help_text = "Discount percentage (0-100)"
+        default = 0.0
     )
-    is_available = models.BooleanField(DEFAULT = True)
 
     def get_final_price(self) :
         discount = self.discount_percentage
