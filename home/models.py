@@ -1,6 +1,30 @@
 from django.db import models
 
-class LoyaltyProgram(models.Model) :
+class Restaurant(models.Model) :
+    name = models.CharField(max_length = 200)
+    address = models.TextField()
+    phone_number = models.CharField(max_length = 20)
+    email_id = models.EmailField()
+    is_active = models.BooleanField(default = True)
+
+    def __str__(self) :
+        return self.name
+
+    class DailyOperatingHours(models.Model) :
+        restaurant = models.ForeignKey(
+            Restaurant,
+            related_name = "operating_hours",
+            on_delete = models.CASCADE
+        )
+        day = models.CharField(max_length = 20)
+        open_time = models.TimeField()
+        close_time = models.TimeField()
+        is_closed = models.BooleanField(default = False)
+
+        def __str__(self) :
+            return f"{self.day} - {self.restaurant.name}"
+
+"""class LoyaltyProgram(models.Model) :
     name = models.CharField(max_length = 100, unique = True)
     points_per_dollar_spent = models.DecimalField(max_digits = 5, decimal_places = 2)
     description = models.TextField()
@@ -12,7 +36,7 @@ class LoyaltyProgram(models.Model) :
     def __str__(self) :
         return self.name
         
-"""from django.contrib.auth.models import User
+from django.contrib.auth.models import User
 
 class Restaurant(models.Model) :
     name = models.CharField(max_length = 200)
