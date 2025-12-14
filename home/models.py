@@ -24,9 +24,6 @@ class MenuItem(models.Model) :
         final_price = self.price - discount_amount
         return float(round(self.price, 2))
 
-    def __str__(self) :
-        return self.name
-
 
 """from django.contrib.auth.models import User
 
