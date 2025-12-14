@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import Restaurant, DailyOperatingHoursSerializer
 
-class DailyOperatingHoursSerializer(serializers.ModelSerializer) :
+"""class DailyOperatingHoursSerializer(serializers.ModelSerializer) :
     class Meta :
         model = DailyOperatingHours
         fields = [
@@ -25,7 +25,7 @@ class RestaurantDetailSerializer(serializers.ModelSerializer) :
             "is_active",
             "operating_hours"
         ]
-"""from home.models import MenuItem
+from home.models import MenuItem
 
 class MenuItemAvailabilitySerializer(serializers.ModelSerializer) :
     class Meta :
@@ -57,7 +57,7 @@ class MenuCategorySerializer(serializer.ModelSerializer) :
     class Meta :
         model = MenuCategory
         fields = '__all__'
-
+"""
 class UserReviewSerializer(serializers.ModelSerializer) :
     class Meta :
         model = UserReview
@@ -68,4 +68,3 @@ class UserReviewSerializer(serializers.ModelSerializer) :
         if value < 1 or value > 5 :
             raise serializers.ValidationError("Rating must be between 1 or 5")
         return value
-"""
