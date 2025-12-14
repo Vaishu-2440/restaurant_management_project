@@ -1,9 +1,8 @@
-
 """import smtp
 from email.mime.text import MIMEText
 from django.conf import settings
 """
-from home.models impport MenuItem
+from home.models import MenuItem
 
 """def send_custom_email(recipient_email, subject, message_body) :
     try :
@@ -23,7 +22,6 @@ from home.models impport MenuItem
         return "Invalid Recipient email address"
     except Exception as e :
         return f"Email sending failed : {str(e)}"
-"""
 
 def get_distinct_cuisines() :
     cuisine_names = (
@@ -32,3 +30,20 @@ def get_distinct_cuisines() :
         .order_by("cuisine_name")
     )
     return list(cuisine_name)
+"""
+def calculate_discount(original_price, discount_percentage) :
+    try :
+        original_price = float(original_price)
+        discount_percentage = float(discount_percentage)
+
+        if original_percentage < 0 :
+            return {"error" : "Original price cannot be negative."}
+        if discount_percentage < 0 or discount_percentage > 100 :
+            return {"error" : "Discount percentage must be between 0 and 100."}
+
+        discount_maount = (discount_percentage/100) * original_price
+        discount_price = original_price - discount_amount
+
+        return round(discount_price, 2)
+    except (ValueError, TypeError) :
+        return {"error" : "Invalid input. Please provide numeric value."}
