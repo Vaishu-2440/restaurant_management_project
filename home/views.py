@@ -1,7 +1,13 @@
 from rest_framework import viewsets
-from .models import MenuCategory
+from rest_framework.generics import RetrieveAPIView
+from .models import Restaurant
+from .serialziers import RestaurantDetailSerializer
+
+class RestaurantDetailAPIView(RetrieveAPIView) :
+    query_set = Restaurant.objects.filter(is_active = True)
+    serializer_class = RestaurantDetailSerializer
+"""from .models import MenuCategory
 from .serializers import MenuCategorySerializer
-"""
 from home.models import UserReview
 from rest_framework import generics, permissions
 from home.serializers import UserReviewsSerializer
