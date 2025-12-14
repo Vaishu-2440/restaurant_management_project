@@ -24,7 +24,6 @@ class MenuItem(models.Model) :
         final_price = self.price - discount_amount
         return float(round(self.price, 2))
 
-
 """from django.contrib.auth.models import User
 
 class UserReview(models.Model) :
