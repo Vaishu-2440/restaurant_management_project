@@ -4,7 +4,7 @@ from .models import Restaurant
 from .serializers import RestaurantDetailSerializer
 
 class RestaurantDetailAPIView(RetrieveAPIView) :
-    query_set = Restaurant.objects.filter(is_active = True)
+    queryset = Restaurant.objects.filter(is_active = True)
     serializer_class = RestaurantDetailSerializer
 """from .models import MenuCategory
 from .serializers import MenuCategorySerializer
