@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 from rest_framework.generics import RetrieveAPIView
 from .models import Restaurant
-from .serialziers import RestaurantDetailSerializer
+from .serializers import RestaurantDetailSerializer
 
 class RestaurantDetailAPIView(RetrieveAPIView) :
     query_set = Restaurant.objects.filter(is_active = True)
