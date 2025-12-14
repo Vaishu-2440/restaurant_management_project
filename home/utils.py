@@ -36,12 +36,12 @@ def calculate_discount(original_price, discount_percentage) :
         original_price = float(original_price)
         discount_percentage = float(discount_percentage)
 
-        if original_percentage < 0 :
+        if original_price < 0 :
             return {"error" : "Original price cannot be negative."}
         if discount_percentage < 0 or discount_percentage > 100 :
             return {"error" : "Discount percentage must be between 0 and 100."}
 
-        discount_maount = (discount_percentage/100) * original_price
+        discount_amount = (discount_percentage/100) * original_price
         discount_price = original_price - discount_amount
 
         return round(discount_price, 2)
