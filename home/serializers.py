@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import MenuItem
 
 class MenuItemSearchSerializer(serializers.ModelSerializer) :
-    image_url = serializers.SerialzierMethodField()
+    image_url = serializers.SerializerMethodField()
 
     class Meta :
         model = MenuItem
