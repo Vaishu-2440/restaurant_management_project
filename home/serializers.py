@@ -1,7 +1,23 @@
 from rest_framework import serializers
-from .models import Restaurant, DailyOperatingHoursSerializer
+from .models import MenuItem
 
-"""class DailyOperatingHoursSerializer(serializers.ModelSerializer) :
+class MenuItemSearchSerializer(serializers.ModelSerializer) :
+    image_url = serializers.SerialzierMethodField()
+
+    class Meta :
+        model = MenuItem
+        fields =['name', 'image_url']
+
+        def get_image_url(self, obj) :
+            request = self.context.get('request')
+            if obj.image and request :
+                return request.build_absolute_url(obj.image.url)
+            return None
+
+
+"""from .models import Restaurant, DailyOperatingHoursSerializer
+
+class DailyOperatingHoursSerializer(serializers.ModelSerializer) :
     class Meta :
         model = DailyOperatingHours
         fields = [
@@ -52,13 +68,13 @@ class ContactFormSubmission(serializers.ModelSerializer) :
 class DailySpecialSerializer(serializer.ModelSerializer) :
     class Meta :
         model = MenuItem
-        fields = ['id', 'name', 'price', 'description']"""
+        fields = ['id', 'name', 'price', 'description']
 class MenuCategorySerializer(serializer.ModelSerializer) :
     class Meta :
         model = MenuCategory
         fields = ['id', 'name']
 
-?"""class UserReviewSerializer(serializers.ModelSerializer) :
+class UserReviewSerializer(serializers.ModelSerializer) :
     class Meta :
         model = UserReview
         fields = ['id', 'user', 'menu_item', 'rating', 'comment', 'created_at']
