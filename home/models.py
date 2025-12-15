@@ -86,28 +86,27 @@ class ContactFormSubmission(models.Model) :
     email = models.EmailField()
     message = models.TextField()
     submitted_at = models.DateTimeField(auto_now_add = True)
-
+"""
 class MenuItem(models.Model) :
-    name = models.CharField(max_length = 100)
-    price = models.DecimalField(max_length = 8, decimal_palces = 2)
-    is_available = models.BooleanField(default = True)
+    name = models.CharField(max_length = 200)
+    image = models.ImageField(upload_to = 'menu_items/', null = True, blank = True)
 
     def __str_(self) :
         return self.name
-
+"""
 class MenuItem(models.Model) :
     name = models.CharField(max_length = 100)
     price = models.DecimalField(max_length = 8, decimal_places = 2)
     description = models.TextField(blank = True, null = True)
     is_daily_special = models.BooleanField(default = False)
-"""
+
 class MenuCategory(models.Model) :
     name = models.CharField(max_length = 100, unique = True)
 
     def __str__(self) :
         return self.name
 
-"""class UserReview(models.Model) :
+class UserReview(models.Model) :
     user = models.ForeignKey(
         User,
         on_delete = models.CASCADE,
