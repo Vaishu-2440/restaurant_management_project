@@ -1,6 +1,6 @@
 from django.db import models
 
-class OpeningHours(models.Model) :
+class OpeningHour(models.Model) :
     DAYS_OF_WEEK = [
         ('Monday', 'Monday'),
         ('Tuesday', 'Tuesday'),
