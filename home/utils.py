@@ -4,7 +4,7 @@ def is_valid_email(email) :
     if not email or isinstance(email, str) :
         return False
     
-    email_pattern = r'^[a-ZA-Z0-9_,+-]+@[a-ZA-Z0-9-]+\.[a-ZA-Z0-9-.]+$'
+    email_pattern = r'^[a-zA-Z0-9_,+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
     return bool(re.match(email_pattern, email))
 
 """import smtp
