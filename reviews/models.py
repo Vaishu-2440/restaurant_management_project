@@ -5,7 +5,7 @@ class Review(models.Model) :
     user = models.ForeignKey(User, on_delete = models.CASCADE)
     rating = models.IntegerField()
     comments = models.TextField()
-    creayed_at = models.DateTimeField(auto_now_add = True)
+    created_at = models.DateTimeField(auto_now_add = True)
 
     def __str__(self) :
         return f"{self.user.username} - {self.rating}"
