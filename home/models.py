@@ -7,7 +7,7 @@ class MenuCategory(models.Model) :
         return self.name
 
 class MenuItem(models.Model) :
-    name = models.CharField(max_length = 255, umique = True)
+    name = models.CharField(max_length = 255, unique = True)
     description = models.TextField()
     price = models.DecimalField(max_digits = 8, decimal_places = 2)
     category = models.ForeignKey(
