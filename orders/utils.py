@@ -1,6 +1,6 @@
 from decimal import Decimal, InvalidOperation
 
-def calculate_discount(order_total, disocunt_percentage) :
+def calculate_discount(order_total, discount_percentage) :
     try :
         order_total = Decimal(order_total)
         discount_percentage = Decimal(discount_percentage)
