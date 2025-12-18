@@ -1,6 +1,6 @@
 from django.db import models
 
-class MenuCategory(models.Model) :
+"""class MenuCategory(models.Model) :
     name models.CharField(max_length = 100, unique = True )
     
     def __str__(self) :
@@ -19,7 +19,7 @@ class MenuItem(models.Model) :
     def __str__(self) :
         return self.name
 
-"""class MenuItem(models.Model) :
+class MenuItem(models.Model) :
     name = models.CharField(max_length = 100)
     price = models.DecimalField(max_digits = 8, decimal_places = 2)
     description = models.TextField(blank = True)
@@ -79,18 +79,22 @@ class UserReview(models.Model) :
 
     def __str__(self) :
         return f"{self.user.username} - {self.rating}"
-        
+"""     
+from django.db import models
+from .models import MenuItem
+
 class Restaurant (models.Model) :
-    name = models.CharField(max_length = 200)
+    name = models.CharField(max_length = 255)
     address = models.TextField()
     phone_number = models.CharField(max_length = 20)
-    email_id = models.EmailField()
-    is_active = models.BooleanField(default = True)
 
     def __str__(self) :
         return self.name
 
-    class DailyOperatingHours(models.Model) :
+    def get_total_menu_items(self) :
+        return MenuItem.objects.count()
+        
+"""    class DailyOperatingHours(models.Model) :
         restaurant = models.ForeignKey(
             Restaurant,
             related_name = "operating_hours",
