@@ -1,6 +1,6 @@
 from django.db import models
 
-class MenuItem(models.Model) :
+"""class MenuItem(models.Model) :
     name = models.CharField(max_length = 100)
     price = models.DecimalField(max_digits = 8, decimal_places = 2)
     description = models.TextField(blank = True)
@@ -10,7 +10,7 @@ class MenuItem(models.Model) :
     def __str__(self) :
         return self.name
 
-"""class OpeningHour(models.Model) :
+class OpeningHour(models.Model) :
     DAYS_OF_WEEK = [
         ('Monday', 'Monday'),
         ('Tuesday', 'Tuesday'),
@@ -96,20 +96,21 @@ class Restaurant (models.Model) :
 
     def __str__(self) :
         return self.name
-        
+ """       
 from django.contrib.auth.models import User
 
 class Restaurant(models.Model) :
     name = models.CharField(max_length = 200)
-    address = models.TextField()
-    phone_number = models.CharField(max_length = 20)
-    opening_hours = models.TextField(max_length = 200)
-    description = models.TextField(blank = True, null = True)
+    opening_hours = models.TextField(
+        max_length = 100,
+        help_text = "Example: 11:00 AM - 11:00 PM (EST)"
+        )
+   """ description = models.TextField(blank = True, null = True)"""
 
     def __str__(self) :
         return self.name
 
-class ContactFormSubmission(models.Model) :
+"""class ContactFormSubmission(models.Model) :
     name = models.CharField(max_length = 255)
     email = models.EmailField()
     message = models.TextField()
