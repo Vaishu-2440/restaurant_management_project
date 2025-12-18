@@ -100,8 +100,8 @@ class Restaurant (models.Model) :
 from django.contrib.auth.models import User
 
 class Restaurant(models.Model) :
-    name = models.CharField(max_length = 100)
-    opening_hours = models.TextField(
+    name = models.CharField(max_length = 255)
+    opening_hours = models.CharField(
         max_length = 100,
         help_text = "Example: 11:00 AM - 11:00 PM (EST)"
         )
