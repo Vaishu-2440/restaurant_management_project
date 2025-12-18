@@ -8,7 +8,7 @@ def calculate_discount(order_total, discount_percentage) :
         if order_total < 0 or discount_percentage < 0 :
             return Decimal('0.00')
         
-        discount_amount = order_total * (discount_percentage / (Decimal('100')))
+        discount_amount = order_total - (discount_percentage / (Decimal('100')))
 
         if discount_amount > order_total :
             return order_total
