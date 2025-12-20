@@ -1,5 +1,3 @@
-from decimal import Decimal, InvalidOperation
-
 def calculate_average_rating(review_queryset) :
     if not review_queryset.exists() :
         return 0.0
