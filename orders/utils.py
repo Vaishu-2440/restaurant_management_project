@@ -1,4 +1,16 @@
 from decimal import Decimal, InvalidOperation
+
+def calculate_average_rating(reviews_queryset) :
+    if not reviews_queryset.exists() :
+        return 0.0
+    total_rating = 0
+    count = 0
+    for review in review_queryset :
+        total_rating += review.rating
+        count += 1
+
+    return round(total_rating / count, 2)
+"""
 def calculate_discount(order_total, discount_percentage) :
     try :
         order_total = Decimal(order_total)
@@ -17,7 +29,6 @@ def calculate_discount(order_total, discount_percentage) :
     except (InvalidOperation, TypeError) :
         return Decimal('0.00')
  
-"""
 from datetime import datetime
 
 def format_datetime(dt) :
