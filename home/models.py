@@ -161,7 +161,7 @@ class MenuItem(models.Model) :
 from djano.db import models
 
 class MenuItem(models.Model) :
-    name = models.CharField(max_length = 100)
+    name = models.CharField(max_length = 255)
     price = models.DecimalField(max_length = 8, decimal_places = 2)
     description = models.TextField()
     is_available = models.BooleanField(default = True)
