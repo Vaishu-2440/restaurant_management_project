@@ -158,6 +158,8 @@ class MenuItem(models.Model) :
     def __str_(self) :
         return self.name
 """
+from djano.db import models
+
 class MenuItem(models.Model) :
     name = models.CharField(max_length = 100)
     price = models.DecimalField(max_length = 8, decimal_places = 2)
