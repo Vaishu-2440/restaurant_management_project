@@ -10,7 +10,7 @@ class MenuItem(models.Model) :
         return self.name
     
     def get_items_by_cuisine(cls, cuisine_type) :
-        return cls.objects.filter(cuisine_type_iexact = cuisine_type)
+        return cls.objects.filter(cuisine_type__iexact = cuisine_type)
 
 """
 class MenuCategory(models.Model) :
