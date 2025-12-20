@@ -1,7 +1,7 @@
 from decimal import Decimal, InvalidOperation
 
-def calculate_average_rating(reviews_queryset) :
-    if not reviews_queryset.exists() :
+def calculate_average_rating(review_queryset) :
+    if not review_queryset.exists() :
         return 0.0
     total_rating = 0
     count = 0
