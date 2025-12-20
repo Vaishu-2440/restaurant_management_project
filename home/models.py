@@ -1,5 +1,18 @@
 from django.db import models
 
+class MenuItem(models.Model) :
+    name = models.CharField(max_length = 255)
+    description = models.TextField()
+    price = models.DecimalField(max_digits = 8, decimal_places = 2)
+    cuisine_type = models.CharFiled(max_digits = 100)
+
+    def __str__(self) :
+        return self.name
+    
+    def get_items_by_cuisine(cls, cuisine_type) :
+        return cls.objects.filter(cuisine_type_iexact = cuisine_type)
+
+
 """class MenuCategory(models.Model) :
     name models.CharField(max_length = 100, unique = True )
     
@@ -79,7 +92,7 @@ class UserReview(models.Model) :
 
     def __str__(self) :
         return f"{self.user.username} - {self.rating}"
-"""     
+  
 from django.db import models
 from .models import MenuItem
 
@@ -93,8 +106,8 @@ class Restaurant (models.Model) :
 
     def get_total_menu_items(self) :
         return MenuItem.objects.count()
-        
-"""    class DailyOperatingHours(models.Model) :
+    
+name =class DailyOperatingHours(models.Model) :
         restaurant = models.ForeignKey(
             Restaurant,
             related_name = "operating_hours",
