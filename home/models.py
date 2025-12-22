@@ -1,4 +1,22 @@
 from django.db import models
+from django.utils import timezone
+
+class ReservationManager(models.Model) :
+
+    def get_upcoming_reservation(self) :
+        return self.filter(reservation_datetime__gt = timezone.now())
+
+class Reservation(models.Model) :
+    customer_name = models.CharField(max_length = 100)
+    reservation_datetime = models.DatetimeField()
+    guests = models.PositiveIntegerField(default = 1)
+
+    objects = ReservationManager()
+
+    def __str__(self) :
+        return f" {self.customer_name} - {self.reservatio_datetime}"
+        
+    
 """
 class MenuItem(models.Model) :
     name = models.CharField(max_length = 255)
@@ -160,7 +178,7 @@ class MenuItem(models.Model) :
 
     def __str_(self) :
         return self.name
-"""
+
 from django.db import models
 
 class MenuCategory(models.Model) :
@@ -178,7 +196,7 @@ class MenuItem(models.Model) :
 
     def __str__(self) :
         return self.name
-"""
+
 class MenuCategory(models.Model) :
     name = models.CharField(max_length = 100, unique = True)
 
