@@ -8,7 +8,7 @@ class ReservationManager(models.Model) :
 
 class Reservation(models.Model) :
     customer_name = models.CharField(max_length = 100)
-    reservation_datetime = models.DatetimeField()
+    reservation_datetime = models.DateTimeField()
     guests = models.PositiveIntegerField(default = 1)
 
     objects = ReservationManager()
