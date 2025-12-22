@@ -12,7 +12,8 @@ class Order(models.Model) :
             total_count += item.quantity
         return total_count
 
-"""from django.contrib.auth.models import User
+"""
+from django.contrib.auth.models import User
 
 class Order(models.Model) :
     STATUS_CHOICES = [
