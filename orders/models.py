@@ -1,5 +1,18 @@
 from django.db import models
-from django.contrib.auth.models import User
+
+class Order(models.Model) :
+    created_at = models.DateTimeField(auto_now_add = True)
+    status = models.CharField(max_length = 50, default = 'Pending')
+    def __str__(self) :
+        return f"Order #{self.id}"
+
+    def get_total_item_count(models.self) :
+        total_count = 0
+        for item in self.items.all() :
+            total_count += item.quantity
+        return total_count
+
+"""from django.contrib.auth.models import User
 
 class Order(models.Model) :
     STATUS_CHOICES = [
@@ -25,7 +38,7 @@ class Order(models.Model) :
     def __str__(self) :
         return self.order_id
         
-"""class OrderManager(models.Model) :
+class OrderManager(models.Model) :
     def with_status(self, status) :
         return self.filter(status = status)
 
