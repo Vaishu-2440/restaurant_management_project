@@ -1,5 +1,6 @@
 from django.db import models
 
+"""
 class Order(models.Model) :
     created_at = models.DateTimeField(auto_now_add = True)
     status = models.CharField(max_length = 50, default = 'Pending')
@@ -12,7 +13,7 @@ class Order(models.Model) :
             total_count += item.quantity
         return total_count
 
-"""
+
 from django.contrib.auth.models import User
 
 class Order(models.Model) :
@@ -42,7 +43,7 @@ class Order(models.Model) :
 class OrderManager(models.Model) :
     def with_status(self, status) :
         return self.filter(status = status)
-
+"""
 class Order(models.Model) :
     STATUS_CHOICES = (
         ("pending", "Pending"),
@@ -50,12 +51,21 @@ class Order(models.Model) :
         ("completed", "Completed"),
         ("cancelled", "Cancelled"),
     )
-    cutomer = models.ForeignKey("accounts.Customer", on_delete = models.CASCADE)
+    cutomer = models.ForeignKey("auth.User", on_delete = models.CASCADE)
     status = models.CharField(max_length = 20, choices = STATUS_CHOICES, default = "pending")
+    total_amount = models.DecimalField(max_digits = 10, decimal_places = 2)
     created_at = models.DateTimeField(auto_now_add = True)
 
+    def calculate_total_revenue(cls) :
+        result = cls.objects.filter(status = 'Completed').aggregate(
+            total_revenue = Sum('total_amount')
+        )
+        
+        return result['total_revenue'] or 0
+
+   """
     objects = OrderManager()
 
     def __str__(self) :
         return f"Order #{self.id} - {self.status}"
-"""
+    """
