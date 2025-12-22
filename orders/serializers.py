@@ -1,3 +1,25 @@
+from rest_framework import serializers
+from .models import Order, OrderItem
+
+class OrderItemSerializer(serializers.ModelSerializer) :
+    class Meta :
+        models = OrderItem
+        fields = ['id', 'menu_item', 'quantity', 'price']
+
+class OrderSerializer(serializers.ModelSerializer) :
+    item = OrderItemSerializer(source = 'order_item_set', many = True)
+
+    class Meta :
+        model = Order
+        fields = [
+            'id',
+            'created_at',
+            'status',
+            'total_amount',
+            'items'
+        ]
+
+"""
 from decimal import Decimal, ROUND_HALF_UP
              import numbers
 
@@ -44,3 +66,4 @@ def calculate_total(self) -> Decimal :
     
         total += net_line
     return total.quantize(Decimal('0.01'), rounding = ROUND_HALF_UP)
+"""
