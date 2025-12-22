@@ -19,8 +19,7 @@ class OrderSerializer(serializers.ModelSerializer) :
             'items'
         ]
 
-"""
-from decimal import Decimal, ROUND_HALF_UP
+"""from decimal import Decimal, ROUND_HALF_UP
              import numbers
 
 def calculate_total(self) -> Decimal :
