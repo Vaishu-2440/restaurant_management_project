@@ -1,4 +1,5 @@
 from django.db import models
+from .models import Orders
 
 class Order(models.Model) :
     created_at = models.DateTimeField(auto_now_add = True)
