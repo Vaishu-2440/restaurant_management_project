@@ -54,8 +54,8 @@ class Order(models.Model) :
         ("completed", "Completed"),
         ("cancelled", "Cancelled"),
     )
-    cutomer = models.ForeignKey("auth.User", on_delete = models.CASCADE)
-    status = models.CharField(max_length = 20, choices = STATUS_CHOICES, default = "pending")
+    user = models.ForeignKey("auth.User", on_delete = models.CASCADE)
+    status = models.CharField(max_length = 20, choices = STATUS_CHOICES)
     total_amount = models.DecimalField(max_digits = 10, decimal_places = 2)
     created_at = models.DateTimeField(auto_now_add = True)
 
