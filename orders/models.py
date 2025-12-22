@@ -44,6 +44,9 @@ class OrderManager(models.Model) :
     def with_status(self, status) :
         return self.filter(status = status)
 """
+
+from django.db import models
+
 class Order(models.Model) :
     STATUS_CHOICES = (
         ("pending", "Pending"),
