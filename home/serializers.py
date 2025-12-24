@@ -1,12 +1,13 @@
 from rest_framework import serializers
 from .models import FAQ
 
-class FAQSerializer(serialziers.ModelSerializer) :
+class FAQSerializer(serializers.ModelSerializer) :
     class Meta :
         model = FAQ
         fields = ['id', 'question', 'answer']
 
-"""from .models import OpeningHour
+"""
+from .models import OpeningHour
 
 class OpeningHourSerializer(serializers.ModelSerializer) :
     class Meta :
