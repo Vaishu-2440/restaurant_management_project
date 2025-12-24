@@ -1,7 +1,31 @@
 from django.db import models
 
-"""
 class Order(models.Model) :
+    STATUS_PENDING = 'Pemding',
+    STATUS_PROCESSING = 'Processing',
+    STATUS_DELIVERED = 'Delivered',
+    STATUS_CANCELLED = 'Cancelled'
+
+    STATUS_CHOICES = [
+        (STATUS_PENDING, 'PENDING'),
+        (STATUS_PROCESSING, 'Processing'),
+        (STATUS_DELIVERED, 'Delivered'),
+        (STATUS_CANCELLED, 'Cancelled'),
+    ]
+
+    order_id = models.CharField(max_length = 20, unique = True)
+    status = models.CharField(
+        max_length = 20,
+        choices = STATUS_CHOICES,
+        default = STATUS_PENDING
+    )
+
+    created_at = models.DateTimeField(auto_now_add = True)
+
+    def __str__(self) :
+        return self.order_id
+
+"""class Order(models.Model) :
     created_at = models.DateTimeField(auto_now_add = True)
     status = models.CharField(max_length = 50, default = 'Pending')
     def __str__(self) :
@@ -43,7 +67,6 @@ class Order(models.Model) :
 class OrderManager(models.Model) :
     def with_status(self, status) :
         return self.filter(status = status)
-"""
 
 from django.db import models
 
@@ -66,7 +89,7 @@ class Order(models.Model) :
         
         return result['total_revenue'] or 0
 
-   """
+   
     objects = OrderManager()
 
     def __str__(self) :
