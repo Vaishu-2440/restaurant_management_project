@@ -1,5 +1,30 @@
 import re
 
+def format_phone_number(phone_number) :
+    try :
+        if not phone_number :
+            return ""
+
+        digits = re.sub(r"\D", "", phone_number)
+
+        if len(digits) == 10 :
+            return f"({digits[:3]}) {digits[3:6]} - {digits[6:]}"
+
+        elif len(digits) > 10 :
+            country_code = digits[:-10]
+            main_number = digits[-10:]
+            
+            return f"+{country_code} ({main_number[:3]}) {main_number[3:6]} - {main_number[6:]}"
+        
+        return phone_number
+
+    except Exception :
+        return phone_number
+
+
+
+
+"""
 def is_valid_email(email) :
     if not email or isinstance(email, str) :
         return False
@@ -7,7 +32,7 @@ def is_valid_email(email) :
     email_pattern = r'^[a-zA-Z0-9_,+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
     return bool(re.match(email_pattern, email))
 
-"""import smtp
+import smtp
 from email.mime.text import MIMEText
 from django.conf import settings
 
