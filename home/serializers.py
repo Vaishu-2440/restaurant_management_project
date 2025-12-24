@@ -1,12 +1,19 @@
 from rest_framework import serializers
-from .models import OpeningHour
+from .models import FAQ
+
+class FAQSerializer(serialziers.ModelSerializer) :
+    class Meta :
+        model = FAQ
+        fields = ['id', 'question', 'answer']
+
+"""from .models import OpeningHour
 
 class OpeningHourSerializer(serializers.ModelSerializer) :
     class Meta :
         model = OpeningHour
         fields = ['day', 'opening_time', 'closing_time']
 
-"""from .models import MenuItem
+from .models import MenuItem
 
 class MenuItemSearchSerializer(serializers.ModelSerializer) :
     image_url = serializers.SerializerMethodField()
