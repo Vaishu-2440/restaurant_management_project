@@ -14,15 +14,12 @@ def format_phone_number(phone_number) :
             country_code = digits[:-10]
             main_number = digits[-10:]
             
-            return f"+{country_code} ({main_number[:3]}) {main_number[3:6]} - {main_number[6:]}"
+            return f" {country_code} ({main_number[:3]}) {main_number[3:6]} - {main_number[6:]}"
         
         return phone_number
 
     except Exception :
         return phone_number
-
-
-
 
 """
 def is_valid_email(email) :
