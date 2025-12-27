@@ -32,6 +32,7 @@ class Reservation(models.Model) :
     def __str__(self) :
         return f" {self.customer_name} - {self.reservatio_datetime}"
 """
+from django.db import models
         
 class MenuItem(models.Model) :
     name = models.CharField(max_length = 100)
