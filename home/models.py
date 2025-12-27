@@ -1,5 +1,4 @@
 from django.db import models
-
 """
 class MenuItem(models.Model) :
     name = models.CharField(max_length = 100)
@@ -41,7 +40,7 @@ class MenuItem(models.Model) :
     
     def get_items_by_cuisine(cls, cuisine_type) :
         return cls.objects.filter(cuisine_type__iexact = cuisine_type)
-
+        
 """
 class MenuCategory(models.Model) :
     name models.CharField(max_length = 100, unique = True )
