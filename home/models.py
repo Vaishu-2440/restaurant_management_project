@@ -1,5 +1,11 @@
 from django.db import models
 
+"""
+class MenuItem(models.Model) :
+    name = models.CharField(max_length = 100)
+    price = models.DecimalField(max_digits = 8, decimal_places = 2)
+    cuisine = models.CharField(max_length = 50)
+
 class FAQ(models.Model) :
     question = models.CharField(max_length = 255)
     answer = models.TextField()
@@ -9,8 +15,6 @@ class FAQ(models.Model) :
     def __str__(self) :
         return self.question
 
-
-"""
 from django.utils import timezone
 
 class ReservationManager(models.Model) :
@@ -27,19 +31,17 @@ class Reservation(models.Model) :
 
     def __str__(self) :
         return f" {self.customer_name} - {self.reservatio_datetime}"
+"""
         
 class MenuItem(models.Model) :
-    name = models.CharField(max_length = 255)
-    description = models.TextField()
+    name = models.CharField(max_length = 100)
     price = models.DecimalField(max_digits = 8, decimal_places = 2)
-    cuisine_type = models.CharField(max_digits = 100)
-
-    def __str__(self) :
-        return self.name
+    cuisine_type = models.CharField(max_digits = 50)
     
     def get_items_by_cuisine(cls, cuisine_type) :
         return cls.objects.filter(cuisine_type__iexact = cuisine_type)
 
+"""
 class MenuCategory(models.Model) :
     name models.CharField(max_length = 100, unique = True )
     
