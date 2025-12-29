@@ -2,13 +2,12 @@ def calculate_average_rating(review_queryset) :
     try :
         if not review_queryset.exists() :
             return 0.0
-            total_rating = 0
-            count = 0
-            for review in review_queryset :
-                total_rating += review.rating
-                count += 1
-
-            return round(total_rating / count, 2)
+        total_rating = 0
+        count = 0
+        for review in review_queryset :
+            total_rating += review.rating
+            count += 1
+        return round(total_rating / count, 2)
     except Exception :
         return 0.0
 """
