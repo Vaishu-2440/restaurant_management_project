@@ -1,3 +1,13 @@
+from rest_frameworks.decorators import api_view
+from rest_framework.response import Response
+from .models import MenuItem
+
+def total_menu_items(request) :
+    total_items = MenuItem.objects.filter(is_available = True).count()
+    return Response({"total_menu_items" :  total_items})
+
+
+"""
 from rest_framework import viewsets
 from rest_framework.generics import RetrieveAPIView
 from .models import Restaurant
@@ -6,7 +16,8 @@ from .serializers import RestaurantDetailSerializer
 class RestaurantDetailAPIView(RetrieveAPIView) :
     queryset = Restaurant.objects.filter(is_active = True)
     serializer_class = RestaurantDetailSerializer
-"""from .models import MenuCategory
+
+from .models import MenuCategory
 from .serializers import MenuCategorySerializer
 from home.models import UserReview
 from rest_framework import generics, permissions
@@ -35,12 +46,11 @@ class DailySpecialSerializer(ListAPIView) :
 
     def get_queryset(self) :
         return MenuItem.objects.filter(is_daily_special = True)
-"""
  
 class MenuCategoryViewSet(viewsets.ModelViewSet) :
     queryset = MenuCategory.objects.all()
     serializer_class = MenuCategorySerializer
-"""
+
 class CreateReviewAPIView(generics.APIView) :
     serialzier_class = UserReviewsSerializer
     permission_class = [permissions.IsAuthenticated]
