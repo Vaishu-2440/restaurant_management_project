@@ -1,6 +1,42 @@
 from django.db import models
 
 class Order(models.Model) :
+    STATUS_CHOICES = [
+        ('Pending', 'Pending'),
+        ('Processing', 'Processing'),
+        ('Delivered', 'Delivered'),
+    ]
+
+    order_id = models.CharField(max_length = 20, unique = True)
+    status = models.CharField(max_length = 20, choices = STATUS_CHOICES, default = 'Pending')
+    total_price = models.DecimalField(max_digits = 10, decimal_places = 2)
+    created_at = models.DateTimeField(auto_now_add = True)
+
+    def __str__(self) :
+        return self.order_id
+
+class OrderItem(models.Model) :
+    order = models.ForeignKey(Order, related_name = "items", on_delete = models.CASCADE)
+    item_name = models.CharField(max_length = 100)
+    quantity = models.PositiveIntegerField()
+    price = models.DecimalField(max_digits = 8 , decimal_places = 2)
+
+    def __str__(self) :
+        return self.item_name
+
+
+
+
+
+
+
+
+
+
+
+
+"""
+class Order(models.Model) :
     STATUS_PENDING = 'Pemding',
     STATUS_PROCESSING = 'Processing',
     STATUS_DELIVERED = 'Delivered',
@@ -25,7 +61,7 @@ class Order(models.Model) :
     def __str__(self) :
         return self.order_id
 
-"""class Order(models.Model) :
+class Order(models.Model) :
     created_at = models.DateTimeField(auto_now_add = True)
     status = models.CharField(max_length = 50, default = 'Pending')
     def __str__(self) :
