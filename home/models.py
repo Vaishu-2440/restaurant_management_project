@@ -1,5 +1,5 @@
 from django.db import models
-
+"""
 class MenuItem(models.Model) :
     name = models.CharField(max_length = 100)
     price = models.DecimalField(max_digits = 8, decimal_places = 2)
@@ -9,7 +9,6 @@ class MenuItem(models.Model) :
     def __str__(self) :
         return self.name
         
-"""
 class FAQ(models.Model) :
     question = models.CharField(max_length = 255)
     answer = models.TextField()
@@ -38,7 +37,7 @@ class Reservation(models.Model) :
 
     def __str__(self) :
         return f" {self.customer_name} - {self.reservatio_datetime}"
-"""
+
 from django.db import models
         
 class MenuItem(models.Model) :
@@ -48,8 +47,7 @@ class MenuItem(models.Model) :
     
     def get_items_by_cuisine(cls, cuisine_type) :
         return cls.objects.filter(cuisine_type__iexact = cuisine_type)
-        
-"""
+
 class MenuCategory(models.Model) :
     name models.CharField(max_length = 100, unique = True )
     
@@ -68,20 +66,25 @@ class MenuItem(models.Model) :
 
     def __str__(self) :
         return self.name
-
+"""
 from django.db import models
 
 class MenuItem(models.Model) :
     name = models.CharField(max_length = 100)
     price = models.DecimalField(max_digits = 8, decimal_places = 2)
     description = models.TextField(blank = True)
-    image = models.ImageField(upload_to = 'menu/', blank = True, null = True)
     is_available = models.BooleanField(default = True)
+
+    calories = models.IntegerField(
+        null = True,
+        blank = True,
+        help_text = "Calorie count of MenuItem"
+    )
 
     def __str__(self) :
         return self.name
 
-
+"""
 class OpeningHour(models.Model) :
     DAYS_OF_WEEK = [
         ('Monday', 'Monday'),
