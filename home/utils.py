@@ -1,3 +1,4 @@
+"""
 import re
 
 def format_phone_number(phone_number) :
@@ -21,7 +22,7 @@ def format_phone_number(phone_number) :
     except Exception :
         return phone_number
 
-"""
+
 def is_valid_email(email) :
     if not email or isinstance(email, str) :
         return False
@@ -62,22 +63,23 @@ def get_distinct_cuisines() :
     )
     return list(cuisine_name)
 
-def calculate_discount(original_price, discount_percentage) :
+"""
+def calculate_discount(price, discount_percentage) :
     try :
-        original_price = float(original_price)
+        price = float(price)
         discount_percentage = float(discount_percentage)
 
-        if original_price < 0 :
+        if price < 0 :
             return {"error" : "Original price cannot be negative."}
 
         if discount_percentage < 0 or discount_percentage > 100 :
             return {"error" : "Discount percentage must be between 0 and 100."}
 
-        discount_amount = (discount_percentage/100) * original_price
-        discount_price = original_price - discount_amount
+        discount_amount = (discount_percentage/100) * price
+        discount_price = price - discount_amount
 
         return round(discount_price, 2)
 
     except (ValueError, TypeError) :
-        return {"error" : "Invalid input. Please provide numeric value."}
-"""
+        return price
+
