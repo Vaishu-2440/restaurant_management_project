@@ -67,7 +67,7 @@ class MenuItem(models.Model) :
 
     def __str__(self) :
         return self.name
-"""
+
 from django.db import models
 class MenuItem(models.Model) :
     name = models.CharField(max_length = 100)
@@ -84,7 +84,7 @@ class MenuItem(models.Model) :
     def __str__(self) :
         return self.name
         
-"""
+
 class OpeningHour(models.Model) :
     DAYS_OF_WEEK = [
         ('Monday', 'Monday'),
@@ -201,7 +201,7 @@ class MenuItem(models.Model) :
 
     def __str_(self) :
         return self.name
-
+"""
 from django.db import models
 
 class MenuCategory(models.Model) :
@@ -211,7 +211,7 @@ class MenuCategory(models.Model) :
         return self.name
 
 class MenuItem(models.Model) :
-    name = models.CharField(max_length = 255)
+    name = models.CharField(max_length = 150)
     price = models.DecimalField(max_digits = 8, decimal_places = 2)
     description = models.TextField()
     category = models.ForeignKey(MenuCategory, on_delete = models.CASCADE)
@@ -225,7 +225,7 @@ class MenuCategory(models.Model) :
 
     def __str__(self) :
         return self.name
-
+"""
 class UserReview(models.Model) :
     user = models.ForeignKey(
         User,
