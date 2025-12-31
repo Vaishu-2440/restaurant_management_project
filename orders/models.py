@@ -62,19 +62,19 @@ class Order(models.Model) :
         return total_count
 """
 
-from django.contrib.auth.models import User
+from django.db import models
 
 class Order(models.Model) :
     STATUS_CHOICES = [
-        ('Pending', 'Pending'),
-        ('Confirmed', 'Confirmed'),
-        ('Completed', 'Completed'),
-        ('Cancelled', 'Cancelled'),
+        ('PENDING', 'Pending'),
+        ('CONFIRMED', 'Confirmed'),
+        ('COMPLETED', 'Completed'),
+        ('CANCELLED', 'Cancelled'),
     ]
     status = models.CharField(
         max_length = 20,
         choices = STATUS_CHOICES,
-        default = 'Pending'
+        default = 'PENDING'
     )
 
     created_at = models.DateTimeField(auto_now_add = True)
