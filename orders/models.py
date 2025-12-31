@@ -1,5 +1,5 @@
 from django.db import models
-
+"""
 class Order(models.Model) :
     STATUS_CHOICES = [
         ('Pending', 'Pending'),
@@ -24,18 +24,6 @@ class OrderItem(models.Model) :
     def __str__(self) :
         return self.item_name
 
-
-
-
-
-
-
-
-
-
-
-
-"""
 class Order(models.Model) :
     STATUS_PENDING = 'Pemding',
     STATUS_PROCESSING = 'Processing',
@@ -72,7 +60,7 @@ class Order(models.Model) :
         for item in self.items.all() :
             total_count += item.quantity
         return total_count
-
+"""
 
 from django.contrib.auth.models import User
 
@@ -83,12 +71,6 @@ class Order(models.Model) :
         ('Completed', 'Completed'),
         ('Cancelled', 'Cancelled'),
     ]
-    order_id = models.CharField(
-        max_length = 20,
-        unique = True,
-        db_index = True
-    )
-    user = models.ForeignKey(User, on_delete = models.CASCADE)
     status = models.CharField(
         max_length = 20,
         choices = STATUS_CHOICES,
@@ -98,8 +80,9 @@ class Order(models.Model) :
     created_at = models.DateTimeField(auto_now_add = True)
 
     def __str__(self) :
-        return self.order_id
-        
+        return f"Order #{self.id}"
+
+"""       
 class OrderManager(models.Model) :
     def with_status(self, status) :
         return self.filter(status = status)
