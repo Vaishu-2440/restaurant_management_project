@@ -202,6 +202,7 @@ class MenuItem(models.Model) :
     def __str_(self) :
         return self.name
 """
+
 from django.db import models
 
 class MenuCategory(models.Model) :
@@ -225,6 +226,7 @@ class MenuCategory(models.Model) :
 
     def __str__(self) :
         return self.name
+
 """
 class UserReview(models.Model) :
     user = models.ForeignKey(
