@@ -1,5 +1,12 @@
 from django.db import models
 
+def MenuCategory(models.Model) :
+    name = models.CharField(max_length = 100, unique = True)
+
+    def __str__(self) :
+        return self.name
+
+"""
 class Table(models.Model) :
     table_number = models.IntegerField(unique = True)
     capacity = models.IntegerField()
@@ -8,7 +15,7 @@ class Table(models.Model) :
     def __str__(self) :
         return f"Table {self.table_number} (Capacity : {self.capacity})"
 
-"""
+
 from django.db import models
 
 class MenuItem(models.Model) :
