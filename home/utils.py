@@ -6,11 +6,11 @@ def is_valid_reservation_time(reservation_datetime : datetime) -> bool :
         return False
 
     try :
-        days_of_week = reservation_datetime.weekday()
+        day_of_week = reservation_datetime.weekday()
         reservation_time = reservation_datetime.time()
 
         operating_hours = DailyOperatingHours.objects.get(
-            days_of_week = day_of_week
+            day_of_week = day_of_week
         )
 
         return (
