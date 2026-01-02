@@ -1,3 +1,28 @@
+from datetime import datetime
+from home.models import DailyOperatingHours
+
+def is_valid_reservation_time(reservation_datetime : datetime) -> bool :
+    if not reservation_datetime :
+        return False
+
+    try :
+        days_of_week = reservation_datetime.weekday()
+        reservation_time = reservation_datetime.time()
+
+        operating_hours = DailyOperatingHours.objects.get(
+            days_of_week = day_of_week
+        )
+
+        return (
+            operating_hours.opening_time
+            < reservation_time
+            < operating_hours.closing_time
+        )
+
+    except DailyOperatingHours.DoeNotExist :
+        return False
+
+
 """
 import re
 
@@ -63,7 +88,6 @@ def get_distinct_cuisines() :
     )
     return list(cuisine_name)
 
-"""
 def calculate_discount(price, discount_percentage) :
     try :
         price = float(price)
@@ -80,3 +104,4 @@ def calculate_discount(price, discount_percentage) :
     except (ValueError, TypeError) :
         return price
 
+"""
