@@ -1,3 +1,4 @@
+"""
 from rest_framework import serializers
 from .models import FAQ
 
@@ -6,8 +7,6 @@ class FAQSerializer(serializers.ModelSerializer) :
         model = FAQ
         fields = ['id', 'question', 'answer']
         
-
-"""
 from .models import OpeningHour
 
 class OpeningHourSerializer(serializers.ModelSerializer) :
@@ -85,11 +84,16 @@ class DailySpecialSerializer(serializer.ModelSerializer) :
     class Meta :
         model = MenuItem
         fields = ['id', 'name', 'price', 'description']
+"""
+from rest_framework import serializers
+from .models import MenuCategory
+
 class MenuCategorySerializer(serializer.ModelSerializer) :
     class Meta :
         model = MenuCategory
         fields = ['id', 'name']
 
+"""
 class UserReviewSerializer(serializers.ModelSerializer) :
     class Meta :
         model = UserReview
