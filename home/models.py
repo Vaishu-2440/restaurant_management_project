@@ -1,3 +1,4 @@
+"""
 from django.db import models
 
 class MenuCategory(models.Model) :
@@ -6,7 +7,7 @@ class MenuCategory(models.Model) :
     def __str__(self) :
         return self.name
 
-"""
+
 class Table(models.Model) :
     table_number = models.IntegerField(unique = True)
     capacity = models.IntegerField()
@@ -30,9 +31,6 @@ class MenuItem(models.Model) :
 class FAQ(models.Model) :
     question = models.CharField(max_length = 255)
     answer = models.TextField()
-
-
-    
     is_active = models.BooleanField(default = True)
     created_at = models.DateTimeField(auto_now_add = True)
 
@@ -71,20 +69,24 @@ class MenuCategory(models.Model) :
     
     def __str__(self) :
         return self.name
+"""
+from django.db import models
 
 class MenuItem(models.Model) :
     name = models.CharField(max_length = 255, unique = True)
     description = models.TextField()
     price = models.DecimalField(max_digits = 8, decimal_places = 2)
+    image = models.ImageField(upload_to = "menu-items/", null = True, blank = True)
     category = models.ForeignKey(
         MenuCategory,
-        on_delete = models.CASCADE,
+        on_delete = models.SET_NULL,
+        null = True
         related_name = "menu_items"
     )
 
     def __str__(self) :
-        return self.name
-
+        return f"{self.name} - {self.price}"
+"""
 from django.db import models
 class MenuItem(models.Model) :
     name = models.CharField(max_length = 100)
