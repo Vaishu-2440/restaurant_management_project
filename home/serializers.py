@@ -85,6 +85,7 @@ class DailySpecialSerializer(serializer.ModelSerializer) :
         model = MenuItem
         fields = ['id', 'name', 'price', 'description']
 """
+
 from rest_framework import serializers
 from .models import MenuCategory
 
