@@ -79,13 +79,21 @@ class MenuItem(models.Model) :
     image = models.ImageField(upload_to = "menu-items/", null = True, blank = True)
     category = models.ForeignKey(
         MenuCategory,
-        on_delete = models.SET_NULL,
-        null = True
+        on_delete = models.CASCADE,
         related_name = "menu_items"
     )
 
+    allergens = models.TextField(
+        blank = True,
+        null = True,
+        help_text = "Comma-separated list of allergens (e.g., glutten, nuts, dairy)"
+    )
+
     def __str__(self) :
-        return f"{self.name} - {self.price}"
+        if self.allergens :
+            return f"{self.name} - (Allergens : {self.allergens})"
+            
+        return self.name
         
 """
 from django.db import models
