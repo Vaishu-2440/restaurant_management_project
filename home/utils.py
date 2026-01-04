@@ -5,7 +5,7 @@ def is_restaurant_open() :
     current_day = now.weekday()
     current_time = now.time()
 
-    if currnt_day > 4 :
+    if current_day > 4 :
         return False
     
     opening_time = time(9, 0)
