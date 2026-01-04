@@ -10,13 +10,17 @@ def make_unavailable(modeladmin, request, queryset) :
         list_filter = ('is_available')
         actions = ['action_make_unavailable']
 
-"""
+
 from .models import Restaurant
 
 class RestaurantAdmin(admin.ModelAdmin) :
     list_display = ('name', 'address', 'phone_number', 'email', 'is_active')
     search_field = ('name', 'address')
     list_filter = ('is_active')
+"""
+
+from django.contrib import admin
+from .models import Table
 
 admin.site.register(Restaurant, RestaurantAdmin)
 
