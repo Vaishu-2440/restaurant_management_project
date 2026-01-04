@@ -1,3 +1,19 @@
+from datetime import datetime, time
+
+def is_restaurant_open() :
+    now = datetime.now()
+    current_day = now.weekday()
+    current_time = now.time()
+
+    if currnt_day > 4 :
+        return False
+    
+    opening_time = time(9, 0)
+    closing_time = time(22, 0)
+
+    return opening_time <= current_time <= closing_time
+
+"""
 from .models import Table
 
 def get_available_tables_by_capacity(num_guests) :
@@ -10,7 +26,6 @@ def get_available_tables_by_capacity(num_guests) :
         capacity_gte = num_guests
     )
 
-"""
 from datetime import datetime
 from home.models import DailyOperatingHours
 
