@@ -1,3 +1,16 @@
+from .models import Table
+
+def get_available_tables_by_capacity(num_guests) :
+
+    if not isinstance(num_guests, int) or num_guests <= 0 :
+        return Table.objects.none
+
+    return Table.objects.filter(
+        is_available = True,
+        capacity_gte = num_guests
+    )
+
+"""
 from datetime import datetime
 from home.models import DailyOperatingHours
 
@@ -22,8 +35,6 @@ def is_valid_reservation_time(reservation_datetime : datetime) -> bool :
     except DailyOperatingHours.DoeNotExist :
         return False
 
-
-"""
 import re
 
 def format_phone_number(phone_number) :
