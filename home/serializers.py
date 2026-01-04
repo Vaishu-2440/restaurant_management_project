@@ -1,3 +1,13 @@
+from rest_framework import serializers
+from .models import Table
+
+class TableSerialzier(serialziers.ModelSerializer) :
+    class Meta :
+        model = Table
+        fields = "__all__"
+
+
+
 """
 from rest_framework import serializers
 from .models import FAQ
@@ -84,7 +94,7 @@ class DailySpecialSerializer(serializer.ModelSerializer) :
     class Meta :
         model = MenuItem
         fields = ['id', 'name', 'price', 'description']
-"""
+
 from rest_framework import serializers
 from .models import MenuCategory
 
@@ -93,7 +103,6 @@ class MenuCategorySerializer(serializer.ModelSerializer) :
         model = MenuCategory
         fields = ['id', 'name']
 
-"""
 class UserReviewSerializer(serializers.ModelSerializer) :
     class Meta :
         model = UserReview
