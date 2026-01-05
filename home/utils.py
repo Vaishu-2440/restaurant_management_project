@@ -7,7 +7,6 @@ def is_restaurant_open() :
 
     if current_day > 4 :
         return False
-    
     opening_time = time(9, 0)
     closing_time = time(22, 0)
 
