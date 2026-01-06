@@ -8,6 +8,8 @@ class MenuCategory(models.Model) :
         return self.name
 
 """
+from django.db import models
+
 class Table(models.Model) :
     table_number = models.IntegerField(unique = True)
     capacity = models.IntegerField()
