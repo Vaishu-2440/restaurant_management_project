@@ -1,3 +1,13 @@
+from django.db import models
+
+class Restaurant(models.Model) :
+    name = models.CharField(max_length = 100)
+    capacity = models.IntegerField(null =True, blank = True, default = 0)
+
+    def __str__(self) :
+        return self.name
+ 
+
 """
 from django.db import models
 
@@ -6,7 +16,6 @@ class MenuCategory(models.Model) :
 
     def __str__(self) :
         return self.name    
-"""
 
 from django.db import models
 
@@ -19,7 +28,6 @@ class Table(models.Model) :
     def __str__(self) :
         return f"Table {self.table_number} (Capacity : {self.capacity}) - {self.location}"
 
-"""
 from django.db import models
 
 class MenuItem(models.Model) :
