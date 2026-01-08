@@ -1,4 +1,5 @@
 from django.db import models
+from .models import Cuisine
 
 class Cuisine(models.Model) :
     name = models.CharField(max_length = 200)
