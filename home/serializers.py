@@ -4,7 +4,7 @@ from .models import Cuisine
 class CuisineSerializer(serializers.ModelSerializer) :
     class Meta :
         model = Cuisine
-        fieldds = ['id', 'name']
+        fields = ['id', 'name']
 
 
 """
