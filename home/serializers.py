@@ -1,4 +1,14 @@
 from rest_framework import serializers
+from .models import Cuisine
+
+class CuisineSerializer(serializers.ModelSerializer) :
+    class Meta :
+        model = Cuisine
+        fieldds = ['id', 'name']
+
+
+"""
+from rest_framework import serializers
 from home.models import Table
 
 class TableSerializer(serializers.ModelSerializer) :
@@ -6,7 +16,6 @@ class TableSerializer(serializers.ModelSerializer) :
         model = Table
         fields = "__all__"
         
-"""
 from rest_framework import serializers
 from .models import FAQ
 
