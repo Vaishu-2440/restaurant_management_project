@@ -6,7 +6,6 @@ class CuisineSerializer(serializers.ModelSerializer) :
         model = Cuisine
         fields = ['id', 'name']
 
-
 """
 from rest_framework import serializers
 from home.models import Table
