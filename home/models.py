@@ -6,8 +6,7 @@ class Cuisine(models.Model) :
     def __str__(self) :
         return self.name
 
-"""
-from .models import Cuisine
+""" from .models import Cuisine
 
 class Cuisine(models.Model) :
     name = models.CharField(max_length = 200)
