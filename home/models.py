@@ -49,7 +49,7 @@ class MenuCategory(models.Model) :
 
     def __str__(self) :
         return self.name    
-"""
+
 from django.db import models
 
 class Table(models.Model) :
@@ -62,7 +62,7 @@ class Table(models.Model) :
 
     def __str__(self) :
         return f"Table {self.table_number} (Capacity : {self.capacity})"
-"""
+
 from django.db import models
 
 class MenuItem(models.Model) :
@@ -282,7 +282,7 @@ class MenuCategory(models.Model) :
 
     def __str__(self) :
         return self.name
-
+"""
 class MenuItem(models.Model) :
     name = models.CharField(max_length = 150)
     price = models.DecimalField(max_digits = 8, decimal_places = 2)
@@ -290,15 +290,20 @@ class MenuItem(models.Model) :
     category = models.ForeignKey(MenuCategory, on_delete = models.CASCADE)
     is_available = models.BooleanField(default = True)
 
+    is_glutten_free = models.BooleanField(
+        default = False, 
+        help_text = 'Indicates of the menu item is glutten-free'
+    )
+
     def __str__(self) :
         return self.name
-
+"""
 class MenuCategory(models.Model) :
     name = models.CharField(max_length = 100, unique = True)
 
     def __str__(self) :
         return self.name
-"""
+
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -320,7 +325,7 @@ class UserReview(models.Model) :
 
     def __str__(self) :
         return f"{self.user.username} - {self.menu_item.name} Review"
-"""
+
 from django.db import models
 
 class Reservation(models.Model) :
