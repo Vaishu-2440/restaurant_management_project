@@ -1,3 +1,4 @@
+"""
 from django.db import models
 
 class Order(models.Model) :
@@ -19,9 +20,6 @@ class Order(models.Model) :
         return f"Order #{self.id} - {self.status}"
 
 
-
-
-"""
 from django.db import models
 
 class Order(models.Model) :
@@ -43,16 +41,21 @@ class Order(models.Model) :
 
     def __str__(self) :
         return self.order_id
+"""
+from django.db import models
+from decimal import Decimal
+from .models import Order
+from home.models import MenuItem
 
 class OrderItem(models.Model) :
     order = models.ForeignKey(Order, related_name = "items", on_delete = models.CASCADE)
-    item_name = models.CharField(max_length = 100)
-    quantity = models.PositiveIntegerField()
-    price = models.DecimalField(max_digits = 8 , decimal_places = 2)
+    menu_item = models.ForeignKey(MenuItem, on_delete = models.CASCADE)
+    quantity = models.IntegerField(default = 1)
+    price = models.DecimalField(max_digits = 10 , decimal_places = 2)
 
     def __str__(self) :
-        return self.item_name
-
+        return f"{self.quantity} X {self.menu_item.name}"
+"""
 class Order(models.Model) :
     STATUS_PENDING = 'Pemding',
     STATUS_PROCESSING = 'Processing',
