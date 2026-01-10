@@ -49,7 +49,7 @@ class MenuCategory(models.Model) :
 
     def __str__(self) :
         return self.name    
-
+"""
 from django.db import models
 
 class Table(models.Model) :
@@ -58,9 +58,11 @@ class Table(models.Model) :
     is_available = models.BooleanField(default = True)
     location = models. CharField(max_length = 100)
 
-    def __str__(self) :
-        return f"Table {self.table_number} (Capacity : {self.capacity}) - {self.location}"
+    max_seats = models.IntegerField(default = 4)
 
+    def __str__(self) :
+        return f"Table {self.table_number} (Capacity : {self.capacity})"
+"""
 from django.db import models
 
 class MenuItem(models.Model) :
