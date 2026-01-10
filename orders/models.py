@@ -44,7 +44,7 @@ class Order(models.Model) :
 """
 from django.db import models
 from decimal import Decimal
-from .models import Order
+
 from home.models import MenuItem
 
 class OrderItem(models.Model) :
