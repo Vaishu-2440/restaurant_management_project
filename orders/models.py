@@ -1,3 +1,14 @@
+from django.db import models
+
+class DeliveryZone(models.Model) :
+    naem = models.CharField(max_length = 100, unique = True)
+    min_order_amount = models.DecimalField(max_digits = 10, decimal_palces = 2)
+    delivery_fee = models.DecimalField(max_digits = 10, decimal_places = 2)
+    is_active = models.BooleanField(default = True)
+
+    def __str__(self) :
+        return self.name
+
 """
 from django.db import models
 
@@ -41,7 +52,7 @@ class Order(models.Model) :
 
     def __str__(self) :
         return self.order_id
-"""
+
 from django.db import models
 from decimal import Decimal
 
@@ -55,7 +66,7 @@ class OrderItem(models.Model) :
 
     def __str__(self) :
         return f"{self.quantity} X {self.menu_item.name}"
-"""
+
 class Order(models.Model) :
     STATUS_PENDING = 'Pemding',
     STATUS_PROCESSING = 'Processing',
