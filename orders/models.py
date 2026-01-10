@@ -1,8 +1,8 @@
 from django.db import models
 
 class DeliveryZone(models.Model) :
-    naem = models.CharField(max_length = 100, unique = True)
-    min_order_amount = models.DecimalField(max_digits = 10, decimal_palces = 2)
+    name = models.CharField(max_length = 100, unique = True)
+    min_order_amount = models.DecimalField(max_digits = 10, decimal_places = 2)
     delivery_fee = models.DecimalField(max_digits = 10, decimal_places = 2)
     is_active = models.BooleanField(default = True)
 
