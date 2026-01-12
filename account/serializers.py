@@ -8,7 +8,7 @@ class UserLoyaltySerializer(serializers.modelSerializer) :
 
 """
 from django.contrib.auth.models import User
-frm rest_framework import seializers
+from rest_framework import serializers
 
 class UserProfileUpdateSerializer(serializer.ModelSerializer) :
     class Meta :
