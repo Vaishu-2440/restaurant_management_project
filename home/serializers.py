@@ -6,7 +6,6 @@ class FeedbackSerializer(serializers.Modelserializer) :
         model = Feedback
         fields = '__all__'
 
-
 """
 from rest_framework import serializers
 from .models import Cuisine
