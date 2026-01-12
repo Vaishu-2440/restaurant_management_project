@@ -1,3 +1,21 @@
+from django.db import models
+from django.utils import timezone
+
+class DailySpecial(models.Model) :
+    menu_item = models.ForeignKey(
+        'MenuItem',
+        on_delete = models.CASCADE,
+        related_name = 'daily_specials'
+    )
+    date = models.DateField()
+
+    class Meta :
+        unique_together = (('menu_items', 'date'),)
+        ordering = ['-date']
+
+    def __str__(self) :
+        return f"{self.menu_item.name} - {self.date}"
+
 """
 from django.db import models
 
@@ -282,7 +300,7 @@ class MenuCategory(models.Model) :
 
     def __str__(self) :
         return self.name
-"""
+
 from django.db import models
 
 class MenuItem(models.Model) :
@@ -299,7 +317,7 @@ class MenuItem(models.Model) :
 
     def __str__(self) :
         return self.name
-"""
+
 class MenuCategory(models.Model) :
     name = models.CharField(max_length = 100, unique = True)
 
