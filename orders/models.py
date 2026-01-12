@@ -10,7 +10,8 @@ class Discount(models.Model) :
     def __str__(self) :
         return f"{self.code} ({self.percentage}% off)"
 
-""" from django.db import models
+""" 
+from django.db import models
 
 class DeliveryZone(models.Model) :
     name = models.CharField(max_length = 100, unique = True)
