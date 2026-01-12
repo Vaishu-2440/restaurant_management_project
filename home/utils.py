@@ -1,4 +1,17 @@
-from datetime import datetime, time
+import string
+import random
+from home.models import Reservation
+
+def generate_reservation_confirmation_number(length = 10) :
+    characters = string.ascii_uppercase + string.digits
+
+    while True :
+        confirmation_number = ''.join(random.choices(characyers, k = length))
+
+        if not Reservation.objects.filter(confirmation_number = confirmation_number).exists() :
+            return confirmation_number
+
+"""from datetime import datetime, time
 
 def is_restaurant_open() :
     now = datetime.now()
@@ -12,7 +25,6 @@ def is_restaurant_open() :
 
     return opening_time <= current_time <= closing_time
 
-"""
 from .models import Table
 
 def get_available_tables_by_capacity(num_guests) :
