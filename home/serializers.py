@@ -1,7 +1,10 @@
-from django.
+from rest_framework import serializers
+from models import feedback
 
-
-
+class FeedbackSerializer(serializers.Modelserializer) :
+    class Meta :
+        model = Feedback
+        fields = '__all__'
 
 
 """
