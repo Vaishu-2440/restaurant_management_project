@@ -10,7 +10,7 @@ class DailySpecial(models.Model) :
     date = models.DateField()
 
     class Meta :
-        unique_together = (('menu_items', 'date'),)
+        unique_together = (('menu_item', 'date'),)
         ordering = ['-date']
 
     def __str__(self) :
