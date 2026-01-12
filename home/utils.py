@@ -6,7 +6,7 @@ def generate_reservation_confirmation_number(length = 10) :
     characters = string.ascii_uppercase + string.digits
 
     while True :
-        confirmation_number = ''.join(random.choices(characyers, k = length))
+        confirmation_number = ''.join(random.choices(characters, k = length))
 
         if not Reservation.objects.filter(confirmation_number = confirmation_number).exists() :
             return confirmation_number
