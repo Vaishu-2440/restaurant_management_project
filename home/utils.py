@@ -11,6 +11,7 @@ def generate_reservation_confirmation_number(length = 10) :
         if not Reservation.objects.filter(confirmation_number = confirmation_number).exists() :
             return confirmation_number
 
+
 """from datetime import datetime, time
 
 def is_restaurant_open() :
