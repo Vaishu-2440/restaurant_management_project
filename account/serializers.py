@@ -6,8 +6,7 @@ class UserLoyaltySerializer(serializers.modelSerializer) :
         model = User
         fields = ['loyalty_points']
 
-"""
-from django.contrib.auth.models import User
+"""from django.contrib.auth.models import User
 from rest_framework import serializers
 
 class UserProfileUpdateSerializer(serializer.ModelSerializer) :
