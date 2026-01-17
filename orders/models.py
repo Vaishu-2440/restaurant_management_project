@@ -1,5 +1,16 @@
 from django.db import models
 
+class Table(models.Model) :
+    table_number = models.IntegerField(unique = True)
+    capacity = models.IntegerField()
+    is_available = models.BooleanField(default = True)
+
+    def __str__(self) :
+        return f"{self.table_number} (Capacity : {self.capacity})"
+
+"""
+from django.db import models
+
 class Discount(models.Model) :
     code = models.CharField(max_length = 50, unique = True)
     percentage = models.DecimalField(max_digits = 5, decimal_places = 2)
@@ -10,7 +21,6 @@ class Discount(models.Model) :
     def __str__(self) :
         return f"{self.code} ({self.percentage}% off)"
 
-""" 
 from django.db import models
 
 class DeliveryZone(models.Model) :
