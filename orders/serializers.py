@@ -1,4 +1,13 @@
 from rest_framework import serializers
+from orders.models import Table
+
+class TableSerializer(serializers.ModelSerializer) :
+    class Meta :
+        models = Table
+        fields = '__all__'
+
+"""
+from rest_framework import serializers
 from orders.models import Order, OrderItem
 
 class OrderItemSerializer(serializers.ModelSerializer) :
@@ -19,7 +28,7 @@ class OrderSerializer(serializers.ModelSerializer) :
             'items'
         ]
 
-"""
+
 from decimal import Decimal, ROUND_HALF_UP
              import numbers
 
