@@ -8,8 +8,7 @@ class Table(models.Model) :
     def __str__(self) :
         return f"{self.table_number} (Capacity : {self.capacity})"
 
-"""
-from django.db import models
+""" from django.db import models
 
 class Discount(models.Model) :
     code = models.CharField(max_length = 50, unique = True)
