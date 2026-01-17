@@ -1,3 +1,7 @@
+
+
+
+"""
 from django.db import models
 from django.utils import timezone
 
@@ -15,7 +19,7 @@ class DailySpecial(models.Model) :
 
     def __str__(self) :
         return f"{self.menu_item.name} - {self.date}"
-"""
+
 from django.db import models
 
 class Cuisine(models.Model) :
@@ -79,18 +83,29 @@ class Table(models.Model) :
 
     def __str__(self) :
         return f"Table {self.table_number} (Capacity : {self.capacity})"
-
+"""
 from django.db import models
 
 class MenuItem(models.Model) :
     name = models.CharField(max_length = 100)
     price = models.DecimalField(max_digits = 8, decimal_places = 2)
+    description = models.TextField(blank = True, null = True)
+
+    is_featured = models.BooleanField(
+        default = False,
+        help_text = "Mark this item as featured for promotions and highlights."
+    )
+
+    def __str__(self) :
+        return self.name
+   
+"""
     cuisine = models.CharField(max_length = 50)
     is_available = models.BooleanField(default = True)
     
     def __str__(self) :
         return self.name
-        
+       
 class FAQ(models.Model) :
     question = models.CharField(max_length = 255)
     answer = models.TextField()
