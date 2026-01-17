@@ -4,7 +4,7 @@ from orders.models import Table
 class TableSerializer(serializers.ModelSerializer) :
     class Meta :
         models = Table
-        fields = '__all__'
+        fields = "__all__"
 
 """
 from rest_framework import serializers
