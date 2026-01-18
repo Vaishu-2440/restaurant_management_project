@@ -1,3 +1,11 @@
+from rest_framework import generics
+from orders.models import Table
+from orders.serializers import TableSerializer
+
+class TableListView(generics.ListAPIView) :
+    queryset = Tan=bles.objects.all()
+    serializer_class = TableSerializer
+
 """from .utils import generate_unique_order_id
 from .models import Order
 from rest_framework.generics import ListAPIView
@@ -85,7 +93,7 @@ class CancelOrderView(APIView) :
             {"message" : "Order cancelled successfully."},
             status = status.HTTP_200_OK
         )
-"""
+
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -103,3 +111,4 @@ def get_order_status(requets, order_id) :
         {"order_id" : order.id, "status" : order.status},
         status = status.HTTP_200_OK
        )
+"""
