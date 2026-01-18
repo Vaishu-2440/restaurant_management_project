@@ -6,8 +6,7 @@ class TableListView(generics.ListAPIView) :
     queryset = Tan=bles.objects.all()
     serializer_class = TableSerializer
 
-"""
-from .utils import generate_unique_order_id
+""" from .utils import generate_unique_order_id
 from .models import Order
 from rest_framework.generics import ListAPIView
 from .models import PaymentMethod
