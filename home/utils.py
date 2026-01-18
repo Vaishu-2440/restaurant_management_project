@@ -1,3 +1,8 @@
+def format_currency(amount) :
+    return f"${amount :.2f}"
+
+
+"""
 import string
 import random
 from home.models import Reservation
@@ -12,7 +17,7 @@ def generate_reservation_confirmation_number(length = 10) :
             return confirmation_number
 
 
-"""from datetime import datetime, time
+from datetime import datetime, time
 
 def is_restaurant_open() :
     now = datetime.now()
