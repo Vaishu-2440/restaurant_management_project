@@ -1,7 +1,6 @@
 def format_currency(amount) :
     return f"${amount :.2f}"
 
-
 """
 import string
 import random
