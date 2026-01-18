@@ -3,7 +3,7 @@ from orders.models import Table
 from orders.serializers import TableSerializer
 
 class TableListView(generics.ListAPIView) :
-    queryset = Tan=bles.objects.all()
+    queryset = Tables.objects.all()
     serializer_class = TableSerializer
 
 """ from .utils import generate_unique_order_id
