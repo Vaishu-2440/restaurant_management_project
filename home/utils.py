@@ -1,7 +1,17 @@
+def estimate_table_turnover_time(table_capacity : int) -> int :
+    if table_capacity <= 2 :
+        return 60
+    elif table_capacity <= 4 :
+        return 90
+    else :
+        return 120
+
+
+
+"""
 def format_currency(amount) :
     return f"${amount :.2f}"
 
-"""
 import string
 import random
 from home.models import Reservation
