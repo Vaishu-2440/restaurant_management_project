@@ -1,4 +1,4 @@
-from django.db import serializers
+from rest_framework import serializers
 from .models import MenuItem
 
 class MenuItemSerializer(serializers.ModelSerializer) :
@@ -14,7 +14,7 @@ from .models import feedback
 
 class FeedbackSerializer(serializers.Modelserializer) :
     class Meta :
-        model = Feedback
+        model = feedback
         fields = '__all__'
 
 from rest_framework import serializers
