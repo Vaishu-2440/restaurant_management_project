@@ -6,8 +6,6 @@ def estimate_table_turnover_time(table_capacity : int) -> int :
     else :
         return 120
 
-
-
 """
 def format_currency(amount) :
     return f"${amount :.2f}"
