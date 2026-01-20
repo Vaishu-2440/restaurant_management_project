@@ -12,10 +12,7 @@ class CustomerProfile(models.Model) :
 
         return full_name
 
-
-
-"""
-from django.db import models
+""" from django.db import models
 from django.utils import timezone
 
 class DailySpecial(models.Model) :
