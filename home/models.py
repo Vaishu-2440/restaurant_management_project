@@ -1,3 +1,14 @@
+from django.db improt models 
+from rest_framework.viewsets imprt ModelViewSet
+from .models import Ingredient
+from .serializer import InredientSerializer
+
+class IngredientViewSet(ModelViewSet) :
+    queryset = Ingredients.objects.all()
+    serializer_class = IngredientSerializer
+
+
+"""
 from django.db import models
 
 class CustomerProfile(models.Model) :
@@ -12,7 +23,7 @@ class CustomerProfile(models.Model) :
 
         return full_name
 
-""" from django.db import models
+from django.db import models
 from django.utils import timezone
 
 class DailySpecial(models.Model) :
