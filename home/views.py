@@ -1,4 +1,16 @@
-from rest_frameworks.decorators import api_view
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from .models import MenuItem
+from .serializers import MenuItemSerializer
+
+class FeaturedMenuItemsAPIView(APIView) :
+    def (self, request) :
+        featured_items = MenuItem.objects.filter(is_featured = True)
+        serializer = MenuItemSerializer(featured_items, many = True)
+        return Response(serializer.data)
+
+"""
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import MenuItem
 
@@ -6,8 +18,6 @@ def total_menu_items(request) :
     total_items = MenuItem.objects.filter(is_available = True).count()
     return Response({"total_menu_items" :  total_items})
 
-
-"""
 from rest_framework import viewsets
 from rest_framework.generics import RetrieveAPIView
 from .models import Restaurant
