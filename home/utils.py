@@ -1,3 +1,21 @@
+from datetime import datetime
+from django.utils.timezone import now
+from .models import DailyOperatingHours
+
+def is_restaurant_open() :
+    current_time = now().time()
+    current_day = now().strftime('%A').lower()
+    try :
+        today_hours = DailyOperatingHours.objects.get(day_of_week = current_day)
+    except DailyOperatingHours.DoesNotExists :
+        return False
+
+    if today_hours.open_time <= current_time <= today_hours.close_time :
+        return True
+    return False
+
+
+"""
 def estimate_table_turnover_time(table_capacity : int) -> int :
     if table_capacity <= 2 :
         return 60
@@ -6,7 +24,6 @@ def estimate_table_turnover_time(table_capacity : int) -> int :
     else :
         return 120
 
-"""
 def format_currency(amount) :
     return f"${amount :.2f}"
 
