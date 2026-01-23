@@ -1,3 +1,19 @@
+from django.db import models
+
+class MenuItemmanager(models.Model) :
+    def get_budget_items(self, max_price) :
+        return self.filter(price__lt = max_price)
+
+class MenuItem(models.Model) :
+    name = models.CharField(max_length = 100)
+    price = models.DecimalField(max_digits = 6, decimal_palces = 2)
+
+    objects = MenuItemManager()
+
+    def __str__(self) :
+        return self.name
+        
+"""
 from django.conf import settings 
 from django.db import models
 
@@ -10,7 +26,7 @@ class Feedback(models.Model) :
         related_name = 'feedbacks'
     )
 
-""" from django.db import models 
+ from django.db import models 
 from rest_framework.viewsets imp0rt ModelViewSet
 from .models import Ingredient
 from .serializer import InredientSerializer
