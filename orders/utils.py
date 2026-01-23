@@ -1,4 +1,4 @@
-def calculate_estimate_prep_time(oreder_items) :
+def calculate_estimate_prep_time(order_items) :
     total_prep_time = 0
     for item in order_items :
         prep_time = item.get('prep_time_minutes', 0)
@@ -7,8 +7,7 @@ def calculate_estimate_prep_time(oreder_items) :
 
     return int(total_prep_time)
 
-"""
-def calculate_average_rating(review_queryset) :
+""" def calculate_average_rating(review_queryset) :
     try :
         if not review_queryset.exists() :
 
