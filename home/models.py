@@ -3,17 +3,14 @@ from django.db import models
 
 class Feedback(models.Model) :
     user = models.ForeignKey(
-        SETTINGS.AUTH_USER.MODEL,
+        settings.AUTH_USER.MODEL,
         on_delete = models.SET_NULL,
         null = True,
         blank = True,
         related_name = 'feedbacks'
     )
 
-
-
-"""
-from django.db improt models 
+""" from django.db import models 
 from rest_framework.viewsets imprt ModelViewSet
 from .models import Ingredient
 from .serializer import InredientSerializer
