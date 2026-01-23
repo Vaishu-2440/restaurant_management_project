@@ -22,9 +22,10 @@ from django.contrib import admin
 from .models import Table
 
 admin.site.register(Restaurant, RestaurantAdmin)
+
 """
+
 from django.contrib import admin
 from .models import DailyOperatingHours
 
 admin.site.register(DailyOperatingHours)
-# Register your models here.
