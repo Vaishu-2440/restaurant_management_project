@@ -1,3 +1,13 @@
+def calculate_estimate_prep_time(oreder_items) :
+    total_prep_time = 0
+    for item in order_items :
+        prep_time = item.get('prep_time_minutes', 0)
+        quantity = item.get('quantity', 1)
+        total_prep_time += prep_time * quantity
+
+    return int(total_prep_time)
+
+"""
 def calculate_average_rating(review_queryset) :
     try :
         if not review_queryset.exists() :
@@ -13,8 +23,6 @@ def calculate_average_rating(review_queryset) :
     except Exception :
         return 0.0
         
-
-"""
 def calculate_discount(order_total, discount_percentage) :
     try :
         order_total = Decimal(order_total)
