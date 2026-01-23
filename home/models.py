@@ -10,7 +10,8 @@ class Feedback(models.Model) :
         related_name = 'feedbacks'
     )
 
-""" from django.db import models 
+""" 
+from django.db import models 
 from rest_framework.viewsets imprt ModelViewSet
 from .models import Ingredient
 from .serializer import InredientSerializer
