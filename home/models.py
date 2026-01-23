@@ -1,3 +1,18 @@
+from django.conf import settings 
+from django.db import models
+
+class Feedback(models.Model) :
+    user = models.ForeignKey(
+        SETTINGS.AUTH_USER.MODEL,
+        on_delete = models.SET_NULL,
+        null = True,
+        blank = True,
+        related_name = 'feedbacks'
+    )
+
+
+
+"""
 from django.db improt models 
 from rest_framework.viewsets imprt ModelViewSet
 from .models import Ingredient
@@ -7,8 +22,6 @@ class IngredientViewSet(ModelViewSet) :
     queryset = Ingredients.objects.all()
     serializer_class = IngredientSerializer
 
-
-"""
 from django.db import models
 
 class CustomerProfile(models.Model) :
@@ -104,7 +117,7 @@ class Table(models.Model) :
 
     def __str__(self) :
         return f"Table {self.table_number} (Capacity : {self.capacity})"
-"""
+
 from django.db import models
 
 class MenuItem(models.Model) :
@@ -120,7 +133,6 @@ class MenuItem(models.Model) :
     def __str__(self) :
         return self.name
    
-"""
     cuisine = models.CharField(max_length = 50)
     is_available = models.BooleanField(default = True)
     
