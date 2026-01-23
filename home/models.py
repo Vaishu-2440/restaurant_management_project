@@ -1,5 +1,14 @@
 from django.db import models
 
+class Restaurant(models.Model) :
+    max_capacity = mdoels.IntegerField(null = True, blank = True)
+    
+    def __str__(self) :
+        return self.name
+
+"""
+from django.db import models
+
 class MenuItemmanager(models.Model) :
     def get_budget_items(self, max_price) :
         return self.filter(price__lt = max_price)
@@ -13,7 +22,6 @@ class MenuItem(models.Model) :
     def __str__(self) :
         return self.name
         
-"""
 from django.conf import settings 
 from django.db import models
 
