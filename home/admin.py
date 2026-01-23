@@ -17,11 +17,14 @@ class RestaurantAdmin(admin.ModelAdmin) :
     list_display = ('name', 'address', 'phone_number', 'email', 'is_active')
     search_field = ('name', 'address')
     list_filter = ('is_active')
-"""
 
 from django.contrib import admin
 from .models import Table
 
 admin.site.register(Restaurant, RestaurantAdmin)
+"""
+from django.contrib import admin
+from .models import DailyOperatingHours
 
+admin.site.register(DailyOperatingHours)
 # Register your models here.
