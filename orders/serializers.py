@@ -6,8 +6,7 @@ class TableSerializer(serializers.ModelSerializer) :
         models = Table
         fields = "__all__"
 
-"""
-from rest_framework import serializers
+""" from rest_framework import serializers
 from orders.models import Order, OrderItem
 
 class OrderItemSerializer(serializers.ModelSerializer) :
