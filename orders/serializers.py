@@ -1,4 +1,18 @@
 from rest_framework import serializers
+from .models import OrderItem
+
+class UpdateOrderItemQuantitySerializer(serializers.ModelSerializer) :
+    class Meta :
+        model = OrderItem
+        fields = ["id", "quantity"]
+
+    def validate_quantity(self, value) :
+        if value < 0 :
+            raise serializers.ValidateError("Quantity must be a positive integer")
+        return value
+
+"""
+from rest_framework import serializers
 from orders.models import Table
 
 class TableSerializer(serializers.ModelSerializer) :
@@ -6,7 +20,7 @@ class TableSerializer(serializers.ModelSerializer) :
         models = Table
         fields = "__all__"
 
-""" from rest_framework import serializers
+from rest_framework import serializers
 from orders.models import Order, OrderItem
 
 class OrderItemSerializer(serializers.ModelSerializer) :
