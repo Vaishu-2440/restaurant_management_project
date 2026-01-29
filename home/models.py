@@ -1,21 +1,21 @@
 from django.db import models
+from django.utils import timezone
 
-class Restaurant(models.Model) :
-    max_capacity = mdoels.IntegerField(null = True, blank = True)
-    
+class  DailySpecial(models.Model) :
+    name = models.CharField(max_length = 255)
+    description = models.TextField()
+    price = models.DecimalField(max_digits = 8, decimal_places = 2)
+    is_available = models.BooleanField(default = True)
+    date = models.DateField(default = timezone.now().date)
+
     def __str__(self) :
-        return self.name
+        return f"{self.name} - {self.date}"
 
 """
 from django.db import models
 
-class MenuItemmanager(models.Model) :
-    def get_budget_items(self, max_price) :
-        return self.filter(price__lt = max_price)
-
-class MenuItem(models.Model) :
-    name = models.CharField(max_length = 100)
-    price = models.DecimalField(max_digits = 6, decimal_palces = 2)
+class Restaurant(models.Model) :
+    max_capacity = mdoels.IntegerField(null = True)
 
     objects = MenuItemManager()
 
@@ -294,7 +294,7 @@ class UserReview(models.Model) :
 
     def __str__(self) :
         return f"{self.user.username} - {self.rating}"
-  """
+  
 from django.db import models
 from .models import MenuItem
 
@@ -322,7 +322,7 @@ class DailyOperatingHours(models.Model) :
 
         def __str__(self) :
             return f"{self.day} - {self.restaurant.name}"
-"""
+
     class LoyaltyProgram(models.Model) :
     name = models.CharField(max_length = 100, unique = True)
     points_per_dollar_spent = models.DecimalField(max_digits = 5, decimal_places = 2)
