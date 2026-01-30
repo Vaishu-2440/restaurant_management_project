@@ -1,5 +1,15 @@
 from django.db import models
 
+class Ingredient(models.Model) :
+    name = models.CharField(max_length = 100, unique = True)
+    description = models.TextField(blank = True)
+
+    def __str__(self) :
+        return self.name
+
+"""
+from django.db import models
+
 class Staff(models.Model) :
     CHEF = "CHEF"
     WAITER = "WAITER"
@@ -19,8 +29,6 @@ class Staff(models.Model) :
     def __str__(self) :
         return f"{self.first_name} {self.last_name} ({self.role}) "
 
-
-"""
 from django.db import models
 from django.utils import timezone
 
