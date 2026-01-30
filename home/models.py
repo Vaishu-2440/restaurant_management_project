@@ -1,4 +1,27 @@
 from django.db import models
+
+class Staff(models.Model) :
+    CHEF = "CHEF"
+    WAITER = "WAITER"
+    MANAGER = "MANAGER"
+
+    ROLE_CHOICES = [
+        (CHEF, "Chef"),
+        (WAITER, "Waiter"),
+        (MANAGER, "Manager"),
+    ]
+    
+    first_name = models.CharField(max_length = 100)
+    last_name = models.CharField(max_length = 100)
+    role = models.CharField(max_length = 20, choices = ROLE_CHOICES)
+    contact_email = models.EmailField(unique = True)
+
+    def __str__(self) :
+        return f"{self.first_name} {self.last_name} ({self.role}) "
+
+
+"""
+from django.db import models
 from django.utils import timezone
 
 class  DailySpecial(models.Model) :
@@ -11,7 +34,6 @@ class  DailySpecial(models.Model) :
     def __str__(self) :
         return f"{self.name} - {self.date}"
 
-"""
 from django.db import models
 
 class Restaurant(models.Model) :
