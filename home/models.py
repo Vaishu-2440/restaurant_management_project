@@ -1,5 +1,27 @@
 from django.db import models
 
+class Table(models.Model) :
+    table_number = models.CharField(
+    max_length = 50, 
+    unique = True, 
+    help_text = "Unique identifier like 'Table I' or 'Bar seat 5' "
+    )
+    capacity = models.IntegerField(
+        help_text = "Maximum number of guests the table can seat"
+    )
+    is_available = models.BooleanField(
+        default = True,
+        help_text = "Is this table currently available for reservation?"
+    )
+
+    def __str__(self) :
+        return f"{self.table_number} (Capacity: {self.capacity})"
+
+
+
+"""
+from django.db import models
+
 class MenuItem(models.Model) :
     name = models.CharField(max_length = 200)
     price = models.DecimalField(max_digits = 8, decimal_places = 2)
@@ -9,9 +31,6 @@ class MenuItem(models.Model) :
     def __str__(self) :
         return self.name
 
-
-
-"""
 from django.db import models
 
 class Ingredient(models.Model) :
