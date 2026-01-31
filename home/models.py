@@ -1,5 +1,38 @@
 from django.db import models
 
+class Restaurant(models..Model) :
+    name = models.CharField(max_length = 100, unique = True)
+
+    def __str__(self) :
+        return self.name
+
+class HolidayHours(models.Model) :
+    restaurant = models.ForeignKey(
+        Restaurant,
+        on_delete = models.CASCADE,
+        related_name = 'holiday_hours'
+    )
+    date = models.DateTimeField
+    opening_time = models.TimeField()
+    closing_time = models.TimeField()
+    description = models.CharField(
+        max_length = 255,
+        blank = True,
+        null = True,
+        help_text = "E.g. Christmas Day, New Year Eve"
+    )
+    class Meta :
+        unique_together = ("restaurant", "date")
+        ordering = ["date"]
+    
+    def __str__(self) :
+        return f"{self.restaurant.name} - {self.date}"
+
+
+
+"""
+from django.db import models
+
 class Table(models.Model) :
     table_number = models.CharField(
     max_length = 50, 
@@ -17,9 +50,6 @@ class Table(models.Model) :
     def __str__(self) :
         return f"{self.table_number} (Capacity: {self.capacity})"
 
-
-
-"""
 from django.db import models
 
 class MenuItem(models.Model) :
