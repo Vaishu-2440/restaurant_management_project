@@ -382,7 +382,7 @@ class OpeningHours(models.Model) :
         return f"{self.day} : {self.opening_time} - {self.closing_time}" 
         
 from django.db import models
-deom decimal import Decimal
+from decimal import Decimal
 
 class MenuItem(models.Model) :
     name = models.CharField(max_length = 100)
@@ -568,6 +568,7 @@ class Reservation(models.Model) :
 
         return available
 """
+
 
 
 
