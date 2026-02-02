@@ -135,12 +135,12 @@ class IngredientViewSet(ModelViewSet) :
 
 from django.db import models
 
-class CustomerProfile(models.Model) :
+class CustomerProfile(models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE)
     first_name = models.CharField(max_length = 50, blank = True, null = True)
     last_name = models.CharField(max_length = 50, blank = True, null = True)
 
-    def get_full_name(self) :
+    def get_full_name(self):
         first = self.first_name or ""
         last = self.last_name or ""
         full_name = f"{first} {last}".strip()
@@ -533,6 +533,7 @@ class Reservation(models.Model) :
 
         return available
 """
+
 
 
 
