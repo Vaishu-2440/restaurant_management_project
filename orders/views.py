@@ -25,7 +25,7 @@ class UpdateOrderStatusView(APIView) :
         new_status = request.data.get("status")
 
         if not order_id or not new_status :
-            return Resposne(
+            return Response(
                 {"error" : "order_id and status are required"},
                 status = status.HTTP_400_BAD_REQUEST
             )
@@ -115,4 +115,5 @@ def get_order_status(requets, order_id) :
        )
 
 """
+
 
