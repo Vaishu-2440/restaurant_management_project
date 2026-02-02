@@ -124,7 +124,7 @@ class Feedback(models.Model) :
         related_name = 'feedbacks'
 )
 
- from django.db import models 
+from django.db import models 
 from rest_framework.viewsets import ModelViewSet
 from .models import Ingredient
 from .serializer import InredientSerializer
@@ -195,7 +195,6 @@ class Cuisine(models.Manager) :
 
     def __str__(self) :
         return self.name
-
 
 from django.db import models
 
@@ -286,7 +285,7 @@ class MenuItem(models.Model) :
         return cls.objects.filter(cuisine_type__iexact = cuisine_type)
 
 class MenuCategory(models.Model) :
-    name models.CharField(max_length = 100, unique = True )
+    name = models.CharField(max_length = 100, unique = True )
     
     def __str__(self) :
         return self.name
@@ -422,7 +421,7 @@ class LoyaltyProgram(models.Model) :
     description = models.TextField()
     is_active = models.BooleanField(default = True)
 
-    created_at = models.DatetimeField(auto_now_add = True)
+    created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
 
     def __str__(self) :
@@ -539,6 +538,7 @@ class Reservation(models.Model) :
 
         return available
 """
+
 
 
 
