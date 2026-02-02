@@ -3,7 +3,7 @@ from .models import OrderItem
 
 class UpdateOrderItemQuantitySerializer(serializers.ModelSerializer) :
     class Meta :
-        models = OrderItem
+        model = OrderItem
         fields = ["id", "quantity"]
 
     def validate_quantity(self, value) :
@@ -17,7 +17,7 @@ from orders.models import Table
 
 class TableSerializer(serializers.ModelSerializer) :
     class Meta :
-        models = Table
+        model = Table
         fields = "__all__"
 
 from rest_framework import serializers
@@ -25,7 +25,7 @@ from orders.models import Order, OrderItem
 
 class OrderItemSerializer(serializers.ModelSerializer) :
     class Meta :
-        models = OrderItem
+        model = OrderItem
         fields = ['id', 'menu_item', 'quantity', 'price']
 
 class OrderSerializer(serializers.ModelSerializer) :
@@ -90,3 +90,4 @@ def calculate_total(self) -> Decimal :
     return total.quantize(Decimal('0.01'), rounding = ROUND_HALF_UP)
 
 """
+
