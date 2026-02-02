@@ -56,7 +56,7 @@ def calculate_total(self) -> Decimal:
 
     order_items = getattr(self, "order_item", self.order_item).all()
 
-    for order_items in order_item:
+    for order_item in order_item:
         price = Decimal(str(order_item.price or 0))
         quantity = Decimal(str(order_item.quantity or 0))
         line_total = price * quantity
@@ -102,6 +102,7 @@ def calculate_total(self) -> Decimal:
 
     return total.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
 """
+
 
 
 
