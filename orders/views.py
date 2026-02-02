@@ -3,7 +3,7 @@ from orders.models import Table
 from orders.serializers import TableSerializer
 
 class TableListView(generics.ListAPIView) :
-    queryset = Tables.objects.all()
+    queryset = Table.objects.all()
     serializer_class = TableSerializer
 
 """ 
@@ -17,7 +17,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Order
-from rest_framework.decorators import api_view
+from rest_framework.views import APIView
 
 class UpdateOrderStatusView(APIView) :
     def post(self, request, *args, **kwargs) :
@@ -96,7 +96,7 @@ class CancelOrderView(APIView) :
             status = status.HTTP_200_OK
         )
 
-from rest_framework.decorators import api_view
+from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Order
@@ -115,3 +115,4 @@ def get_order_status(requets, order_id) :
        )
 
 """
+
