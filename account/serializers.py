@@ -21,10 +21,11 @@ from rest_framework import serializers
 class UserProfileUpdateSerializer(serializers.ModelSerializer) :
     class Meta :
         model = User
-        field = ['first_name', 'last_name', 'email']
+        fields = ['first_name', 'last_name', 'email']
         extra_kwargs = {
             "email" : {"required" : "True"}
         }
 
 """
+
 
