@@ -119,13 +119,14 @@ def format_phone_number(phone_number) :
         return phone_number
 
 
-def is_valid_email(email) :
-    if not email or isinstance(email, str) :
-        return False
-    
-    email_pattern = r'^[a-zA-Z0-9_,+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
-    return bool(re.match(email_pattern, email))
+import re
 
+def is_valid_email(email):
+    if not email or not isinstance(email, str):
+        return False
+    email_pattern = r'^[a-zA-Z0-9_,+\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-.]+$'
+    return bool(re.match(email_pattern, email))
+    
 import smtplib
 from email.mime.text import MIMEText
 from django.conf import settings
@@ -176,6 +177,7 @@ def calculate_discount(price, discount_percentage) :
     except (ValueError, TypeError) :
         return price
 """
+
 
 
 
