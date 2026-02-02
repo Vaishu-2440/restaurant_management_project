@@ -12,7 +12,7 @@ class HolidayHours(models.Model) :
         on_delete = models.CASCADE,
         related_name = 'holiday_hours'
     )
-    date = models.DateTimeField
+    date = models.DateTimeField()
     opening_time = models.TimeField()
     closing_time = models.TimeField()
     description = models.CharField(
@@ -532,4 +532,5 @@ class Reservation(models.Model) :
             available.append((current_start, range_end))
 
         return available
+
 
