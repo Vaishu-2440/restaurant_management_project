@@ -1,6 +1,6 @@
 from django.db import models
 
-class Restaurant(models..Model) :
+class Restaurant(models.Model) :
     name = models.CharField(max_length = 100, unique = True)
 
     def __str__(self) :
@@ -535,4 +535,5 @@ class Reservation(models.Model) :
             available.append((current_start, range_end))
 
         return available
+
 """
