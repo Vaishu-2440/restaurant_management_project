@@ -6,8 +6,10 @@ class TableListView(generics.ListAPIView) :
     queryset = Tables.objects.all()
     serializer_class = TableSerializer
 
-""" from .utils import generate_unique_order_id
+""" 
+from .utils import generate_unique_order_id
 from .models import Order
+from rest_framework import generics
 from rest_framework.generics import ListAPIView
 from .models import PaymentMethod
 from .serializers import PaymentMethodSerializer
@@ -111,4 +113,5 @@ def get_order_status(requets, order_id) :
         {"order_id" : order.id, "status" : order.status},
         status = status.HTTP_200_OK
        )
+
 """
