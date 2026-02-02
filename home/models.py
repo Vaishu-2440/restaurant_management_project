@@ -221,7 +221,7 @@ class Table(models.Model) :
     table_number = models.IntegerField(unique = True)
     capacity = models.IntegerField()
     is_available = models.BooleanField(default = True)
-    location = models. CharField(max_length = 100)
+    location = models.CharField(max_length = 100)
 
     max_seats = models.IntegerField(default = 4)
 
@@ -533,6 +533,7 @@ class Reservation(models.Model) :
 
         return available
 """
+
 
 
 
