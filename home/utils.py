@@ -1,20 +1,3 @@
-from datetime import time
-from django.utils.timezone import now
-from .models import DailyOperatingHours
-
-def restaurant_open() :
-    now = timezone.localtime()
-    current_day = now.strftime('%A')
-    current_time = now.time()
-
-    try :
-        today_hours = DailyOperatingHours.objects.get(day_of_week = current_day)
-    except DailyOperatingHours.DoesNotExist :
-        return False
-
-    return today_hours.opening_time <= current_time <= today_hours.closing_time
-
-
 """
 def format_currency(amount, currency_symbol = '$'):
     try :
@@ -22,9 +5,9 @@ def format_currency(amount, currency_symbol = '$'):
 
     except (TypeError, ValueError) :
         return f"{currency_symbol}0.00"
-
+"""
 from datetime import time
-from django.utils.timezone import now
+from django.utils import timezone
 from .models import DailyOperatingHours
 
 def is_restaurant_open1() :
@@ -38,7 +21,7 @@ def is_restaurant_open1() :
     if today_hours.opening_time < current_time < today_hours.closing_time :
         return True
     return False
-
+"""
 def estimate_table_turnover_time(table_capacity : int) -> int :
     if table_capacity <= 2 :
         return 60
@@ -193,6 +176,7 @@ def calculate_discount(price, discount_percentage) :
     except (ValueError, TypeError) :
         return price
 """
+
 
 
 
