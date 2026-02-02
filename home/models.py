@@ -513,7 +513,7 @@ class Reservation(models.Model) :
     def __str__(self) :
         return f"{self.customer_name} ({self.start_time} -> {self.end_time})"
 
-    def get_available_slots(range_start, range_end) :
+    def get_available_slots(self, range_start, range_end) :
 
         reservations = Reservation.objects.filter(
             end_time_gt = range_start,
@@ -533,6 +533,7 @@ class Reservation(models.Model) :
 
         return available
 """
+
 
 
 
