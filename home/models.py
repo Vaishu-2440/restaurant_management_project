@@ -130,7 +130,7 @@ from .models import Ingredient
 from .serializer import InredientSerializer
 
 class IngredientViewSet(ModelViewSet) :
-    queryset = Ingredients.objects.all()
+    queryset = Ingredient.objects.all()
     serializer_class = IngredientSerializer
 
 from django.db import models
@@ -540,6 +540,7 @@ class Reservation(models.Model) :
 
         return available
 """
+
 
 
 
