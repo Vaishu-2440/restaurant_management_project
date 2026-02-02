@@ -128,7 +128,7 @@ class DailySpecialSerializer(serializer.ModelSerializer) :
 from rest_framework import serializers
 from .models import MenuCategory
 
-class MenuCategorySerializer(serializer.ModelSerializer) :
+class MenuCategorySerializer(serializers.ModelSerializer) :
     class Meta :
         model = MenuCategory
         fields = ['id', 'name']
@@ -144,5 +144,6 @@ class UserReviewSerializer(serializers.ModelSerializer) :
             raise serializers.ValidationError("Rating must be between 1 or 5")
         return value
 """
+
 
 
