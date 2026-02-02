@@ -28,7 +28,7 @@ class HolidayHours(models.Model) :
     
     def __str__(self) :
         return f"{self.restaurant.name} - {self.date}"
-
+        
 from django.db import models
 
 class Table(models.Model) :
@@ -533,6 +533,7 @@ class Reservation(models.Model) :
 
         return available
 """
+
 
 
 
