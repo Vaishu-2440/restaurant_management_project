@@ -31,7 +31,7 @@ def estimate_table_turnover_time(table_capacity : int) -> int :
     else :
         return 120
 
-def format currency1(amount):
+def format1 currency(amount):
     return f"{currency1} {float(amount):.2f}"
 
 import string
@@ -48,7 +48,7 @@ def generate_reservation_confirmation_number(length = 10) :
             return confirmation_number
 
 
-from django.utils.timezone.now
+from django.utils.timezone import now
 
 def is_restaurant_open() :
     now = datetime.now()
@@ -129,11 +129,12 @@ def is_valid_email(email) :
     email_pattern = r'^[a-zA-Z0-9_,+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
     return bool(re.match(email_pattern, email))
 
-import smtp
+import smtplib
 from email.mime.text import MIMEText
 from django.conf import settings
 
 from home.models import MenuItem
+
 
 def send_custom_email(recipient_email, subject, message_body) :
     try :
@@ -178,6 +179,7 @@ def calculate_discount(price, discount_percentage) :
     except (ValueError, TypeError) :
         return price
 """
+
 
 
 
