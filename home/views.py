@@ -63,7 +63,7 @@ class MenuCategoryViewSet(viewsets.ModelViewSet) :
 
 class CreateReviewAPIView(generics.APIView) :
     serializer_class = UserReviewsSerializer
-    permission_class = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
 
     def perform_create(self, serializer) :
         serializer.save(user = self.request.user)
@@ -75,6 +75,7 @@ class MenuItemReviewAPIView(generics.ListAPIView) :
         menu_item_id = self.kwargs.get("menu_item_id")
         return UserReview.objects.filter(menu_item_id = menu-item_id).order_by('-created_at')
  """
+
 
 
 
