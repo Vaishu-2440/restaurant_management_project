@@ -87,7 +87,7 @@ class Staff(models.Model) :
 
     def __str__(self) :
         return f"{self.first_name} {self.last_name} ({self.role}) "
-"""
+
 from django.db import models
 from django.utils import timezone
 
@@ -100,8 +100,9 @@ class  DailySpecial(models.Model) :
 
     def __str__(self) :
         return f"{self.name} - {self.date}"
-"""
+
 from django.db import models
+from .models import MenuItemManager
 
 class Restaurant(models.Model) :
     max_capacity = models.IntegerField(null = True)
@@ -537,6 +538,7 @@ class Reservation(models.Model) :
 
         return available
 """
+
 
 
 
