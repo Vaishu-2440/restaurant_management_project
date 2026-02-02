@@ -10,7 +10,7 @@ class StaffSerializer(serializers.ModelSerializer) :
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
-class UserLoyaltySerializer(serializers.modelSerializer) :
+class UserLoyaltySerializer(serializers.ModelSerializer) :
     class Meta :
         model = User
         fields = ['loyalty_points']
@@ -27,3 +27,4 @@ class UserProfileUpdateSerializer(serializers.ModelSerializer) :
         }
 
 """
+
