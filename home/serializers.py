@@ -13,8 +13,7 @@ from .models import MenuItem
 class MenuItemSerializer(serializers.ModelSerializer) :
     class Meta :
         model = MenuItem
-        fields = '__all__'
-        
+        fields = '__all__'    
 """
 from rest_framework import serializers
 from .models import feedback
@@ -145,3 +144,4 @@ class UserReviewSerializer(serializers.ModelSerializer) :
             raise serializers.ValidationError("Rating must be between 1 or 5")
         return value
 """
+
