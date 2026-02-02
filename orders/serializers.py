@@ -43,9 +43,8 @@ class OrderSerializer(serializers.ModelSerializer) :
 
 
 from decimal import Decimal, ROUND_HALF_UP
-import numbers
-
-
+             import numbers
+             
 def calculate_total(self) -> Decimal:
     total = Decimal("0.00")
 
@@ -102,6 +101,7 @@ def calculate_total(self) -> Decimal:
 
     return total.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
 """
+
 
 
 
