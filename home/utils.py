@@ -29,13 +29,10 @@ def estimate_table_turnover_time(table_capacity : int) -> int :
         return 90
     else :
         return 120
-
-def fo_currency(amount):
-    return f"{currency} {float(amount):.2f}"
-
+        
+from home.models import Reservation
 import string
 import random
-from home.models import Reservation
 
 def generate_reservation_confirmation_number(length = 10) :
     characters = string.ascii_uppercase + string.digits
@@ -178,6 +175,7 @@ def calculate_discount(price, discount_percentage) :
     except (ValueError, TypeError) :
         return price
 """
+
 
 
 
