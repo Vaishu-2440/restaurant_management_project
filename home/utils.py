@@ -47,7 +47,7 @@ def generate_reservation_confirmation_number(length = 10) :
             return confirmation_number
 
 
-from datetime import datetime, time
+from django.utils.timezone.now
 
 def is_restaurant_open() :
     now = datetime.now()
@@ -70,7 +70,7 @@ def get_available_tables_by_capacity(num_guests) :
 
     return Table.objects.filter(
         is_available = True,
-        capacity_gte = num_guests
+        capacity__gte = num_guests
     )
 
 from datetime import datetime
@@ -177,6 +177,7 @@ def calculate_discount(price, discount_percentage) :
     except (ValueError, TypeError) :
         return price
 """
+
 
 
 
