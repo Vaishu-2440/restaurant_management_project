@@ -1,5 +1,30 @@
 from django.db import models
 
+class RReservation(models.Model) :
+    STATUS_PENDING = 'pending'
+    STATUS_CONFIRMED = 'confirmed'
+    STATUS_CANCELLED = 'cancelled'
+
+    STATUS_CHOICES = [
+        (STATUS_PENDING, 'Pending'),
+        (STATUS_CONFIRMED, 'Confirmed'),
+        (STATUS_CANCELLED, 'Cancelled')
+    ] 
+    status = models.CharField(
+        max_lenth = 100,
+        choices = STATUS_CHOICES,
+        default = STATUS_PENDING
+    )
+
+   # examples
+   customer_name = models.CharField(max_length = 100)
+   reservation_time = models.DateTimeField()
+
+   def __str__(self) :
+       return f" {self.customer_name} - {self.status}"
+
+from django.db import models
+
 class Restaurant(models.Model) :
     name = models.CharField(max_length = 100, unique = True)
 
@@ -543,6 +568,7 @@ class Reservation(models.Model) :
 
         return available
 """
+
 
 
 
