@@ -15,14 +15,14 @@ def is_restaurant_open() :
     current_day = now().strftime('%A').lower()
     try :
         today_hours = DailyOperatingHours.objects.get(day_of_week = current_day)
-    except DailyOperatingHours.DoesNotExists :
+    except DailyOperatingHours.DoesNotExist :
         return False
 
     if today_hours.open_time <= current_time <= today_hours.close_time :
         return True
     return False
 
- def estimate_table_turnover_time(table_capacity : int) -> int :
+def estimate_table_turnover_time(table_capacity : int) -> int :
     if table_capacity <= 2 :
         return 60
     elif table_capacity <= 4 :
@@ -155,11 +155,11 @@ def send_custom_email(recipient_email, subject, message_body) :
 
 def get_distinct_cuisines() :
     cuisine_names = (
-        MenuItem.objects.values_list("cuisine_name", flat = True)
+        MenuItem.objects.values_list("cuisine_names", flat = True)
         .distinct()
-        .order_by("cuisine_name")
+        .order_by("cuisine_names")
     )
-    return list(cuisine_name)
+    return list(cuisine_names)
 
 def calculate_discount(price, discount_percentage) :
     try :
@@ -176,5 +176,6 @@ def calculate_discount(price, discount_percentage) :
 
     except (ValueError, TypeError) :
         return price
+
 
 """
