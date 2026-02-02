@@ -12,8 +12,8 @@ class CustomerProfile(models.Model) :
 
     def __str__(self) :
         return f"{self.user.username}'s Customer Profile"
-
-"""  from django.db import models
+"""
+from django.db import models
 from django.contrib.auth.models import User
 
 CUISINE_CHOICES = (
@@ -23,3 +23,4 @@ CUISINE_CHOICES = (
     ('vegetarian', 'Vegetarian'),
 )
 """
+
