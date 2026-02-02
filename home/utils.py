@@ -31,7 +31,7 @@ def estimate_table_turnover_time(table_capacity : int) -> int :
     else :
         return 120
 
-def format1 currency(amount):
+def f_currency(amount):
     return f"{currency} {float(amount):.2f}"
 
 import string
@@ -179,6 +179,7 @@ def calculate_discount(price, discount_percentage) :
     except (ValueError, TypeError) :
         return price
 """
+
 
 
 
