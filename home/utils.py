@@ -6,7 +6,6 @@ def format_currency(amount, currency_symbol = '$'):
         return f"{currency_symbol}0.00"
 
 """
-from datetime import datetime
 from datetime import time
 from django.utils.timezone import now
 from .models import DailyOperatingHours
@@ -179,6 +178,7 @@ def calculate_discount(price, discount_percentage) :
     except (ValueError, TypeError) :
         return price
 """
+
 
 
 
