@@ -8,8 +8,8 @@ def make_unavailable(modeladmin, request, queryset) :
         list_display = ('name', 'price', 'is_available')
         list_filter = ('is_available')
         actions = ['action_make_unavailable']
-
-
+        
+"""
 from .models import Restaurant
 
 class RestaurantAdmin(admin.ModelAdmin) :
@@ -27,4 +27,6 @@ from django.contrib import admin
 from .models import DailyOperatingHours
 
 admin.site.register(DailyOperatingHours)
+"""
+
 
