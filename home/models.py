@@ -127,13 +127,14 @@ class Feedback(models.Model) :
 from django.db import models 
 from rest_framework.viewsets import ModelViewSet
 from .models import Ingredient
-from .serializer import InredientSerializer
+from .serializer import IngredientSerializer
 
 class IngredientViewSet(ModelViewSet) :
     queryset = Ingredient.objects.all()
     serializer_class = IngredientSerializer
 
 from django.db import models
+from django.contrib.auth.models import User
 
 class CustomerProfile(models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE)
@@ -540,6 +541,7 @@ class Reservation(models.Model) :
 
         return available
 """
+
 
 
 
