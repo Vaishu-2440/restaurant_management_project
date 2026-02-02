@@ -51,7 +51,7 @@ def is_restaurant_open() :
     current_day = now.weekday()
     current_time = now.time()
 
-    if current_day > 4 :
+    if current_day >= 5 :
         return False
     opening_time = time(9, 0)
     closing_time = time(22, 0)
@@ -175,6 +175,7 @@ def calculate_discount(price, discount_percentage) :
 
     except (ValueError, TypeError) :
         return price
+
 
 
 
