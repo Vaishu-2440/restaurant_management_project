@@ -334,7 +334,7 @@ class MenuItem(models.Model) :
 
 from django.db import models
 
-class OpeningHour(models.Model) :
+class OpeningHours(models.Model) :
     DAYS_OF_WEEK = [
         ('Monday', 'Monday'),
         ('Tuesday', 'Tuesday'),
@@ -538,6 +538,7 @@ class Reservation(models.Model) :
 
         return available
 """
+
 
 
 
