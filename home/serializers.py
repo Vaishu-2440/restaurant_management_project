@@ -128,6 +128,7 @@ from rest_framework import serializers
 from .models import MenuCategory
 
 class MenuCategorySerializer(serializers.ModelSerializer) :
+    item_count = serializers.IntegerField(read_only = True)
     class Meta :
         model = MenuCategory
         fields = ['id', 'name']
@@ -142,6 +143,7 @@ class UserReviewSerializer(serializers.ModelSerializer) :
         if value < 1 or value > 5 :
             raise serializers.ValidationError("Rating must be between 1 or 5")
         return value
+
 
 
 
