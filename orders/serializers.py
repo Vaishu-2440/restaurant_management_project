@@ -52,7 +52,7 @@ def calculate_total(self) -> Decimal :
     except Exception :
         calculate_discount = None
 
-    for order_item in getattr(self, "order_items", self.orderitem_set).all() :
+    for order_item in getattr(self, "order_item", self.order_item_set).all() :
         price = Decimal(order_item.price or 0)
         quantity = Decimal(order_item.quantity or 0)
         line_total = (price * quantity)
@@ -90,5 +90,6 @@ def calculate_total(self) -> Decimal :
     return total.quantize(Decimal('0.01'), rounding = ROUND_HALF_UP)
 
 """
+
 
 
