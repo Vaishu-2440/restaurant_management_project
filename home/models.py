@@ -412,7 +412,7 @@ class DailyOperatingHours(models.Model) :
         def __str__(self) :
             return f"{self.day} - {self.restaurant.name}"
 
-    class LoyaltyProgram(models.Model) :
+class LoyaltyProgram(models.Model) :
     name = models.CharField(max_length = 100, unique = True)
     points_per_dollar_spent = models.DecimalField(max_digits = 5, decimal_places = 2)
     description = models.TextField()
@@ -533,6 +533,7 @@ class Reservation(models.Model) :
 
         return available
 """
+
 
 
 
