@@ -7,7 +7,7 @@ def format_currency(amount, currency_symbol = '$'):
         return f"{currency_symbol}0.00"
 """
 from datetime import time
-from django.utils import timezone
+from django.utils.timezone import now
 from .models import DailyOperatingHours
 
 def is_restaurant_open1() :
@@ -176,6 +176,7 @@ def calculate_discount(price, discount_percentage) :
     except (ValueError, TypeError) :
         return price
 """
+
 
 
 
