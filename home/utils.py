@@ -43,7 +43,7 @@ def generate_reservation_confirmation_number(length = 10) :
             return confirmation_number
 
 
-from django.utils.timezone import now
+from django.utils import timezone
 from datetime import datetime
 
 def is_restaurant_open() :
@@ -110,7 +110,7 @@ def format_phone_number(phone_number) :
             country_code = digits[:-10]
             main_number = digits[-10:]
             
-            return f" {country_code} ({main_number[:3]}) {main_number[3:6]} - {main_number[6:]}"
+            return f"{country_code} ({main_number[:3]}) {main_number[3:6]} - {main_number[6:]}"
         
         return phone_number
 
@@ -175,6 +175,7 @@ def calculate_discount(price, discount_percentage) :
 
     except (ValueError, TypeError) :
         return price
+
 
 
 
