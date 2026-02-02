@@ -218,7 +218,7 @@ class MenuCategory(models.Model) :
 from django.db import models
 
 class Table(models.Model) :
-    table_number = models.IntegerField(unique = True)
+    table_number = models.CharField(unique = True)
     capacity = models.IntegerField()
     is_available = models.BooleanField(default = True)
     location = models.CharField(max_length = 100)
@@ -257,7 +257,7 @@ class FAQ(models.Model) :
 
 from django.utils import timezone
 
-class ReservationManager(models.Model) :
+class ReservationManager(models.Manager) :
 
     def get_upcoming_reservation(self) :
         return self.filter(reservation_datetime__gt = timezone.now())
@@ -538,6 +538,7 @@ class Reservation(models.Model) :
 
         return available
 """
+
 
 
 
