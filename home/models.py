@@ -157,9 +157,8 @@ class DailySpecial(models.Model) :
         related_name = 'daily_specials'
     )
     date = models.DateField()
-
     class Meta :
-        unique_together = (('menu_item', 'date'),)
+        unique_together = (('menu_item', 'date'))
         ordering = ['-date']
 
     def __str__(self) :
@@ -534,6 +533,7 @@ class Reservation(models.Model) :
 
         return available
 """
+
 
 
 
