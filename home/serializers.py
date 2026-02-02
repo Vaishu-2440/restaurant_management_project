@@ -6,7 +6,7 @@ class IngredientSerializer(serializers.ModelSerializer) :
     class Meta :
         model = Ingredient
         fields = ['id', 'name', 'unit_of_measure']
-"""
+
 from rest_framework import serializers
 from .models import MenuItem
 
@@ -14,7 +14,7 @@ class MenuItemSerializer(serializers.ModelSerializer) :
     class Meta :
         model = MenuItem
         fields = '__all__'    
-"""
+
 from rest_framework import serializers
 from .models import feedback
 
@@ -46,14 +46,13 @@ class FAQSerializer(serializers.ModelSerializer) :
     class Meta :
         model = FAQ
         fields = ['id', 'question', 'answer']
-        
+"""        
 from .models import OpeningHour
-
 class OpeningHourSerializer(serializers.ModelSerializer) :
     class Meta :
         model = OpeningHour
         fields = ['day', 'opening_time', 'closing_time']
-
+"""
 from .models import MenuItem
 
 class MenuItemSearchSerializer(serializers.ModelSerializer) :
@@ -144,6 +143,7 @@ class UserReviewSerializer(serializers.ModelSerializer) :
             raise serializers.ValidationError("Rating must be between 1 or 5")
         return value
 """
+
 
 
 
