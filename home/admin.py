@@ -1,32 +1,18 @@
 from django.contrib import admin
 from .models import MenuItem
 
-def make_unavailable(modeladmin, request, queryset) :
-    queryset.update(is_available = False)
+# Admin action
+def make_unavailable(modeladmin, request, queryset):
+    queryset.update(is_available=False)
 
-    class MenuItemAdmin(admin.ModelAdmin) :
-        list_display = ('name', 'price', 'is_available')
-        list_filter = ('is_available')
-        actions = ['action_make_unavailable']
-        
-"""
-from .models import Restaurant
+make_unavailable.short_description = "Mark selected menu items as unavailable"
 
-class RestaurantAdmin(admin.ModelAdmin) :
-    list_display = ('name', 'address', 'phone_number', 'email', 'is_active')
-    search_field = ('name', 'address')
-    list_filter = ('is_active')
-
-from django.contrib import admin
-from .models import Table
-
-admin.site.register(Restaurant, RestaurantAdmin)
+# Admin configuration
+class MenuItemAdmin(admin.ModelAdmin):
+    list_display = ('name', 'price', 'is_available')
+    list_filter = ('is_available',)
+    actions = [make_unavailable]
 
 
-from django.contrib import admin
-from .models import DailyOperatingHours
-
-admin.site.register(DailyOperatingHours)
-"""
-
-
+#  Register model with admin
+admin.site.register(MenuItem, MenuItemAdmin)
