@@ -331,8 +331,6 @@ class MenuItem(models.Model) :
 
     def __str__(self) :
         return self.name
-        
-
 class OpeningHour(models.Model) :
     DAYS_OF_WEEK = [
         ('Monday', 'Monday'),
@@ -350,6 +348,8 @@ class OpeningHour(models.Model) :
 
     def __str__(self) :
         return f"{self.day} : {self.opening_time} - {self.closing_time}" 
+        
+from django.db import models
 
 class MenuItem(models.Model) :
     name = models.CharField(max_length = 100)
@@ -533,6 +533,7 @@ class Reservation(models.Model) :
 
         return available
 """
+
 
 
 
