@@ -306,8 +306,8 @@ class MenuItem(models.Model) :
     price = models.DecimalField(max_digits = 8, decimal_places = 2)
     cuisine_type = models.CharField(max_digits = 50)
     
-    def get_items_by_cuisine(cls, cuisine_type) :
-        return cls.objects.filter(cuisine_type__iexact = cuisine_type)
+    def get_items_by_cuisine(self, cuisine_type) :
+        return self.objects.filter(cuisine_type__iexact = cuisine_type)
 
 from django.db import models
 
@@ -568,6 +568,7 @@ class Reservation(models.Model) :
 
         return available
 """
+
 
 
 
