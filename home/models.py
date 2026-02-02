@@ -272,7 +272,7 @@ class Reservation(models.Model) :
     objects = ReservationManager()
 
     def __str__(self) :
-        return f" {self.customer_name} - {self.reservatio_datetime}"
+        return f" {self.customer_name} - {self.reservation_datetime}"
 
 from django.db import models
         
@@ -283,6 +283,8 @@ class MenuItem(models.Model) :
     
     def get_items_by_cuisine(cls, cuisine_type) :
         return cls.objects.filter(cuisine_type__iexact = cuisine_type)
+
+from django.db import models
 
 class MenuCategory(models.Model) :
     name = models.CharField(max_length = 100, unique = True )
@@ -538,6 +540,7 @@ class Reservation(models.Model) :
 
         return available
 """
+
 
 
 
