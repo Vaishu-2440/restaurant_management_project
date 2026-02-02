@@ -336,6 +336,7 @@ class MenuItem(models.Model) :
         return self.name
 
 from django.db import models
+from decimal import Decimal
 
 class OpeningHours(models.Model) :
     DAYS_OF_WEEK = [
@@ -542,6 +543,7 @@ class Reservation(models.Model) :
 
         return available
 """
+
 
 
 
