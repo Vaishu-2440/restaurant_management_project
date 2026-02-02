@@ -119,7 +119,7 @@ class ContactFormSubmissionSerializer(serializers.ModelSerializer) :
         model = ContactFormSubmission
         fields = ['id', 'email', 'name', 'message', 'submitted_at']
 
-class DailySpecialSerializer(serializers.Serializer) :
+class DailySpecialSerializer(serializers.ModelSerializer) :
     class Meta :
         model = MenuItem
         fields = ['id', 'name', 'price', 'description']
@@ -143,6 +143,7 @@ class UserReviewSerializer(serializers.ModelSerializer) :
         if value < 1 or value > 5 :
             raise serializers.ValidationError("Rating must be between 1 or 5")
         return value
+
 
 
 
