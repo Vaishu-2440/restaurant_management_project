@@ -94,7 +94,7 @@ def is_valid_reservation_time(reservation_datetime : datetime) -> bool :
             < operating_hours.closing_time
         )
 
-    except DailyOperatingHours.DoeNotExist :
+    except DailyOperatingHours.DoesNotExist :
         return False
 
 import re
@@ -177,5 +177,6 @@ def calculate_discount(price, discount_percentage) :
     except (ValueError, TypeError) :
         return price
 """
+
 
 
