@@ -1,11 +1,10 @@
-"""
 def format_currency(amount, currency_symbol = '$'):
     try :
         return f"{currency_symbol}{float(amount):.2f}"
 
     except (TypeError, ValueError) :
         return f"{currency_symbol}0.00"
-"""
+
 from datetime import time
 from django.utils.timezone import now
 from .models import DailyOperatingHours
@@ -21,7 +20,7 @@ def is_restaurant_open1() :
     if today_hours.opening_time < current_time < today_hours.closing_time :
         return True
     return False
-"""
+
 def estimate_table_turnover_time(table_capacity : int) -> int :
     if table_capacity <= 2 :
         return 60
@@ -176,7 +175,8 @@ def calculate_discount(price, discount_percentage) :
 
     except (ValueError, TypeError) :
         return price
-"""
+
+
 
 
 
