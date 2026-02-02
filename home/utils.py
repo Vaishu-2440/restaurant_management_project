@@ -176,6 +176,5 @@ def calculate_discount(price, discount_percentage) :
 
     except (ValueError, TypeError) :
         return price
-
-
 """
+
