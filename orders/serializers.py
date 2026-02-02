@@ -3,7 +3,7 @@ from .models import OrderItem
 
 class UpdateOrderItemQuantitySerializer(serializers.ModelSerializer) :
     class Meta :
-        model = OrderItem
+        models = OrderItem
         fields = ["id", "quantity"]
 
     def validate_quantity(self, value) :
@@ -88,4 +88,5 @@ def calculate_total(self) -> Decimal :
     
         total += net_line
     return total.quantize(Decimal('0.01'), rounding = ROUND_HALF_UP)
+
 """
