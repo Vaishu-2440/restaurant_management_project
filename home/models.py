@@ -11,7 +11,7 @@ class RReservation(models.Model) :
         (STATUS_CANCELLED, 'Cancelled')
     ] 
     status = models.CharField(
-        max_lenth = 100,
+        max_length = 100,
         choices = STATUS_CHOICES,
         default = STATUS_PENDING
     )
@@ -568,6 +568,7 @@ class Reservation(models.Model) :
 
         return available
 """
+
 
 
 
