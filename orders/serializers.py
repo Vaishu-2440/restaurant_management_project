@@ -43,53 +43,66 @@ class OrderSerializer(serializers.ModelSerializer) :
 
 
 from decimal import Decimal, ROUND_HALF_UP
-             import numbers
+import numbers
 
-def calculate_total(self) -> Decimal :
-    total = Decimal('0.00')
-    try :
+
+def calculate_total(self) -> Decimal:
+    total = Decimal("0.00")
+
+    try:
         from orders.utils import calculate_discount
-    except Exception :
+    except ImportError:
         calculate_discount = None
 
-    for order_item in getattr(self, "order_item", self.order_item_set).all() :
-        price = Decimal(order_item.price or 0)
-        quantity = Decimal(order_item.quantity or 0)
-        line_total = (price * quantity)
+    order_items = getattr(self, "order_item", self.order_item_set).all()
 
-        discount_amount = Decimal('0.00')
+    for order_item in order_items:
+        price = Decimal(str(order_item.price or 0))
+        quantity = Decimal(str(order_item.quantity or 0))
+        line_total = price * quantity
 
-        if calculate_discount :
-            try :
+        discount_amount = Decimal("0.00")
+
+        if calculate_discount:
+            try:
                 discount = calculate_discount(order_item)
-            except TypeError :
-                try :
-                    discount = calculate_discount(order_item.menu_item, int(order_item.quantity))
-                except Exception :
+            except TypeError:
+                try:
+                    discount = calculate_discount(
+                        order_item.menu_item,
+                        int(order_item.quantity)
+                    )
+                except TypeError:
                     discount = None
-            
-            if discount is None :
-                discount_amount = Decimal('0.00')
-            else :
-                if isinstance(discount, Decimal) :
-                    disc = discount
-                elif isinstance(discount, numbers.Real) :
-                    disc = Decimal(str(discount))
-                else :
-                    if Decimal('0') < disc < Decimal('1') :
-                        disc_amount = (line_total * disc).quantize(Decimal('0.01'), rounding = ROUND_HALF_UP)
-                    else :
-                        discount_amount = disc
-            if discount_amount > line_total :
-                discount_amount = line_total
-        net_line = line_total - discount_amount
-        if net_line < Decimal('0.00') :
-            net_line = Decimal('0.00')
-    
-        total += net_line
-    return total.quantize(Decimal('0.01'), rounding = ROUND_HALF_UP)
 
+            # Normalize numeric discount to Decimal
+            if isinstance(discount, numbers.Real):
+                discount = Decimal(str(discount))
+
+            if isinstance(discount, Decimal):
+                # Percentage discount (e.g., 0.10 = 10%)
+                if Decimal("0") < discount <= Decimal("1"):
+                    discount_amount = (line_total * discount).quantize(
+                        Decimal("0.01"),
+                        rounding=ROUND_HALF_UP
+                    )
+                # Flat discount (e.g., 50)
+                elif discount > Decimal("1"):
+                    discount_amount = discount
+
+        # Prevent discount exceeding line total
+        if discount_amount > line_total:
+            discount_amount = line_total
+
+        net_line = line_total - discount_amount
+        if net_line < Decimal("0.00"):
+            net_line = Decimal("0.00")
+
+        total += net_line
+
+    return total.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
 """
+
 
 
 
