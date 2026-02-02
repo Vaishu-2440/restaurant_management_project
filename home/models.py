@@ -104,7 +104,7 @@ class  DailySpecial(models.Model) :
 from django.db import models
 
 class Restaurant(models.Model) :
-    max_capacity = mdoels.IntegerField(null = True)
+    max_capacity = models.IntegerField(null = True)
 
     objects = MenuItemManager()
 
@@ -532,6 +532,7 @@ class Reservation(models.Model) :
             available.append((current_start, range_end))
 
         return available
+
 
 
 
