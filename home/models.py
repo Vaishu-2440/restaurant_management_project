@@ -317,6 +317,7 @@ class MenuItem(models.Model) :
         return self.name
         
 from django.db import models
+
 class MenuItem(models.Model) :
     name = models.CharField(max_length = 100)
     price = models.DecimalField(max_digits = 8, decimal_places = 2)
@@ -331,6 +332,9 @@ class MenuItem(models.Model) :
 
     def __str__(self) :
         return self.name
+
+from django.db import models
+
 class OpeningHour(models.Model) :
     DAYS_OF_WEEK = [
         ('Monday', 'Monday'),
@@ -437,6 +441,8 @@ class Restaurant(models.Model) :
     def __str__(self) :
         return self.name
 
+from django.db import models
+
 class ContactFormSubmission(models.Model) :
     name = models.CharField(max_length = 255)
     email = models.EmailField()
@@ -533,6 +539,7 @@ class Reservation(models.Model) :
 
         return available
 """
+
 
 
 
