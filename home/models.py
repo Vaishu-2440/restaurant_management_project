@@ -524,8 +524,8 @@ class Reservation(models.Model) :
     def get_available_slots(self, range_start, range_end) :
 
         reservations = Reservation.objects.filter(
-            end_time_gt = range_start,
-            start_time_lt = range_end,
+            end_time__gt = range_start,
+            start_time__lt = range_end,
         ).order_by('start_time')
 
         available = []
@@ -541,6 +541,7 @@ class Reservation(models.Model) :
 
         return available
 """
+
 
 
 
