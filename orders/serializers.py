@@ -1,3 +1,4 @@
+"""
 from rest_framework import serializers
 from .models import OrderItem
 
@@ -10,7 +11,6 @@ class UpdateOrderItemQuantitySerializer(serializers.ModelSerializer) :
         if value < 0 :
             raise serializers.ValidationError("Quantity must be a positive integer")
         return value
-
 """
 from rest_framework import serializers
 from orders.models import Table
@@ -19,7 +19,7 @@ class TableSerializer(serializers.ModelSerializer) :
     class Meta :
         model = Table
         fields = "__all__"
-
+"""
 from rest_framework import serializers
 from orders.models import Order, OrderItem
 
@@ -102,6 +102,7 @@ def calculate_total(self) -> Decimal:
 
     return total.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
 """
+
 
 
 
