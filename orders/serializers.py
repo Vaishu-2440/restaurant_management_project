@@ -54,22 +54,22 @@ def calculate_total(self) -> Decimal:
     except ImportError:
         calculate_discount = None
 
-    order_items = getattr(self, "order_item_set", self.order_item_set).all()
+    order_items = getattr(self, "order_item", self.order_item).all()
 
-    for order_item in order_item_set:
-        price = Decimal(str(order_item_set.price or 0))
-        quantity = Decimal(str(order_item_set.quantity or 0))
+    for order_items in order_item:
+        price = Decimal(str(order_item.price or 0))
+        quantity = Decimal(str(order_item.quantity or 0))
         line_total = price * quantity
 
         discount_amount = Decimal("0.00")
 
         if calculate_discount:
             try:
-                discount = calculate_discount(order_item_set)
+                discount = calculate_discount(order_item)
             except TypeError:
                 try:
                     discount = calculate_discount(
-                        order_item_set.menu_item,
+                        order_item.menu_item,
                         int(order_item.quantity)
                     )
                 except TypeError:
@@ -102,6 +102,7 @@ def calculate_total(self) -> Decimal:
 
     return total.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
 """
+
 
 
 
