@@ -8,7 +8,7 @@ def restaurant_open() :
     current_time = now.time()
 
     try :
-        today_hours = DailyOperatingHous.objects.get(day_of_week = current_day)
+        today_hours = DailyOperatingHours.objects.get(day_of_week = current_day)
     except DailyOperatingHours.DoesNotExist :
         return False
 
@@ -35,7 +35,7 @@ def is_restaurant_open1() :
     except DailyOperatingHours.DoesNotExist :
         return False
 
-    if today_hours.open_time <= current_time <= today_hours.close_time :
+    if today_hours.open_time < current_time < today_hours.close_time :
         return True
     return False
 
@@ -193,6 +193,7 @@ def calculate_discount(price, discount_percentage) :
     except (ValueError, TypeError) :
         return price
 """
+
 
 
 
