@@ -8,7 +8,6 @@ class Table(models.Model) :
     def __str__(self) :
         return f"{self.table_number} (Capacity : {self.capacity})"
 
-""" 
 from django.db import models
 
 class Discount(models.Model) :
@@ -177,4 +176,3 @@ class Order(models.Model) :
     def __str__(self) :
         return f"Order #{self.id} - {self.status}"
 
-    """
