@@ -73,8 +73,9 @@ class MenuItemReviewAPIView(generics.ListAPIView) :
 
     def get_queryset(self) :
         menu_item_id = self.kwargs.get("menu_item_id")
-        return UserReview.objects.filter(menu_item_id = menu-item_id).order_by('-created_at')
+        return UserReview.objects.filter(menu_item_id = menu_item_id).order_by('-created_at')
  """
+
 
 
 
