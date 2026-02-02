@@ -90,7 +90,7 @@ class OrderItem(models.Model) :
         return f"{self.quantity} X {self.menu_item.name}"
 
 class Order(models.Model) :
-    STATUS_PENDING = 'Pemding',
+    STATUS_PENDING = 'Pending',
     STATUS_PROCESSING = 'Processing',
     STATUS_DELIVERED = 'Delivered',
     STATUS_CANCELLED = 'Cancelled'
@@ -176,4 +176,5 @@ class Order(models.Model) :
 
     def __str__(self) :
         return f"Order #{self.id} - {self.status}"
+
     """
