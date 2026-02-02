@@ -46,16 +46,16 @@ class FAQSerializer(serializers.ModelSerializer) :
     class Meta :
         model = FAQ
         fields = ['id', 'question', 'answer']
-"""        
+       
 from .models import OpeningHour
 class OpeningHourSerializer(serializers.ModelSerializer) :
     class Meta :
         model = OpeningHour
         fields = ['day', 'opening_time', 'closing_time']
-"""
+        
 from .models import MenuItem
 
-class MenuItemSearchSerializer(serializers.ModelSerializer) :
+class MenuItemSearchSerializer(serializers.Serializer) :
     image_url = serializers.SerializerMethodField()
 
     class Meta :
@@ -108,7 +108,7 @@ class RestaurantSerializer(serializers.ModelSerializer) :
     class Meta :
         model = Restaurant
         fields = "__all__"
-
+"""
 from .models import MenuCategory
 from home.models import UserReview
 from .models import MenuItem
@@ -119,7 +119,7 @@ class ContactFormSubmission(serializers.ModelSerializer) :
         model = ContactFormSubmission
         fields = ['id', 'email', 'name', 'message', 'submitted_at']
 
-class DailySpecialSerializer(serializers.ModelSerializer) :
+class DailySpecialSerializer(serializers.Serializer) :
     class Meta :
         model = MenuItem
         fields = ['id', 'name', 'price', 'description']
@@ -142,7 +142,8 @@ class UserReviewSerializer(serializers.ModelSerializer) :
         if value < 1 or value > 5 :
             raise serializers.ValidationError("Rating must be between 1 or 5")
         return value
-"""
+
+
 
 
 
