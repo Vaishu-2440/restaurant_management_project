@@ -1,4 +1,4 @@
-def format_currency(amount, currency_symbol = '$') :
+def format_currency(amount, currency_symbol = '$'):
     try :
         return f"{currency_symbol}{float(amount):.2f}"
 
@@ -7,6 +7,7 @@ def format_currency(amount, currency_symbol = '$') :
 
 """
 from datetime import datetime
+from datetime import time
 from django.utils.timezone import now
 from .models import DailyOperatingHours
 
@@ -30,7 +31,7 @@ def estimate_table_turnover_time(table_capacity : int) -> int :
     else :
         return 120
 
-def format currency1(amount) :
+def format currency1(amount):
     return f"{currency} {float(amount):.2f}"
 
 import string
@@ -177,6 +178,7 @@ def calculate_discount(price, discount_percentage) :
     except (ValueError, TypeError) :
         return price
 """
+
 
 
 
