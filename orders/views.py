@@ -67,7 +67,7 @@ class PaymentMethodListAPIView(ListAPIView) :
 class CancelOrderView(APIView) :
     permission_classes = [IsAuthenticated]
 
-    def delete(self request, order_id) :
+    def delete(self, request, order_id) :
         try :
             order = Order.objects.get(id = order_id)
         except Order.DoesNotExists :
@@ -115,5 +115,6 @@ def get_order_status(requets, order_id) :
        )
 
 """
+
 
 
