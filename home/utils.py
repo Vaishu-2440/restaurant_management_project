@@ -12,7 +12,7 @@ def restaurant_open() :
     except DailyOperatingHours.DoesNotExist :
         return False
 
-    return today_hours.opening_time < = current_time <= today_hours.closing_time
+    return today_hours.opening_time <= current_time <= today_hours.closing_time
 
 
 """
@@ -193,6 +193,7 @@ def calculate_discount(price, discount_percentage) :
     except (ValueError, TypeError) :
         return price
 """
+
 
 
 
