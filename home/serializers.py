@@ -1,6 +1,6 @@
 """
 from rest_framework import serializers
-form .models import Ingredient
+from .models import Ingredient
 
 class IngredientSerializer(serializers.ModelSerializer) :
     class Meta :
@@ -18,7 +18,7 @@ class MenuItemSerializer(serializers.ModelSerializer) :
 from rest_framework import serializers
 from .models import feedback
 
-class FeedbackSerializer(serializers.Modelserializer) :
+class FeedbackSerializer(serializers.ModelSerializer) :
     class Meta :
         model = feedback
         fields = '__all__'
@@ -144,4 +144,5 @@ class UserReviewSerializer(serializers.ModelSerializer) :
             raise serializers.ValidationError("Rating must be between 1 or 5")
         return value
 """
+
 
