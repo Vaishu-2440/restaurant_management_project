@@ -122,7 +122,7 @@ class Feedback(models.Model) :
         null = True,
         blank = True,
         related_name = 'feedbacks'
-    )
+)
 
  from django.db import models 
 from rest_framework.viewsets import ModelViewSet
@@ -533,6 +533,7 @@ class Reservation(models.Model) :
 
         return available
 """
+
 
 
 
