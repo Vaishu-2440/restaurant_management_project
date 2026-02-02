@@ -53,6 +53,9 @@ class UpdateOrderStatusView(APIView) :
             "new_status" : order.status},
             status = status.HTTP_200_OK
         )
+        
+from .models import Order
+
 def create_order(request) :
     unique_id = generate_unique_order_id()
     order = Order.objects.create(order_id = unique_id, ...)
@@ -115,6 +118,7 @@ def get_order_status(requets, order_id) :
        )
 
 """
+
 
 
 
