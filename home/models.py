@@ -67,7 +67,7 @@ class Ingredient(models.Model) :
 
     def __str__(self) :
         return self.name
-"""
+
 from django.db import models
 
 class Staff(models.Model) :
@@ -101,7 +101,7 @@ class  DailySpecial(models.Model) :
 
     def __str__(self) :
         return f"{self.name} - {self.date}"
-
+"""
 from django.db import models
 
 class Restaurant(models.Model) :
@@ -533,6 +533,7 @@ class Reservation(models.Model) :
 
         return available
 """
+
 
 
 
