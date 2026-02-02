@@ -1,3 +1,4 @@
+"""
 from django.db import models
 
 class Restaurant(models.Model) :
@@ -66,7 +67,7 @@ class Ingredient(models.Model) :
 
     def __str__(self) :
         return self.name
-
+"""
 from django.db import models
 
 class Staff(models.Model) :
@@ -87,7 +88,7 @@ class Staff(models.Model) :
 
     def __str__(self) :
         return f"{self.first_name} {self.last_name} ({self.role}) "
-
+"""
 from django.db import models
 from django.utils import timezone
 
@@ -532,6 +533,8 @@ class Reservation(models.Model) :
             available.append((current_start, range_end))
 
         return available
+"""
+
 
 
 
