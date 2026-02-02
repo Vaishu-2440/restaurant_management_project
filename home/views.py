@@ -31,10 +31,10 @@ from .models import MenuCategory
 from .serializers import MenuCategorySerializer
 from home.models import UserReview
 from rest_framework import generics, permissions
-from home.serializers import UserReviewsSerializer
+from home.serializers import UserReviewSerializer
 from rest_framework.generics import ListAPIView
 from .models import MenuItem
-from .serializers imprt DailySpecialSerializer
+from .serializers import DailySpecialSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .utils import send_custom_email
@@ -69,10 +69,11 @@ class CreateReviewAPIView(generics.APIView) :
         serializer.save(user = self.request.user)
 
 class MenuItemReviewAPIView(generics.ListAPIView) :
-    serializer_class = UserReviewsSerializer
+    serializer_class = UserReviewSerializer
 
     def get_queryset(self) :
         menu_item_id = self.kwargs.get("menu_item_id")
         return UserReview.objects.filter(menu_item_id = menu-item_id).order_by('-created_at')
  """
+
 
