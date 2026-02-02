@@ -167,7 +167,7 @@ class DailySpecial(models.Model) :
 
 from django.db import models
 
-class Cuisine(models.Model) :
+class Cuisine(models.Manager) :
     name = models.CharField(max_length = 100, unique = True)
 
     def __str__(self) :
@@ -175,7 +175,7 @@ class Cuisine(models.Model) :
 
 from .models import Cuisine
 
-class Cuisine(models.Model) :
+class Cuisine(models.Manager) :
     name = models.CharField(max_length = 200)
     description = models.TextField()
     price = models.DecimalField(max_digits = 8, decimal_places = 2)
@@ -239,9 +239,6 @@ class MenuItem(models.Model) :
         default = False,
         help_text = "Mark this item as featured for promotions and highlights."
     )
-
-    def __str__(self) :
-        return self.name
    
     cuisine = models.CharField(max_length = 50)
     is_available = models.BooleanField(default = True)
@@ -541,6 +538,7 @@ class Reservation(models.Model) :
 
         return available
 """
+
 
 
 
