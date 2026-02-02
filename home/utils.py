@@ -10,7 +10,7 @@ from datetime import datetime
 from django.utils.timezone import now
 from .models import DailyOperatingHours
 
-def is_restaurant_open() :
+def is_restaurant_open1() :
     current_time = now().time()
     current_day = now().strftime('%A').lower()
     try :
@@ -177,6 +177,7 @@ def calculate_discount(price, discount_percentage) :
     except (ValueError, TypeError) :
         return price
 """
+
 
 
 
