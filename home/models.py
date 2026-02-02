@@ -218,7 +218,7 @@ class MenuCategory(models.Model) :
 from django.db import models
 
 class Table(models.Model) :
-    table_number = models.CharField(unique = True)
+    table_number = models.CharField(max_length = 100, unique = True)
     capacity = models.IntegerField()
     is_available = models.BooleanField(default = True)
     location = models.CharField(max_length = 100)
@@ -543,6 +543,7 @@ class Reservation(models.Model) :
 
         return available
 """
+
 
 
 
