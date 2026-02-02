@@ -422,8 +422,24 @@ from .models import MenuItem
 
 class Restaurant (models.Model) :
     name = models.CharField(max_length = 255, unique = True)
-    address = models.TextField()
-    phone_number = models.CharField(max_length = 15)
+    street_address = models.CharField(max_length = 255, null = true, blank = True)
+    city = models.CharField(max_length = 255, null = True, blank = True)
+    state = models.CharField(max_length = 255, null = True, blank = True)
+    zip_code = models.CharField(max_length = 255, null = True, blank = True)
+
+    def __str__(self) :
+        return self.name
+
+    def get_full_address(self) :
+        address_parts = [
+            self.street_address,
+            self.state,
+            self.city,
+            self.zip_code
+    ]
+
+    address_parts = [part for part in address_parts if part]
+    return ", ".join(address_parts)
 
     def __str__(self) :
         return self.name
@@ -568,6 +584,7 @@ class Reservation(models.Model) :
 
         return available
 """
+
 
 
 
